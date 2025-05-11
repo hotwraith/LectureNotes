@@ -1,0 +1,145 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage[ruled, lined, longend]{algorithm2e}
+\usepackage[shortlabels]{enumitem}
+\usepackage{textcomp}
+
+\setlength{\parindent}{20pt}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=darkgray
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\ind}{\hspace*{\parindent}}
+
+\title{Chimie générale \vspace{0.2cm} - Notes and Summary}
+\author{Mahel Coquaz}
+\date{Spring Semester 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+\part*{Atomistique}
+\chapter{Atomistique}
+\section{L'atome}
+\paragraph{Le modèle de l'atome}
+Les molécules sont constituées d'atomes qui se partagent des électrons, ces liaisons chimiques dépendent des électrons externes et donc de la configuration électronique des atomes.
+Le modèle de l'atome:
+\begin{enumerate}
+\item Modèle Rutherford
+\begin{itemize}
+\item L'électron tourne autour du noyau de manière aléatoire.
+\item Rendu obsolète.
+\end{itemize}
+\item Modèle Schrödinger
+\begin{itemize}
+\item On ne sait pas précisément où est l’électron, c'est un modèle mathématique.
+\item Modèle actuel, quantique.
+\end{itemize}
+\item Modèle Bohr
+\begin{itemize}
+\item L'électron tourne autour du noyau selon des orbites précises correspondant à des niveaux énergétiques.
+\item Physiquement faux mais toujours utilisé pour décrire certaines propriétés atomiques.
+\end{itemize}
+\item Modèle Thomson
+\begin{itemize}
+\item Charge positive distribuée uniformément sur une sphère. Les électrons sont distribués de manière à contrebalancer cette charge.
+\item Obsolète.
+\end{itemize}
+\end{enumerate}
+\newpage
+\paragraph{L'atome et ses constituants} L'atome est constitué de:
+\begin{itemize}
+\item Le noyau de diamètre \textasciitilde 1 femtomètre (10$^{-15}$m)
+\begin{itemize}
+\item Protons
+\begin{itemize}
+	\item Masse: 1.0073 uma\footnote{1 uma = 1.66054 $\times$ 10$^{-24}$ g}
+	\item Charge: Positive (+1) 
+\end{itemize}
+\item Neutrons
+\begin{itemize}
+	\item Masse: 1.0087 uma
+	\item Charge: Neutre (+0) 
+\end{itemize}
+\end{itemize}
+\item Le nuage électronique de diamètre 1 {\AA}ngstrom (1 {\AA} = 10$^{-10}$m)
+\begin{itemize}
+\item Électrons
+\begin{itemize}
+	\item Masse: 5.486 $\times$ 10$^{-4}$ uma
+	\item Charge: Négative (-1) 
+\end{itemize}
+\end{itemize}
+\end{itemize}
+\paragraph{Les atomes d'un élément} Les protons, neutrons, électrons sont les mêmes pour chaque élément. \\ 
+Un élément est caractérisé par son nombre de protons (numéro
+atomique) \\
+Un atome électriquement neutre comporte le même nombre d’électrons
+que de protons.\\
+Un atome contenant un nombre différent d’électrons et
+de protons est appelé ion (monoatomique). On distingue les cations (chargés positivement) des anions (chargés négativement). \\ 
+Les isotopes d’un même élément diffèrent par leur nombre de
+neutrons. Les isotopes d’un élément ont la même réactivité chimique.\\
+La notation d'un atome est la suivante: \\
+\textbf{\[{X_A^Z} \hspace{1cm} { }_{Z numero atomique}^{A nombre de masse}\]} %need to fix later
+\section{Structure de l'atome}
+\subsection{La conception (semi)quantique}
+\paragraph{Les travaux de Niels Bohr} Chez Bohr l'énergie d'un électron est quantifiée: ce sont les niveaux d'énergie. \\
+Les valeurs permises des niveaux d'énergie sont définies par:
+\begin{displaymath}
+E_n = - \frac{R_h}{n^2}
+\end{displaymath}
+$R_h$ = 2.179$\times$10$^{-18}$ J = 13.6eV\footnote{1eV = 1.602$\times$10$^{-19}$C $\times$ 1V}\\
+n $\in$ $\mathbb{N}$ \par
+Chaque valeur possible pour l'énergie correspond à une trajectoire et une distance noyau-électron. Le niveau n = 1 correspond au niveau d'énergie le plus bas et à l'orbite la plus proche du noyau, c'est \textbf{l'état fondamental}.\par
+Les changements d'énergie de l'électron s'opèrent par sauts discontinus et le passe dans un \textbf{état excité}. Tant qu’un électron demeure à un niveau d’énergie donné, il ne peut pas émettre d’énergie sous forme de rayonnement électromagnétique. \par
+Lorsque $lim_{n \rightarrow \infty}$ $E_n$ = 0, c'est \textbf{l'ionisation}. \par
+\begin{displaymath}
+{\Delta}E_n = E_{n_{arriv\acute{e}}} - E_{n_{d\acute{e}part}}
+\end{displaymath}
+\subsubsection{Résumé du modèle de Bohr}
+\begin{enumerate}
+\item On a un atome stable.
+\item L'énergie d'un électron est quantifié (et quantifiable).
+\item Bonne (mais imparfaite) explication du spectre de l’atome d’hydrogène et des atomes avec un seul électron.
+\begin{displaymath}
+E_n = -\frac{{Z^2}{R_h}}{n^2}
+\end{displaymath}
+\end{enumerate}
+Limitations:
+\begin{enumerate}
+\item N'explique pas la structure fine des spectres d'hydrogène (manque une information supplémentaire: le spin)
+\item Ne s'applique pas aux atomes avec plusieurs électrons (car les intéractions entre électrons sont décrites par la valeur efficace de Z)
+\end{enumerate}
+\begin{displaymath}
+E_n = -\frac{{Z_{eff}^2}{R_h}}{n^2}
+\end{displaymath}
+\begin{center}
+\begin{tabular}{ | m{5cm} | m{5cm}| m{5cm} | } 
+  \hline
+  Bohr & Schrödinger \\ 
+  \hline
+  L’électron est décrit comme une particule avec une trajectoire précise. & L'électron est décrit par une fonction d’onde $\psi$ liée à la probabilité de présence. \\ 
+  \hline
+  cell7 & cell8 \\ 
+  \hline
+\end{tabular}
+\end{center}
+\end{document}
