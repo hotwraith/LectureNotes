@@ -35,7 +35,7 @@
 \maketitle
 \tableofcontents
 \newpage
-\part*{Atomistique}
+%\part*{Atomistique}
 \chapter{Atomistique}
 \section{L'atome}
 \paragraph{Le modèle de l'atome}
@@ -138,8 +138,142 @@ E_n = -\frac{{Z_{eff}^2}{R_h}}{n^2}
   \hline
   L’électron est décrit comme une particule avec une trajectoire précise. & L'électron est décrit par une fonction d’onde $\psi$ liée à la probabilité de présence. \\ 
   \hline
-  cell7 & cell8 \\ 
+  Lois de la mécanique classique selon Newton. & Lois de la mécanique quantique selon Schrödinger. \\ 
+  \hline
+  Case quantique: définit seulement le niveau d’énergie de l’électron (orbite) & Orbitale: définit à la fois le niveau d’énergie et la probabilité de présence de l'électron. \\
   \hline
 \end{tabular}
 \end{center}
+\subsection{Le modèle de Schrödinger}
+\paragraph{Les solutions de l'équation de Schrödinger}
+\begin{enumerate}
+\item La résolution analytique de l’équation de Schrödinger pour l’atome d’hydrogène ou numérique pour les atomes à plusieurs électrons n’est pas au programme de ce cours.
+\item Les diverses solutions de l’équation de Schrödinger sont des orbitales $\Psi_n$, l, $m_l$ définies par 3 nombres entiers (appelés nombres quantiques): n, l, $m_l$ .
+\item Une orbitale est une expression mathématique. La représentation géométrique des orbitales n’est possible que pour un pourcentage défini de probabilité de présence d’un lectron (par exemple 90\%) car l’expression mathématique de l’orbitale n’est pas finie.
+\item  Pour définir un électron dans une orbitale, nous avons besoin d’un $4^{\grave{e}me}$ nombre quantique: le spin $m_s$.
+\item  La configuration électronique nous permet de déterminer le nombre l'électrons de valence ( les électrons de la couche externe avec le nombre quantique n le plus grand).
+\end{enumerate}
+\subsubsection{Les nombres quantiques}
+\paragraph{Les quatres nombres quantiques} décrivent l'état d'un électron (énergie, région d'espace:
+\begin{enumerate}
+\item \textbf{n} : principal (n $\geq$ 1)
+\item \textbf{l} : secondaire (0 $\leq$ l $\leq$ n - 1) 
+\item \textbf{$m_l$} : magnétique (-l $\leq$ $m_l$ $\leq$ l)
+\item \textbf{$m_s$} : spin ($\pm \frac{1}{2}$)
+\end{enumerate}
+\paragraph{Principe d'exclusion de Pauli} Il ne peut exister que deux atomes définis par le même groupe de quatre nombres quantiques. Une orbitale comprenant au maximum deux électrons \textbf{de spins \textit{opposés}} \label{eq:1}
+% slide 20 add 2n^2 (nombre total d'électrons si n est plein ou...? + schema maybe
+\subsubsection{Configuration électronique des atomes}
+La configuration électronique d'une atome décrit la distribution des électrons dans ces diverses orbitales.
+\paragraph{Notation spdf}
+\begin{itemize}
+\item Niveau d'énergie \textit{n} $\rightarrow$ désigné par un nombre
+\item Type d'orbitale \textit{l} $\rightarrow$ désigné par une lettre (s, p, d, f)
+\item Nombre d'électrons dans l'orbitale $\rightarrow$ désigné par un exposant
+\end{itemize}
+\begin{displaymath}
+1s^22s^22p^3
+\end{displaymath}
+$_\nearrow$ 2 électrons dans l'orbitale 1s \\
+$\rightarrow$ 2 électrons dans l'orbitale 2s \\
+$^\searrow$ 3 électrons dans l'orbitale 2p 
+\paragraph{Notation spdf étendue} on peut distribuer des électrons dans les orbitales, on les représente dans des $\ll$\textbf{cases quantiques}$\gg$.
+\begin{displaymath}
+1s^22s^22p_x^12p_y^12p_z^1
+\end{displaymath}
+Se traduit par :
+\begin{center}
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+$\uparrow\downarrow$ & $\uparrow\downarrow$ & $\uparrow$ & $\uparrow$  & $\uparrow$ \\
+\hline
+\end{tabular} \\
+\begin{tabular}{| c | c | m{1.5cm}|}
+\hline
+1s & 2s & 2p \\
+\hline
+\end{tabular}
+\end{center}
+\subsubsection{Répartition des électrons autour du noyau}
+\begin{itemize}
+\item Répartition en couches (n = 1, 2, 3...) et sous couches (s, p, d...)
+\item Le remplissage des couches et sous couches se fait selon la séquence d'énergie croissante (princide de construction d'Aufbau)
+\item L'état fondamental se construit à partir de:
+\begin{itemize}
+	\item La règle d'exclusion de Pauli \ref{eq:1}
+	\item La règle de Hund : L'arrangement le plus stable est celui contenant le plus de spin parallèles.
+\end{itemize}
+\end{itemize}
+\par À l'état fondamental, les électrons occupent les orbitales correspondant aux \textbf{plus bas niveaux d'énergie possible}.
+\subsubsection{La règle de Klechkowski/l'Aufbau}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.15]{./assets/klechkowski_rule.png}
+\caption{Règle de Klechkowski}
+\label{fig:klechkowski}
+\end{center}
+\end{figure}
+\paragraph{Exceptions à la règle de l'Aufbau} Il existe certaines exceptions à ces règles \textbf{ELLES NE SONT PAS AU PROGRAMME}, mais il faut être au courant de leur existence.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.45]{./assets/aufbau_exceptions.png}
+\end{center}
+\caption{Exceptions à l'Aufbau}
+\label{fig:exceptions}
+\end{figure}
+\newpage
+\subsection{Classification périodique des éléments}
+\paragraph{Classification selon Z} La classification des éléments se fait selon l'ordre croissant du numéro atomique \textbf{Z}. Les 92 premiers éléments sont dits "naturels" tandis que les éléments de 93 à 118 ont été préparés artificiellement. \par
+Les colonnes sont désignées par un numéro de 1 à 18 ou par des symboles (IA, IIA, IIB...). Les éléments d'une même colonne constituent un groupe et portent un nom particuliers (i.e. métaux alcalins, gaz rares, halogènes, alcalino-terreux...). Ils ont également le \textbf{même nombre d'électrons de valence\footnote{électrons sur la dernière couche électronique de l'atome}}. \par 
+Les lignes sont appelées \textbf{périodes}, elles sont numérotées de 1 à 7.
+\paragraph{Le rayon atomique} Il existe plusieurs définitions du rayon atomique: par le calcul et la demi-distance entre centres d'atomes voisins (données expérimentales). \par
+Le rayon atomique augmente en bas le long d'un groupe et diminue de gauche à droite le long d'une période ($Z_{eff}$\footnote{Zeff est la charge effective ressentie par l’électron le plus éloigné du noyau. Elle dépend de la charge du noyau et des autres électrons de l’atome.} $\nearrow$):
+\begin{displaymath}
+r \propto \frac{n^2}{Z_{eff}}
+\end{displaymath}
+\subsubsection{Charge nucléaire effective $Z_{eff}$}
+\begin{displaymath}
+Z_{eff} = Z - \delta
+\end{displaymath}
+avec $Z_{eff}$ la charge nucléaire effective, Z la charge nucléaire réelle et $\delta$ l'effet d'écran des électrons.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/zeff_example.png}
+\end{center}
+\caption{Exemple de $Z_{eff}$}
+\label{fig:Zeff}
+\end{figure}
+\paragraph{L'énergie d'ionisation} Elle diminue de haut en bas d’un groupe et augmente le long d’une période.
+\begin{displaymath}
+IE = -E_n = \frac{Z_{eff}^2R_h}{n^2}
+\end{displaymath}
+\section{L'électronégativité}
+\paragraph{Prédiction des propriétés des éléments} \hypertarget{electronegativity}{L'éléctronégativité} traduit le pouvoir \textbf{electro-attracteur} d'un atome lorsqu'il est engagé dans une liaison. \par 
+Cette échelle arbitraire allant de 0 à 4 est sans unité. \\
+L'électronégativité détermine le partage des électrons dans une liaison: les électrons vont se diriger vers l'atome le plus électronégatif.
+\subsection{Récapitulatif des tendances périodiques}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/recap_tendencies.png}
+\end{center}
+\caption{Récapitulatif des tendances périodiques}
+\label{fig:recap}
+\end{figure}
+\chapter{Liaisons chimiques}
+\section{Introduction}
+\paragraph{Qu'est-ce qu'une liaison chimique ?} Une liaison chimique est un ensemble de forces électriques assurant la cohésion des molécules, elles résultent du partage du \textbf{partage d'électrons entre les atomes}. \par
+Une liaison chimique correspond toujours à un \textbf{minimum énergétique}, elle se forme si l'arrangement des atomes final à une énergie \textit{plus faible} que la des énergies des atomes séparés. Par conséquent la formation de liaisons à pour conséquence \textbf{un dégagment d'énergie}.
+\subsection{Les types de liaisons}
+\paragraph{Liaison ionique} Une liaison entre \textbf{deux ions de signes \textit{opposés}} avec un passage d'électrons d'un atome à l'autre.\\ %need precisions 
+\textbf{Cette liaison requiert une grande différence d'électronégativité !} ($\Delta$EN $>$ 1.7)
+\paragraph{Liaison covalente} Cette liaison résulte d'un partage d'électron(s) entre deux atomes d'électronégativité semblable. Elles se distinguent entre les liaisons covalentes \textit{polaires} et \textit{apolaires}. \par
+La force électroattractrice d'un atome est quantifié par son \hyperlink{electronegativity}{électronégativité}. Tant que $\Delta$EN $<$ 0.4 on parle de \textbf{liaison covalente non polaire} (ou covalente pure si $\Delta$EN = 0 comme pour $H_2$) , ensuite  entre 0.4 $<$ $\Delta$EN $<$ 1.7 on parle de \textbf{liaison covalente polaire} 
+\paragraph{Liaison métallique} Il s'agit du partage des électrons de valence entre tous les atomes d'un métal (électronégativité faible), les électrons ainsi libres permettent la conductivité électrique !
+\newpage
+\section{Théorie de Lewis}
+\paragraph{Les fondements de la théorie de Lewis} Selon Lewis les \textbf{électrons de valence} (électrons avec la valeur \textit{n} la plus grande) jouent un rôle fondamental dans les liaisons chimiques. \par
+Lorsque les atomes perdent, recoivent ou partagent des électrons au cours de liaisons ils vont \textit{en général} acquérir la configuration électronique d'un \textbf{gaz noble}: ce sont les règles du \textbf{duet et de l'octet}\footnote{Seuls l'hydrogène (H), le lithium (Li) et le béryllium (Be) observent la règle du duet et prennent la forme de l'hélium (He)}.
+
+\subsection{La représentation de Lewis}
+La représentation de Lewis se concentre sur la couche externe que l'on représente simplifiée à l'aide de points symbolisant les \textbf{électrons de valence}. Les quatres premiers électrons sont représentés isolés, puis on groupe les électrons additionnels sous la forme de \textbf{doublets}.
 \end{document}
