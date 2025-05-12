@@ -12,6 +12,7 @@
 \usepackage[ruled, lined, longend]{algorithm2e}
 \usepackage[shortlabels]{enumitem}
 \usepackage{textcomp}
+\usepackage{chemfig}
 
 \setlength{\parindent}{20pt}
 \hypersetup{
@@ -150,7 +151,7 @@ E_n = -\frac{{Z_{eff}^2}{R_h}}{n^2}
 \item La résolution analytique de l’équation de Schrödinger pour l’atome d’hydrogène ou numérique pour les atomes à plusieurs électrons n’est pas au programme de ce cours.
 \item Les diverses solutions de l’équation de Schrödinger sont des orbitales $\Psi_n$, l, $m_l$ définies par 3 nombres entiers (appelés nombres quantiques): n, l, $m_l$ .
 \item Une orbitale est une expression mathématique. La représentation géométrique des orbitales n’est possible que pour un pourcentage défini de probabilité de présence d’un lectron (par exemple 90\%) car l’expression mathématique de l’orbitale n’est pas finie.
-\item  Pour définir un électron dans une orbitale, nous avons besoin d’un $4^{\grave{e}me}$ nombre quantique: le spin $m_s$.
+\item  Pour définir un électron dans une orbitale, nous avons besoin d’un $4^{\grave{e}me}$ nombre quantique: le spin $m_s$. \label{spin}
 \item  La configuration électronique nous permet de déterminer le nombre l'électrons de valence ( les électrons de la couche externe avec le nombre quantique n le plus grand).
 \end{enumerate}
 \subsubsection{Les nombres quantiques}
@@ -276,4 +277,112 @@ Lorsque les atomes perdent, recoivent ou partagent des électrons au cours de li
 
 \subsection{La représentation de Lewis}
 La représentation de Lewis se concentre sur la couche externe que l'on représente simplifiée à l'aide de points symbolisant les \textbf{électrons de valence}. Les quatres premiers électrons sont représentés isolés, puis on groupe les électrons additionnels sous la forme de \textbf{doublets}.
+% ajouter la partie sur les liaisons ioniques
+\subsubsection{Méthodologie de Lewis (liaisons covalentes)}
+\begin{enumerate}
+\item Dénombrer les électrons de valence des tous les atomes de la molécule
+\item Dessiner le \textbf{squelette} de la molécule en reliant les atomes les uns aux autres par une paire d'électrons. L'atome le \textbf{moins électronégatif} occupe la place \textbf{centrale}.
+\item Placer les électrons restants sur l'atome central.
+\item Si le nombre d'électrons disponibles est insuffisant il faut introduire des \textbf{liaisons multiples} et attribuer les charges de l'ion
+\end{enumerate}
+\textbf{Exemple: NH$_3$}
+\begin{center}
+\begin{enumerate}
+\item \charge{0=\.,90=\:,180=\.,270=\.}{N}
+\item \chemfig{\charge{90=\:}{N}(-[:0]H)(-[:180]H)(-[:270]H)}
+\item Pas nécessaire ici.
+\item Pas nécessaire ici.
+\end{enumerate}
+\end{center}
+\textbf{Exemple: AsCl$_3$}
+\begin{enumerate}
+\item On dénombre le nombre d'électrons de valence:
+\begin{itemize}
+	\item 5 pour l'As
+	\item 3$\times$7 pour Cl$_3$
+\end{itemize}
+\item On dessine le squelette et on relie: \chemfig{As(-[:45]Cl)(-[:135]Cl)(-[:270]Cl)}
+\item On complète les octets (24 électrons utilisés) : \chemfig{As(-[:45]\charge{315=\|,45=\|,135=\|}{Cl})(-[:135]\charge{225=\|,45=\|,135=\|}{Cl})(-[:270]\charge{0=\|,180=\|,270=\|}{Cl})}
+\item Placer les électrons restants sur l’atome central: \chemfig{\charge{90=\|}{As}(-[:0]\charge{0=\|,90=\|,270=\|}{Cl})(-[:180]\charge{90=\|,180=\|,270=\|}{Cl})(-[:270]\charge{0=\|,180=\|,270=\|}{Cl})}
+\item %TODO add note
+\end{enumerate}
+\paragraph{Limites de la représentation de Lewis} Il s'agit d'une représentation empirique, cependant couplée à la représentation VSPR (voir \ref{VSPR}) elle permet une représentation géométrique de la forme de la molécule une estimation de sa polarité et de sa réactivité chimique. \\
+Par exemple la règle de l’octet (ou doublet (H, He, Li, Be)) ne s’applique pas à tous les éléments/molécules !
+\begin{itemize}
+\item Hypovalence
+\item Hypervalence
+\item Les molécules à nombre impair d'électrons de valence (i.e. NO qui possède 11 électrons de valence)
+\end{itemize}
+De plus certaines propriétés comme le \textbf{paramagnétisme} doivent être décrites avec une représentation plus précise des électrons (la notion du spin voir \ref{spin}).
+
+\section{Représentation VSEPR} \label{VSPR}
+\subsection{Le modèle RPEV ou VSPER} Le modèle de la Répulsion des Paires d’Electrons de Valence (RPEV) ou le Valence-Shell Electron-Pair Repulsion (VSEPR). \\
+Lorsque l'on considère un atome, les paires d’électrons liantes et non liantes se placent de telle sorte à \textbf{minimiser} leur énergie de répulsion, la forme de la molécule dépend donc des atomes liés à \textbf{l'atome central}.
+\begin{displaymath}
+AX_nE_m
+\end{displaymath}
+A: atome central \\
+n: nombre d’atomes liés à l’atome central \\
+m : nombre de doublets libres de l’atome central \par
+Les molécules de types AX$_n$E$_m$ ont une description \textbf{électronique} dépend des \textbf{atomes liés} et des \textbf{doublets non liants}. Cependant la \textbf{géométrie moléculaire} \textit{ignore} ces derniers.
+\paragraph{Géométrie des molécules} On définit $\alpha_1$ et $\alpha_2$ les angles axiaux et équatoriaux des molécules\footnote{Pour des raisons de concision on se contentera ici de tableaux récapitulants les structures ;)}.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/geometry_example.png}
+\caption{Example de géometrie avec $\alpha_1$ = 120° et $\alpha_2$ = 90°}
+\label{fig:geometry_ex}
+\end{center}
+\end{figure}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.65]{./assets/geometry_table.png}
+\caption{Tableau des géométries}
+\label{fig:geometry_table}
+\end{center}
+\end{figure}
+%TODO add the two other tables in a nicer way
+\subsection{Polarité des molécules}
+\title{Le moment dipolaire:}
+\begin{displaymath}
+\mu = \delta \times l
+\end{displaymath}
+$\delta$: charge électrique partielle résultant de la polarisation \\
+$l$: longueur de la liaison\\
+Par exemple pour HCl:\\
+\begin{center}
+$\delta+$ \; \; $\delta-$ \\
+\chemfig{H(-[:0]Cl)}
+\end{center}
+Avec $\mu$ = 1,02D\footnote{1 D (Debye) = 3,36 x 10$^{-30}$ C$\cdot$m}
+\paragraph{Géométrie et polarité} Les molécules dites \textbf{symétriques} son \textbf{apolaires} (la somme vectorielle des moments dipolaires est nulle) même si les liaisons individuelles sont polaires \\
+À l'inverse les molécules dites \textbf{asymétriques} conduit (en cas de présence de liaisons individuelles polaires) à une molécule \textbf{polaire}.
+
+\section{Approche quantique}
+\subsection{Recouvrement des orbitales}
+\paragraph{Théorie de la liaison de valence} Une liaison covalente résulte de la formation d’un doublet d’électrons de spins opposés dans la région du recouvrement de deux orbitales atomiques. \\
+Exemple, formation d'H$_2$:
+\begin{enumerate}
+\item Deux atomes d’hydrogène se rapprochent l’un de l’autre. Ils renferment chacun un électron dans l’orbitale 1s de spin opposés.
+\item A une certaine distance, les orbitales commencent à se chevaucher : recouvrement des orbitales 1s. \\
+La région du recouvrement contient alors 2 électrons de spins opposés.
+\item Augmentation de la densité électronique dans la région située entre les 2 noyaux : maintient ensemble les 2 noyaux.
+\end{enumerate}
+\subsection{Hydration}
+Exemple, le méthane CH$_4$:
+\begin{center}
+La configuration de C à l'état fondamental: \\ \vspace{0.5cm}
+\begin{tabular}{| c | c | c | c | c |}
+\hline
+$\uparrow\downarrow$ & $\uparrow\downarrow$ & $\uparrow$ & $\uparrow$  & \: \\
+\hline
+\end{tabular}\\
+1s \quad 2s \quad \qquad 2p
+\end{center}
+\par On constate que l'orbitale 2p contient deux électrons non appariés $\rightarrow$ on prédit alors que la molécule la plus simple est CH$_2$. Cependant CH$_2$ n'est pas stable, l'hydrocarbure stable le plus simple est CH$_4$. \par
+Cependant pour construire CH$_4$ on a besoin de 4 électrons non appariés. Il faut donc:
+\begin{enumerate}
+\item Promouvoir des électrons dans les orbitales d'énergie supérieure.
+\item Il faut que les quatre orbitales de l’atome de C qui vont se recouvrir avec l’orbitale 1s des atomes d’hydrogène soient identiques.
+\end{enumerate}
+C'est \textbf{l'hybridation} des orbitales \textbf{2s} et \textbf{2p} 
 \end{document}
