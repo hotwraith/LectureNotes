@@ -26,6 +26,7 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\x}{$\times$ }
 \newcommand{\ind}{\hspace*{\parindent}}
 
 \title{Chimie générale \vspace{0.2cm} - Notes and Summary}
@@ -457,6 +458,25 @@ Exemples:
 \item Masse molaire de $^{12}$C = 12 Da . $N_A$ = 12 $\times$ 1,66 $\times$ 10$^{-24}$ g $\times$ 6,022 $\times$ 10$^{23}$ mol$^{-1}$ = 12 g$\cdot$mol$^{-1}$\footnote{On remarque que la masse molaire en g mol-1 a la même valeur numérique que la masse moléculaire en u.m.a. ou Da}
 \item Masse molaire : H$_2$O (2 $\times$ 1,0079) + (1 $\times$ 15.9994) g = 18,0152 g$\cdot$mol$^{-1}$
 \end{itemize}
+\subsubsection{Unités de concentrations pour solutions}
+\begin{center}
+\begin{tabular}{| c | c | c |}
+\hline
+\textbf{Concentration} & \textbf{Unités} & \textbf{Définition} \\
+\hline
+Molarité M  & mol$\cdot$L$^{-1}$ & atm\\
+\hline
+Molalité m  & mol$\cdot$kg$^{-1}$ & bar \\
+\hline
+Fraction molaire $\chi$  &  & $\frac{n_{solute}}{n_{solute}+n_{solvant}} $\\
+\hline
+\% volumique  &   & $\frac{V_{solute}}{V_{solution}\times100}$\\
+\hline
+\% masse &  & $\frac{m_{solute}}{m_{solution}\times100}$ \\
+\hline
+\end{tabular}
+\end{center}
+
 \subsection{Théorie cinétique des gaz}
 \paragraph{Définition} Un gaz est un ensemble de particules en mouvement constant. e mouvement est rectiligne et les collisions avec les parois ou d’autres molécules est parfaitement élastique (pas de perte d’énergie globale). \\
 L’énergie cinétique moyenne d’une molécule est proportionnelle à la température. \\
@@ -479,4 +499,90 @@ PV = nRT
 \hline
 \end{tabular}
 \end{center}
+\subsubsection{Conditions standard}
+\begin{itemize}
+\item P = 1 bar = 100 kPa\footnote{Anciennement on utilisait P =1 atm (dont l’usage n’a pas complètement disparu)}
+\item La température n'est pas une condition standard à proprement parler, cependant on choisit en général 25°C (298K\footnote{K = T$_{ °C}$ + 273,15})
+\end{itemize}
+\subsubsection{Conditions normales (TPN)}\footnote{Dans ces conditions \textbf{une mole de gaz} occupe un volume de \textbf{22,4 L}}
+\begin{itemize}
+\item P = 1 atm = 101, 325 kPa
+\item T = 273,15 K (0°C)
+\end{itemize}
+\subsubsection{Pression partielle d'un gaz}
+La pression partielle d’une espèce i, Pi, dans un mélange est la contribution de la seule
+espèce i à la pression totale.
+\begin{center}
+\title{Loi de Dalton\footnote{Ne s'applique qu'aux gaz parfaits.}}
+\end{center}
+\begin{displaymath}
+P_i = x_i \times P_{tot}
+\end{displaymath}
+
+\begin{itemize}
+\item $P_i$ la pression partielle de l'espèce i
+\item $x_i$ est la fraction molaire de l’espèce i\footnote{nombre de mol de l’espèce i/nombre de mol total des espèces présentes ($\frac{n_i}{n_{tot}}$)}
+\item $P_{tot}$ la pression totale du mélange
+\end{itemize}
+\newpage
+\section{Équation chimique} 
+\begin{displaymath}
+R\acute{e}actifs \longrightarrow Produits
+\end{displaymath}
+\paragraph{Propriétés} Lors d'une réaction chimique il y a \textbf{conservation} du nombre de chacun des atomes et \textbf{conservation} de la charge électrique totale. \\
+Les lettres indiquent des états/informations supplémentaires:
+\begin{itemize}
+\item A(g) phase gazeuse
+\item A(l) phase liquide
+\item A(s) phase solide
+\item A(sol) solution
+\item A(aq) solution aqueuse
+\end{itemize}
+\begin{displaymath}
+C_2H_5OH(l) + 3\footnote{3 est ici un \textbf{coefficient stoechiométrique}}O_2(g) \rightarrow 2CO_2 (g) + 3H_2O(l)
+\end{displaymath}
+Exemple:
+On constate qu'il y a exactement le même nombre d'atomes des deux côtés\footnote{2 atomes de C, 6 d'H, 7 d'O} la réaction est \textbf{équilibrée}.
+
+\subsection{Classification des réactions}
+\paragraph{Cas d'équilibre} Il s'agit du cas général défini par la thermodynamique. La réaction peut evoluer dans les deux sens.
+\begin{displaymath}
+N_2(g) + 3H_2(g) \rightleftarrows 2NH_3(g)
+\end{displaymath}
+\paragraph{Réaction complète} Celle-ci a lieu lorsque l'équilibre est déplacé artificiellement.
+\begin{displaymath}
+CaCO_3(s) \xrightarrow{\Delta} CaCO(s) + CO_2(g)
+\end{displaymath}
+Ici $\Delta$ est le \textbf{chauffage} de la réaction qui cause le déplacement de l'équilibre.
+\paragraph{Réaction acide-base} Réaction basée sur le transfert de protons entre un couple acide/base.
+\paragraph{Réaction d'oxydo-réduction} Réaction basée sur le transfer d'électrons entre un couple oxydant/réducteur
+\paragraph{Et bien d'autres} On retrouve aussi des réactions dites de complexation, de substitution, de dissociation ou de précipitation.
+\subsubsection{Cas particulier: réaction de précipitation}
+\textbf{Équation moléculaire globale:}
+\begin{displaymath}
+2KI(aq) + Pb(NO_3)_2(aq) \longrightarrow 2KNO_3(aq) + PbI_2(s)
+\end{displaymath}
+\textbf{Équation ionique complète:}
+\begin{displaymath}
+2K^+(aq) + 2I^-(aq) + Pb^{2+}(aq) + 2NO_3^-(aq) \longrightarrow 2K^+ (aq) + 2 NO_3^-(aq) + PbI_2(s)
+\end{displaymath}
+On constate que $K^+$ et $NO_3^-$ ne participent pas à la réaction de précipitation mais sont présents dans la solution. Ils sont \textbf{ions spectateurs}. \vspace{0.2cm} \\
+\textbf{Équation ionique nette (sans ions spectateurs) :}
+\begin{displaymath}
+2I^-(aq) + Pb^{2+}(aq) \longrightarrow PbI_2(s)
+\end{displaymath}
+\subsection{Stoechiométrie}
+\paragraph{Loi de conservation de masse} Au cours d’une réaction chimique, on peut considérer que la masse est conservée\footnote{Sauf en cas de réaction nucléaire. Ce qui est en réalité conservé c’est la masse-énergie.}. \par
+Interprétation de Dalton : au cours d’une réaction chimique, les atomes ne sont ni créés ni détruits, ils changent de partenaires. \par
+Les \textbf{coefficients stoechiométriques} sont introduits pour \textbf{équilibrer} les réactions: ils permettent d'avoir le même nombre d'atomes de chaque côté de la flèche.\\
+Exemple: la combustion du butane (C$_4$H$_10$)
+\begin{displaymath}
+2C_4H_10(g) + 13O_2(g) \longrightarrow 8CO_2(g) + 10H_2O(l)
+\end{displaymath}
+En mole on a: 2 + 13 $\longrightarrow$ 8 + 10
+En masse: 2 $\times$ 58 + 13 \x 32 $\longrightarrow$ 8 \x 44 + 10 \x 18
+\subsubsection{Réactif limitant}
+Le réactif \textbf{limitant} n'apparaît qu'en dehors des conditions stoechiométriques, il est celui qui détermine la \textbf{quantité maximale de produit} qui peut être formée. \\
+Il est celui qui disparaît complètement à l'avancement x$_{max}$
+%TODO ajouter exemple de la combustion du propane (slide 19)
 \end{document}
