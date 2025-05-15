@@ -565,8 +565,7 @@ PV = nRT
 \end{tabular}
 \end{center}
 
-\subsubsection{Conditions standard}
-
+\subsubsection{Conditions standard} \label{condStands}
 \begin{itemize}
 \item P = 1 bar = 100 kPa\footnote{Anciennement on utilisait P =1 atm (dont l’usage n’a pas complètement disparu)}
 \item La température n'est pas une condition standard à proprement parler, cependant on choisit en général 25°C (298K\footnote{K = T$_{ °C}$ + 273,15})
@@ -693,8 +692,262 @@ $\eta$ < 100\% dans les cas suivants:
 
 \section{Réactions rédox}
 
-\subsubsection{Introduction}
+\subsection{Introduction}
 
-Les équations \textbf{d'oxydo-réduction} sont des réactions avec \textbf{transfert d'électrons}.
+Les équations \textbf{d'oxydo-réduction} sont des réactions avec \textbf{transfert d'électrons}. Il faut donc faire attention à la conservation de la \textbf{masse} et de \textbf{la charge globale}. \\
+Exemple: 
+\begin{displaymath}
+\textbf{2}Ag^+(aq) + Cu(s) \longrightarrow \textbf{2}Ag(s) + Cu^{2+}(aq) 
+\end{displaymath}
+On aurait pu avoir seulement:
+\begin{displaymath}
+Ag^+(aq) + Cu(s) \longrightarrow Ag(s) + Cu^{2+}(aq) 
+\end{displaymath}
+La masse serait alors bien conservée mais pas la charge globale: la réaction n'est pas complètement équilibrée. \par
+Au niveau moléculaire la réaction qui a lieu est un \textbf{transfer d'électrons} allant de Cu (donneur d'électrons, \textbf{réducteur}) à Ag$^+$ (accepteur d'électrons, \textbf{oxydant}). \par
+Comme Cu libère deux électrons il nous faut deux cations Ag$^+$ prêts à les recevoir. Il faut que \textbf{le nombre d'électrons donnés par le réducteur soit égal au nombre d'électrons acceptés par l'oxydant}.
 
+\subsection{Degré d'oxydation}
+
+Le degré d'oxydation (d.o) indique le nombre d'électrons que chaque atome aurait donné ou reçu par rapport à l'état neutre si les liaisons dans lesquelles ces atomes sont impliqués étaient de nature purement ionique. \par 
+Si l'électronégativité des deux atomes liés est la même (par exemple, si les atomes liés sont un même élément), alors la liaison \textbf{ne contribue pas} au calcul du d.o. \\
+Exemples: 
+\begin{displaymath}
+\chemfig{O^{-2}(-[:0]H^{+1})(-[:180]H^{+1})}
+\end{displaymath}
+\begin{displaymath}
+\chemfig{H^{+1}-O^{-1}-O^{-1}-H^{+1}}
+\end{displaymath}
+\begin{displaymath}
+\chemfig{O^{+2}=C^{-4}=O^{+2}}
+\end{displaymath}
+Comme chaque liaison est considérée comme \textbf{ionique} on "transfère" pour chaque liaison les électrons vers l'atome le plus électronégatif de la liaison.
+\paragraph{Règles définissant le degré d'oxydation}
+\begin{itemize}
+\item Le \textbf{fluor (F)} a \underline{toujours} un d.o. égal à \textbf{-1}.
+\item Les \textbf{métaux alcalins} (Li, Na, etc.) ont \underline{toujours} un d.o. égal à \textbf{+1}.
+\item Les \textbf{métaux alcalino-terreux} (Be, Mg, etc.) ont \underline{toujours} un d.o. égal à \textbf{+2}.
+\item \textbf{L'hydrogène} possède \textit{en général} un d.o. égal à \textbf{+1}\footnote{À l’exception des hydrures de métaux où il a un d.o. de -1.}.
+\item \textbf{L'oxygène} a \textit{en général} un d.o. égal à \textbf{–2}\footnote{Sauf s’il est lié avec lui-même ou avec du fluor.}.
+\end{itemize} \par
+Dans une espèce chimique neutre (molécule ou radical), la somme des d.o. des atomes est nulle. En revanche si le composé est chargé, cette somme est égale à la charge de l’ion\footnote{Dans ce cours, nous nous restreignons aux composés dont
+le degré d’oxydation vaut +1 pour H et -2 pour O. Dans un élément comme H2 ou
+O2, le degré d’oxydation vaut 0}.
+
+\subsection{Équilibrage d'une équation d'oxydo-réduction}
+
+\begin{enumerate}
+\item Repérer les éléments dont le degré d’oxydation (D.O.) change au cours de la réaction.
+\item Le nombre d’électrons cédés par le réducteur doit être égal au nombre d’électrons acquis par l’oxydant; ceci permet de trouver quatre coefficients.
+\item S’il figure dans l’équation d’autres substances dont le D.O. n’est pas affecté, il faut
+trouver le coefficient de ces substances par un bilan des masses.
+\item Si des réactifs et/ou des produits sont des ions, il faudra vérifier le calcul par un
+bilan des charges.
+\end{enumerate}
+Exemple: 
+\begin{displaymath}
+HBr + KClO_3 \longrightarrow Br_2 + H_2O + KCl
+\end{displaymath}
+\begin{enumerate}
+\item Élements dont le d.o. change: Br (-1 $\xrightarrow{-1e}$ 0), Cl (+5 $\xrightarrow{+6e}$ -1) 
+\item
+\begin{displaymath}
+HBr^{-1} + KClO_3^{+5} \longrightarrow Br_2^{+0} + H_2O + KCl^{-1} 
+\end{displaymath}
+\item Donc on a 6 \x -1e du HBr pour équilibrer le 1 \x +6e KCl (on équilibre le reste selon les masses).
+\begin{displaymath}
+\textbf{6}HBr + \textbf{1}KClO_3 \longrightarrow \textbf{3}Br_2 + \textbf{3}H_2O + \textbf{1}KCl
+\end{displaymath}
+\end{enumerate}
+%TODO add le second exemple (la flemme de tout copier maintenant
+
+\chapter{Thermodynamique}
+
+\section{Introduction}
+
+\paragraph{Particularités} En chimie on  considère un nombre réduit de fonctions et on s'intéresse à leurs variations lors d'une réaction chimique. On se placera dans des conditions standards (voir \ref{condStands}). Ces fonctions sont des variables d'état, leur valeur ne dépend pas du chemin parcouru mais uniquement de l'état initial et final du système.
+\paragraph{Système, environnement, univers} Le \textbf{système} est le milieu réactionnel (en chimie. \textbf{L'environnement} est tout ce qui se trouve à l'extérieur du système. \textbf{L'univers} c'est l'ensemble système et environnement. \par 
+Il existe différents types de systèmes: 
+\begin{enumerate}
+\item \textbf{Ouvert} : peut échanger énergie et matière.
+\item \textbf{Fermé} : peut échanger de l'énergie  mais pas de matière.
+\item \textbf{Isolé} : ne peut échanger ni matière, ni énergie.
+\end{enumerate}
+
+\section{Premier principe de la thermodynamique}
+
+\par Durant une transformation, la variation d’énergie interne du système est égale
+à la somme de la quantité de chaleur échangée avec l’environnement
+et du travail fourni.
+\begin{displaymath}
+\Delta U = W + Q
+\end{displaymath}
+\begin{itemize}
+\item $\Delta$U: variation d'énergie interne du système.
+\item W: énergie fournie \textbf{au système} sous forme de \textbf{travail}.
+\item Q: énergie fournie au système sous forme de chaleur (transfert d’énergie sous forme d’agitation de molécules)
+\end{itemize}
+\textbf{L'énergie est en tout cas conservée. Elle ne peut être ni créée ni détruite.}\footnote{Par convention L’énergie (sous forme de travail ou de chaleur) fournie au système est dénotée positivement}
+
+\subsection{Énergie interne U et Enthalpie H}
+
+Les réactions chimiques sont étudiées plutôt à pression constante (voir \ref{condStands}).
+À pression constante, un travail \textbf{W = -P \x $\Delta$V} est fourni/perdu par le système\footnote{Ce travail est compté négativement lorsque le volume augmente d’où le signe négatif}.
+\paragraph{Définition de l'enthalpie} 
+\begin{displaymath}
+H = U + PV
+\end{displaymath}
+\begin{displaymath}
+\Delta H = \Delta U + P\footnote{pour $\Delta$P = 0 P$_{ext}$=P$_{sys}$=P}\Delta V
+\end{displaymath}
+\begin{displaymath}
+\Delta H = W + Q + P\Delta V
+\end{displaymath}
+\begin{displaymath}
+\Delta H = -P\Delta V + Q + P\Delta V
+\end{displaymath}
+\begin{displaymath}
+\Delta H = Q_P
+\end{displaymath}
+La variation d’enthalpie du système DH est égale à la chaleur Q$_P$ fournie au système, à \underline{pression constante}.
+\paragraph{Processus exothermique} Est un processus qui \textbf{libère} de la chaleur, à pression constante un processus exothermique a: $\Delta_r$H $<$ 0
+\paragraph{Processus endothermique} Est un processus qui \textbf{absorbe} de la chaleur, à pression constante un processus exothermique a: $\Delta_r$H $>$ 
+
+\subsubsection{Enthalpie des changements d'état}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.55]{./assets/enthalpy_states.png}
+\caption{Enthalpie des changements d'état}
+\label{fig:changements}
+\end{center}
+\end{figure}
+
+\subsection{Calcul de l'enthalpie}
+
+Il faut mesurer dans des conditions standardisées (1 mol de substance pure à des conditions de références \ref{condStands}): $\Delta_r$H$^0$
+
+\subsubsection{Méthode 1: Enthalpie standard de formation $\Delta_f$H$^0$ (kJ/mol)}
+
+L’enthalpie standard de formation d’un composé est la variation d’enthalpie de la réaction de formation d’une mole de composé à partir des éléments dans leur état de référence\footnote{Voir \ref{condStands} (again).}.
+\begin{displaymath}
+A + B + C \longrightarrow substance(ABC) \;\;\; \Delta_r H^0 \equiv \Delta_f H^0 (formation)
+\end{displaymath}
+$\Delta_f$H$^0$ est nulle pour la formation de tous les éléments dans leur état de référence.
+\paragraph{Mesure de l'enthalpie de formation de CO$_2$(g)} On fait la réaction suivante dans un calorimètre: formation de 1 mol CO2 (g) à partir des éléments (ici C et O dans leur état de référence).
+\begin{displaymath}
+C (graphite, s) + O_2(g) \rightarrow CO_2(g)
+\end{displaymath}
+\begin{itemize}
+\item $\Delta_r$H$^0$ = $\Delta_f$H$^0$ (CO$_2$) = -393,5 kJ$\cdot$mol$^-1$
+\item $\Delta_f$H$^0$ (C, graphite) = $\Delta_f$H$^0$ (O$_2$, g) = 0 (par définition)
+\end{itemize}
+Dans ce cas, la pression externe reste égale à 1 bar pendant toute la réaction. Le volume ne change pas mais la température de l’environnement (et du système) augmente pendant la réaction exothermique. 
+Cette variation de température est mesurée dans un calorimètre à pression constante
+et reliée à l’enthalpie selon la relation $\Delta_r$H$^0$ = C$_p$ $\Delta$T
+\paragraph{Enthalpies molaires standards de formation (conditions \ref{condStands})}
+\begin{center}
+\begin{tabular}{| c | c |}
+\hline
+\textbf{Composé chimique} & \textbf{(kJ/mole)} \\
+\hline
+CO$_2$(g) & -393,5 \\
+\hline
+NH$_3$(g) & -46,1 \\
+\hline
+CH$_4$(g) & -74,6 \\
+\hline
+C$_2$H$_6$(g) & -84,7 \\
+\hline
+C$_3$H$_8$(g) & -103,88 \\
+\hline
+C$_4$H$_{10}$(g) & -126,2 \\
+\hline
+H(g) & 218 \\
+\hline
+O(g) & 249,28 \\
+\hline
+O$_2$(g) & 0 \\
+\hline
+C (graphite) & 0 \\
+\hline
+C (diamant) & 1,92 \\
+\hline
+H$_2$O (liquide) & -285,8 \\
+\hline
+H$_2$O (gaz) & -241,8 \\
+\hline
+\end{tabular}
+\end{center}
+\paragraph{L'enthalpie standard (molaire) de réaction $\Delta_r$H$^0$}
+\begin{displaymath}
+\Delta_r H^O = \sum^p_{i=1}v_i\Delta_f H_i^O \; (produits) \; - \; \sum^r_{j=1}v_j\Delta_f H_j^O \; (r\acute{e}actifs)
+\end{displaymath}
+
+\subsubsection{Méthode 2: Loi de Hess}
+
+$\Delta$H$^0$ : l’enthalpie est une variable d’état et ne dépend que des états initial (i) et final (f). \par
+Donc le changement d’enthalpie d’une réaction est toujours le même, que la réaction se produise en une ou plusieurs étapes.
+\begin{displaymath}
+\Delta_r H^0 = \Delta H_1^0 + \Delta H_2^0 + \Delta H_3^0 +...
+\end{displaymath} \par
+Si la réaction peut être découpée en trois étapes, l’enthalpie
+de la réaction globale est la somme des enthalpies de réaction
+de ces trois étapes. \par
+Ces étapes n’ont pas nécessairement besoin d’être réalisables
+au laboratoire. \\
+On note aussi:
+\begin{displaymath}
+\Delta H \; (r\acute{e}action \: directe) \; = \; - \Delta H \; (r\acute{e}action \: inverse)
+\end{displaymath}
+%TODO ajouter un exemple maybe
+
+\subsubsection{Méthode 3: Calcul de $\Delta_r$H$^0$ à partir des enthalpies de liaisons}
+
+Cette méthode est considérée très simple mais moins précise. 
+\begin{displaymath}
+\Delta H^0_r = \sum H_L \; (r\acute{e}actifs) \; - \; \sum H_L \; (produits)
+\end{displaymath}
+Exemple:
+\begin{displaymath}
+2C(s) + H_2(g) \longrightarrow C_2H_2(g)
+\end{displaymath}
+Pour créer du C$_2$H$_2$ à partir du C(s) et H$_2$(g) il faut:
+\begin{itemize}
+\item Vaporiser deux moles C(s) -$>$ C(g): +2 \x 717 kJ/mol).
+\item Casser une liaison H-H: +436 kJ/mol.
+\item Former une triple liaison CXC: -812 kJ/mol.
+\item Former deux liaisons C-H: 2 \x -414)kJ/mol.
+\end{itemize}
+Donc, on obtient \textbf{$\Delta_r$H$^0$} = 230 kJ/mol\footnote{REMARQUE: différence entre la somme des énergies des liaisons à rompre (réactifs) – somme des énergies des liaisons à faire (produits).}.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/enthalpy_links.png}
+\caption{Enthalpie des liaisons}
+\label{fig:enthalpy_links}
+\end{center}
+\end{figure}
+\newpage
+
+\subsection{Définitions de l’entropie}
+
+Pour un système dans lequel une quantité de chaleur Q est échangée de manière réversible, à la température T :
+\begin{displaymath}
+\Delta S = \frac{Q_{rev}}{T}
+\end{displaymath}
+%TODO add some more text about it
+\subsection{Limitations}
+
+Le premier principe ne permet pas de déterminer la direction d’une réaction chimique: les \textbf{critères de spontanéité}. D’après le premier principe, la quantité d’énergie disparue sous une forme est égale à la quantité d’énergie qui apparaît sous une autre forme : ne s’oppose pas au retour à l’état initial. \par
+Pour un gaz parfait, U ne dépend que de la température: $\Delta$U = 0 ($\Delta$H=0). \\
+Processus \textbf{spontané} : a tendance à se produire sans influence extérieure. \\
+Processus \textbf{non spontané} : ne se produit que s’il est provoqué.
+
+\section{Deuxième principe de la thermodynamique}
+
+Une transformation spontanée s’accompagne d’une augmentation totale de l’entropie de l’univers (système + environnement).
+\begin{displaymath}
+\Delta S_{uni} = \Delta S_{syst} + \Delta S_{env}  
+\end{displaymath}
+Si $\Delta$S$_{uni}$ $>$ 0 la réaction est \textbf{spontanée}. Dans le cas où $\Delta$S$_{uni}$ = 0 elle est réversible (équilibre).
 \end{document}
