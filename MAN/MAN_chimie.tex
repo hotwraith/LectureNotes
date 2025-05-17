@@ -29,15 +29,20 @@
 \newcommand{\x}{$\times$ }
 \newcommand{\ind}{\hspace*{\parindent}}
 
-\title{Chimie générale \vspace{0.2cm} - Notes and Summary}
+\title{Chimie générale \vspace{0.2cm} - Notes et Résumés}
 \author{Mahel Coquaz}
-\date{Spring Semester 2025}
+\date{Semestre de printemps 2025}
 
 \begin{document}
 \maketitle
 \tableofcontents
 \newpage
 %\part*{Atomistique}
+\section*{Introduction}
+Ce qui suit sont mes notes/retranscriptions du cours de Chimie pour MàN (PREPA-093) donné au semestre de printemps 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours du Professeur Samuel Terrettaz qui l'a enseigné. J'ai cependant modifié des formulations et ajouté des notes lorsqu'il me semblait pertinent de le faire. \par
+Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
+Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres).
+
 \chapter{Atomistique}
 
 \section{L'atome}
@@ -545,10 +550,11 @@ Fraction molaire $\chi$  &  & $\frac{n_{solute}}{n_{solute}+n_{solvant}} $\\
 
 \paragraph{Définition} Un gaz est un ensemble de particules en mouvement constant. e mouvement est rectiligne et les collisions avec les parois ou d’autres molécules est parfaitement élastique (pas de perte d’énergie globale). \\
 L’énergie cinétique moyenne d’une molécule est proportionnelle à la température. \\
-La taille des particules de gaz est négligeable par rapport au volume dans lequel, elles évoluent.
+La taille des particules de gaz est négligeable par rapport au volume dans lequel, elles évoluent. \\
 \begin{displaymath}
-PV = nRT
-\end{displaymath}
+\tag*{\textbf{Constante des gaz parfaits}}
+PV = nRT \label{eq:PVNRT}
+\end{displaymath}\\
 \begin{center}
 \begin{tabular}{| c | c | c | c | c |}
 \hline
@@ -845,7 +851,7 @@ C (graphite, s) + O_2(g) \rightarrow CO_2(g)
 Dans ce cas, la pression externe reste égale à 1 bar pendant toute la réaction. Le volume ne change pas mais la température de l’environnement (et du système) augmente pendant la réaction exothermique. 
 Cette variation de température est mesurée dans un calorimètre à pression constante
 et reliée à l’enthalpie selon la relation $\Delta_r$H$^0$ = C$_p$ $\Delta$T
-\paragraph{Enthalpies molaires standards de formation (conditions \ref{condStands})}
+\paragraph{Enthalpies molaires standards de formation (conditions \ref{condStands})} \label{standard_formation_enthalpy}
 \begin{center}
 \begin{tabular}{| c | c |}
 \hline
@@ -949,5 +955,392 @@ Une transformation spontanée s’accompagne d’une augmentation totale de l’
 \begin{displaymath}
 \Delta S_{uni} = \Delta S_{syst} + \Delta S_{env}  
 \end{displaymath}
-Si $\Delta$S$_{uni}$ $>$ 0 la réaction est \textbf{spontanée}. Dans le cas où $\Delta$S$_{uni}$ = 0 elle est réversible (équilibre).
+Si $\Delta$S$_{uni}$ $>$ 0 la réaction est \textbf{spontanée}. Dans le cas où $\Delta$S$_{uni}$ = 0 elle est réversible (équilibre). \par
+On peut augmenter l'entropie d'une substance par \textbf{chauffage} qui cause augmentation du mouvement des molécules donc augmentation du désordre relatif des molécules, ou par \textbf{espace}, fournir plus d’espace pour disperser les molécules. \\
+L’entropie d’une substance pure, parfaitement cristalline est nulle à zéro K. S = k ln W = 0 lorsque W = 1 (3ème principe). %TODO chercher ce que ça veut dire
+
+\subsection{Entropie standard de réaction $\Delta_r$S$^O$}
+
+\begin{displaymath}
+R\acute{e}actifs \; (R) \; \longrightarrow \; Produits \; (P)
+\end{displaymath}
+\begin{displaymath}
+\Delta_r S^0 = \sum n_P(S^0)_P - \sum n_R(S^0)_R 
+\end{displaymath}
+\begin{itemize}
+\item S$^0$: entropie molaire standard (J$\cdot$K$^{-1}\cdot$mol$^{-1}$).
+\item n: coefficient stoechiométrique (sans unité).
+\end{itemize}
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/enthropy_standards.png}
+\caption{Enthropie molaire standard}
+\label{fig:enthropy_molar}
+\end{center}
+\end{figure}
+
+\paragraph{Exemple en conditions standards}\footnote{\ref{condStands}}
+\begin{displaymath}
+H_2(g) + \frac{1}{2}O_2(g) \longrightarrow H_2O(l)
+\end{displaymath}
+\begin{displaymath}
+\Delta_r S^0 = S^0(H_2O(l)) - S^0(H_2(g)) - \frac{1}{2}S^0(O_2(g)
+\end{displaymath}
+\begin{displaymath}
+\Rightarrow 69,9 - 130,7 - \frac{1}{2}(205,1) = -163,3J\cdot K^{-1}\cdot mol^{-1}
+\end{displaymath} \par
+Il est important de  noter que \textbf{S0(gaz) $\gg$ S0(liquides, solides)}. Ceci signifie que dans une réaction, une variation du nombre de moles gazeuses prédomine, en général, sur toute autre variation d’entropie.
+
+\newpage
+
+\subsection{Prédiction de la spontanéité d’une réaction}
+
+On reprend l'exemple précédent: 
+\begin{displaymath}
+H_2(g) + \frac{1}{2}O_2(g) \longrightarrow H_2O(l)
+\end{displaymath}
+On a calculé \(\Delta_r S^0 = -163,3J\cdot K^{-1}\cdot mol^{-1}\) et on a \(\Delta_r H^0 = -285,8kJ\cdot mol^{-1}\) d'après les enthalpies standards de formation (voir \ref{standard_formation_enthalpy}).\\
+On reprend:
+\begin{displaymath}
+\Delta S_{uni} = \Delta S_{syst} + \Delta S_{env} = \Delta_r S + \frac{Q}{T}
+\end{displaymath}
+Or on sait que Q = chaleur transférée à l'environnement (à pression constante), soit -$\Delta$H$_r$ et:
+\begin{displaymath}
+\Delta S_{uni} = \Delta_r S^0 + \frac{-\Delta_r H}{T}
+\end{displaymath}
+\begin{displaymath}
+\Delta S_{uni} = -163,3J\cdot K^{-1}\cdot mol^{-1} + \frac{285,8kJ\cdot mol^{-1}}{298K}\footnote{Voir \ref{condStands}}
+\end{displaymath}
+\begin{displaymath}
+\Delta S_{uni} =  795,8 J\cdot K^{-1} \cdot mol^{-1}
+\end{displaymath}
+On a $\Delta$S$_{uni}$ $>$ 0 donc la réaction est \textbf{spontanée} aux conditions standards.
+
+\section{Enthalpie libre (énergie de Gibbs): G}
+
+On se souvient que \textbf{pour un système à pression et température constantes}\footnote{P = P$_{sys}$ = P$_{ext}$ ainsi que {T = T$_{sys}$ = T$_{ext}$.}}:
+\begin{displaymath}
+\Delta S_{env} = \frac{\Delta_r H}{T}
+\end{displaymath}
+Que par conséquent:
+\begin{displaymath}
+\Delta S_{uni} = \Delta_r S + \frac{-\Delta_r H}{T}
+\end{displaymath}
+\begin{displaymath}
+-T\Delta S_{uni} = \Delta_r H - T\Delta_r S \;\; \footnote{On peut ainsi calculer la variation totale d’entropie à partir de données ne concernant que le système.}
+\end{displaymath}
+On définit alors une nouvelle fonction d'état: \(G = H - TS\) soit \\ \(\Delta_r G =\Delta_r H - T\Delta_rS\). \par
+Cette nouvelle fonction d'état nous permet encore de définir simplement la spontanéité d'une réaction: 
+\begin{itemize}
+\item $\Delta_r$ G $<$ 0 ($\Delta_r$S + $\Delta$S$_{env}$ $>$ 0): processus \textbf{spontané}.
+\item $\Delta_r$ G $>$ 0 ($\Delta_r$S + $\Delta$S$_{env}$ $<$ 0): processus \textbf{non spontané}\footnote{Le processus inverse en revanche l'est.}.
+\item $\Delta_r$ G $=$ 0 ($\Delta_r$S + $\Delta$S$_{env}$ $=$ 0): équilibre.
+\end{itemize}
+
+\subsection{Calcul de l’enthalpie libre de formation de CO$_2$(g)}
+
+\paragraph{Conditions} 1 mole de carbone (graphite) réagit avec un excès d’oxygène gazeux (O2) à une pression de 1 bar et une température de 298 K pour produire une mole de CO2 à une pression de 1 bar et 298 K. 
+\[C(graphite, s) + O_2(g) \rightarrow CO_2(g)\]
+Dans ce cas ci on a \(\Delta_rG^0 = \Delta_fG^0(CO_2)\) car \(\Delta_fG^0(C, graphite, s) = \Delta_fG^0(O_2, g) = 0\) par définition. \\
+On calcule donc \(\Delta_rG^0\) à partir de l'équation:
+\[\Delta_rG^0 = \Delta_rH^0 - T\Delta_rS^0\]
+Avec: 
+\begin{itemize}
+\item \(\Delta_rH^0 = \Delta_fH^0(CO_2) = -393,51 kJ\cdot mol^{-1}\) 
+\item \(\Delta_rS^0 = S^0(CO_2) + S^0(C) + S^0(O_2) = 2,86 J\cdot K^{-1} \cdot mol^{-1}\) 
+\item \(\Delta_rG^0 = -393,51 - (298 \times 2,86 \times 10^{-3}) = -394,36 kJ\cdot mol^{-1} \)
+\end{itemize}
+\paragraph{Remarque} \(\Delta_rG^0\) est une construction et ne se mesure pas directement d’un point de vue thermodynamique avec des mesures de calorimétrie. Comme on le verra plus tard, cette grandeur thermodynamique est cruciale pour les équilibres chimiques. Elle pourra ainsi être mesurée à partir des grandeurs d’équilibre.
+
+\subsection{Effet de la température sur $\Delta_rG$}
+
+\textbf{\(\Delta_rG^0 = \Delta_rH^0 - T\Delta_rS^0\)}, on fait l'hypothèse que $\Delta_rH$ et $\Delta_rS$ varient peu avec la température.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/temp_gibbs.png}
+\caption{Effet de la température sur $\Delta_rG$}
+\label{fig:temp_gibbs}
+\end{center}
+\end{figure}
+\begin{itemize}
+\item Pour $\Delta_rS$ $>$ 0 la spontanéité \textbf{augmente} quand la température augmente.
+\item Pour $\Delta_rS$ $<$ 0 la spontanéité \textbf{diminue} quand la température augmente.
+\end{itemize}
+
+\chapter{L’équilibre chimique}
+
+\section{Introduction}
+
+\paragraph{\(\Delta_rG^0\)} Variation de G pour passer des réactifs purs aux produits purs dans des conditions standards. Au cours de la réaction, nous avons un mélange de réactifs et de produits qui change au cours du emps. \(\Delta_rG\) varie au cours de la réaction. \par
+La réaction a tendance à évoluer vers le point \textbf{d’enthalpie libre minimum}.
+\[\Delta_rG^0 = -RT\ln(K)\] \label{eq:GR0}
+\begin{itemize}
+\item \textbf{R}: constante des gaz parfaits.
+\item \textbf{T}: température.
+\item \textbf{K}: constante d’équilibre.
+\end{itemize}
+%\paragraph{La composition du mélange à l’équilibre dépend de \(\Delta_rG^0\)}
+%Pour la réaction quelconque Réactifs $\rightleftarrows$ Produits à 298K.
+%\begin{center}
+%\begin{tabular}{| c | c | c |}
+%\hline
+%\textbf{\(\Delta_rG^0\) kJ$\cdot$mol$^{-1}$} & \textbf{K} & \textbf{Rapport P/R} \\
+%\hline
+%-9,2 & 2499 & 99,96/0,04 \\
+%\hline
+%-3.2 & 16 & 94/6 \\
+%\hline
+%-2,1 & 2,3 & 70/30 \\
+%\hline
+%0 & 1 & 50/50 \\
+%\hline
+%2,1 & 0,43 & 30/70 \\
+%\hline
+%3,2 & 6,4 \x 10$^{-2}$ & 6/94 \\
+%\hline
+%9,2 & 4 \x 10$^{-4}$ & 0,04/99,96 \\
+%\hline
+%\end{tabular}
+%\end{center}
+
+\section{Équilibre, quotient et constante} %TODO find a better name
+
+\subsection{Description cinétique de l'équilibre}
+
+Pour une réaction \textbf{réversible} de type Réactifs $\rightleftarrows$ Produits on a la notion \textbf{d'équilibre dynamique}.
+\paragraph{L'équilibre dynamique} La réaction se poursuit à la même vitesse dans les 2 sens
+Pas de changement macroscopique observable, la concentration de chaque réactif et produit est constante dans le temps. \par
+La \textbf{constante d’équilibre K} est définie par la loi d’action de masse. Elle ne dépend pas de la composition initiale du mélange réactionnel. \\
+Pour la réaction \(2R1 + R2 = 2P1\) on a K:
+\[K = \frac{a_{P1}^2}{a_{R1}^2 a_{R2}}\]
+Avec \textbf{a}: l'activité de l'espèce chimique\footnote{Il s'agit d'une valeur \textbf{sans unité}.}.
+
+\subsection{Activité a$_i$ d'une espèce chimique i}
+
+Avec \textbf{$\gamma_i$} le coefficient d'activité, $P_i$ la pression partielle de l'espèce i et $P^0$ une pression de référence\footnote{En général 1bar (100kPa) ou, si spécifié 1 atm.}, $C_i$ la concentration de l'espèce i en mol$\cdot$L$^{-1}$ et $C^0$ une concentration de référence\footnote{1 mol$\cdot$L$^{-1}$}.
+\begin{itemize}
+\item \textbf{Gaz}: \(a_i = \gamma_i\frac{P_i}{P^0}\), pour un gaz parfait\footnote{Valable à basse pression.} $\gamma_i$ = 1
+\item \textbf{Solution diluée}: \(a_i = \gamma_i\frac{C_i}{C^0}\), dans le cas d'un solvant d'une solution \textit{très} diluée a$_{solvant}$ = 1.
+\item \textbf{Solides et liquides purs}: a$_i$ = 1.
+\end{itemize}
+\paragraph{L'activité: une discussion} L’activité mesure essentiellement la différence entre un système réel et un système idéal. Dans le cadre de ce cours, on ne s'intéresse qu'aux systèmes idéaux, le concept d’activité n’est donc pas crucial vu que $\gamma_i$ = 1 pour tous les calculs. \par
+Néanmoins, le concept d'activité permet de travailler sans unité et d'écrire correctement les constantes d'équilibres de réactions hétérogènes.
+
+\subsection{Le quotient réactionnel Q}
+Soit une réaction:
+\[aA + bB \rightleftarrows cC + dD\]
+\(Q = \frac{a_C^c a_D^d}{a_A^a a_B^b}\) avec les activités prises \textbf{hors de l'équilibre}. \\
+\(K = \frac{a_C^c a_D^d}{a_A^a a_B^b}\) avec les activités prises \textbf{à l'équilibre}. \\
+Donc on peut à partir de Q et K déduire l'évolution d'une réaction ! On peut réécrire la relation de $\Delta_rG$ en fonction de Q et K: 
+\[\Delta_rG = RT\ln(\frac{Q}{K})\]
+On retrouve bien $\Delta_rG$ = 0 à l'équilibre car Q = K. \\
+On rappelle que $\Delta_rG^0$ s'écrit selon \ref{eq:GR0}. \\ \par
+Prévision de l'évolution selon Q et K:
+\begin{itemize}
+\item Q $<$ K donc $\Delta_rG$ $<$ 0: Évolution vers les \textbf{produits}.
+\item Q $>$ K donc $\Delta_rG$ $>$ 0: Évolution vers les \textbf{réactifs} (sens inverse).
+\item Q = K donc $\Delta_rG$ = 0: Pas d'évolution, c'est \textbf{l'équilibre}.
+\end{itemize}
+
+\subsubsection{Différentes écritures de la constante K}
+
+La constante d’équilibre peut aussi s’écrire en termes de concentration (solution) ou de
+pressions partielles (gaz). Ces expressions des constantes d’équilibre sont, pour la réaction suivante: 
+\[aA + bB \rightleftarrows cC\]
+\(K_c = \frac{[C]^c}{[A]^a[B]^b}\) et \(K_p = \frac{(p_C)^c}{(p_A)^a(p_B)^b}\), de plus en utilisant la \ref{eq:PVNRT} on peut écrire:
+\[K_c = \frac{[C]^c}{[A]^a[B]^b} = \frac{(\frac{p_C}{RT})^c}{(\frac{p_A}{RT})^a(\frac{p_B}{RT})^b} = K_p(RT)^{a+b-c}\]
+De manière plus générale pour un gaz:
+\[K = K_p(P^0)^{-\Delta n}\]
+\[K = K_c(\frac{P^0}{RT})^{-\Delta n}\]
+\[K_c = K_p(RT)^{-\Delta n}\]
+
+\section{Équilibre et modification de l'équilibre}
+
+\subsection{Équilibre homogène et hétérogène}
+
+\paragraph{Équilibre homogène} Équilibre chimique dans lequel tous les réactifs et les produits sont dans la \textbf{même phase}.
+\paragraph{Équilibre hétérogène} 	quilibre chimique dans lequel \textbf{plusieurs phases} sont présentes. Si des solides ou des liquides purs sont impliqués dans un équilibre, leur concentration (pression) n’apparaît \textbf{pas} dans l’expression de la constante d’équilibre de la réaction. \\
+Exemple: Pour \(CaCO_3(s) \rightleftarrows CaO(s) + CO_2(g)\) on a K = a$_{CO_2}$ vu que a$_{solides}$ = 1
+
+\subsection{Traitement qualitatif de l'équilibre}
+
+\paragraph{Principe de Le Châtelier} Si on applique une contrainte (qui perturbe l’équilibre)
+à un système en équilibre dynamique, l’équilibre tend à se déplacer dans le sens qui \textbf{minimise} l’effet de cette contrainte. \\
+Les contraintes possibles sont les suivantes:
+\begin{itemize}
+\item Changement de la \textbf{concentration} d'un produit \textbf{ou} réactif.
+\item Changement de \textbf{pression} et/ou de \textbf{volume}.
+\item Changement de \textbf{température}.
+\end{itemize} \par
+Le principe de le Châtelier donne une appréciation \textbf{qualitative}\footnote{Qui relève de la qualité, de la nature de quelque chose (par opposition à \textbf{quantitatif}).} du changement de l'équilibre.
+
+\subsection{Déplacements de l'équilibre}
+
+\subsubsection{Addition ou soustraction de réactifs/produits}
+
+Soit la réaction \(N_2(g) + 3H_2(g) \rightleftarrows 2NH_3(g)\) à l'équilibre, on a 
+\[K = \frac{a_{NH3}^2}{a_{N2}\cdot a_{H2}^3}\]
+\begin{itemize}
+\item Si on ajoute de l'un des réactif le système est déséquilibré avec Q $<$ K donc la réaction va évoluer dans le sens \(N_2(g) + 3H_2(g) \rightarrow 2NH_3(g)\)jusqu'à atteindre un équilibre qui deviendra \textbf{le nouveau K}.
+\item  Si on ajoute du produit le système est déséquilibré avec Q $>$ K donc la réaction va évoluer dans le sens \(N_2(g) + 3H_2(g) \leftarrow 2NH_3(g)\)jusqu'à atteindre un équilibre qui deviendra \textbf{le nouveau K}.
+\item En résumé ajout de \textbf{réactif} = création de \textbf{produit} (déséquilibre Q $<$ K), à l'inverse ajout de \textbf{produit} = création de \textbf{réactif} (déséquilibre Q $>$ K).
+\end{itemize}
+
+\subsubsection{Compression du mélange réactionnel}
+
+Une \textbf{compression} du système\footnote{Diminution du volume.} va entraîner un déplacement de l'équilibre de la réaction du côté permettant de \textbf{diminuer le nombre de molécules en phase gazeuse}. \\
+Exemple: \(N_2(g) + 3H_2(g) \rightleftarrows 2NH_3(g)\) \par
+On a 4 mol de gaz à gauche et 2 à droite, donc en cas de \textbf{compression} du système l'équilibre va se déplacer en permettant la formation de $NH_3$ car cela diminuera le nombre de moles.
+
+\subsubsection{Variation de température}
+
+Ajout de la chaleur provoque une évolution de l’équilibre dans le sens qui absorbe cette chaleur soit dans le \textbf{sens endothermique} de la réaction.
+\begin{itemize}
+\item Réaction endothermique $\Delta_rH^0$ $>$ 0 \\
+Augmentation de T : réactifs + chaleur $\rightarrow$ produits
+\item Réaction exothermique $\Delta_rH^0$ $<$ 0 \\
+Augmentation de T : réactifs $\leftarrow$ produits + chaleur
+\end{itemize} \par
+Car la température modifie la constante d'équilibre \textbf{K}:
+\[\ln(\frac{K_2}{K_1}) = \frac{\Delta_rH^0}{R}[\frac{1}{T_1}-\frac{1}{T_2}] \tag*{\textbf{Equation de Van’t Hoff}}\]
+%TODO maybe add demo ? Slide 24 chap 5 et process de Haber-Bosch
+
+\chapter{Cinématique Chimie}
+
+\section{Vitesse de réaction}
+À volume constant, on définit la vitesse d’une réaction chimique \textbf{v} par \textbf{la dérivée de la concentration} de l’un des produits par rapport au temps divisée par son coefficient stoechiométrique.
+\[v_AA + v_BB \longrightarrow v_MM + v_NN\]
+
+\subsection{Vitesse de consommation/production de A/M}
+
+Exprimée en mol$\cdot$L$^{-1}$ $\cdot$s$^{-1}$:
+\[v_{A/M} = \mp \frac{d[A/M]}{dt}\]
+La vitesse de réaction \textbf{à volume constant}:
+\[v \; = \; -\frac{1}{v_A}\frac{d[A]}{dt} =\; -\frac{1}{v_B}\frac{d[B]}{dt} = \; +\frac{1}{v_M}\frac{d[M]}{dt} \; = \; +\frac{1}{v_N}\frac{d[N]}{dt}\] 
+
+\subsubsection{Loi de vitesse empirique}
+
+\[v = k[A]^{\alpha}[B]^{\beta}\]
+Avec
+\begin{itemize}
+\item v = vitesse de la réaction (mol L-1s-1)
+\item k = constante de vitesse (à T const.)
+\item $\alpha$ = ordre partiel en A.
+\item $\beta$ = ordre partiel en B.
+\item \(\alpha + \beta\) = ordre global de la réaction.
+\end{itemize}
+\(\alpha, \beta\): ne sont pas forcément les coefficients stochiométriques ni des nombres entiers et sont obtenus \textbf{expérimentalement}.
+\paragraph{Remarque} En cinétique chimique on considère que les réactions n'ont lieu que dans \textbf{un seul sens}. Pour traiter le cas d'une réaction \textbf{bidirectionnelle} on considérera les deux réactions opposées de manière séparée.
+
+\subsection{Réactions d'ordre X}
+
+\subsubsection{Réactions d'ordre zéro}
+
+Pour une réaction: \(A \longrightarrow Produits\) la loi de vitesse d'ordre 0 donne:
+\[-\frac{d[A]}{dt} = k\]
+\[[A](t) = [A]_0 - kt\]
+Avec k $\in$ $\R$. \par
+On obtient donc une diminution de la concentration à vitesse constante jusqu'à épuisement (fonction affine) qui est indépendante de la concentration des réactifs.
+
+\subsubsection{Réactions d'ordre un}
+
+Pour la même réaction \(A \longrightarrow Produits\) la loi de vitesse d'ordre 1 donne:
+\[v = -\frac{d[A]}{dt} = k[A]\]
+\[[A](t) = [A]_0e^{-kt}\]
+%TODO this part is a stub on the demonstration
+
+\subsubsection{Réactions d'ordre deux}
+
+Pour la même réaction \(A \longrightarrow Produits\) la loi de vitesse d'ordre 2 donne:
+\[v = -\frac{d[A]}{dt} = k[A]^2\]
+\[\frac{1}{[A]_0} - \frac{1}{[A]_t} = -kt\]
+\[\frac{1}{[A]_t} = \frac{1}{[A]_0} + kt\]
+
+\subsection{Temps de demi-réaction}
+
+Le temps de demi-réaction ou \textbf{demi-vie} $\tau_{1/2}$ est le temps nécessaire pour faire décroître la concentration initiale d’un réactif de moitié. \par
+On a \([A]_{1/2} = \frac{1}{2}[A]_0\)
+
+\subsubsection{Pour les réactions d'ordre un}
+\[\frac{1}{2}[A]_0 = [A]_0e^{-k\tau_{1/2}}\]
+\[\frac{1}{2} = e^{-k\tau_{1/2}}\]
+\[\ln(\frac{1}{2}) = -k\tau_{1/2}\]
+\[\frac{\ln(\frac{1}{2})}{-k} = \tau_{1/2}\]
+\[\frac{0 - \ln(2)}{-k} = \tau_{1/2}\]
+\begin{center}
+\fbox{\(\tau_{1/2} = \frac{\ln(2)}{k}\)}
+\end{center}
+\par Pour les réactions du premier ordre le temps de demi-réaction ne dépend \textbf{pas} de la concentration.
+
+\subsubsection{Pour les réactions d'ordre deux}
+\[\frac{2}{[A]_0} = \frac{1}{[A]_0} + k\tau_{1/2}\]
+\[\frac{1}{[A]_0} = k\tau_{1/2}\]
+\[\tau_{1/2} = \frac{1}{k[A]_0}\]
+\par Pour les réactions du deuxième ordre le temps de demi-réaction dépend de la \textbf{concentration initiale} du réactif.
+
+\subsection{Résumé des ordres de réaction 0, 1, 2}\footnote{Toujours pour une réaction \(A \longrightarrow Produits\).}
+
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/reaction_order_recap.png}
+\caption{Récapitulatif des ordres de réaction}
+\label{fig:reaction_order_recap}
+\end{center}
+\end{figure}
+\begin{center}
+\begin{tabular}{| c | c |}
+\hline
+\textbf{Ordre global de réaction} & \textbf{Unité de k} \\
+\hline
+Zéro & \(mol\cdot L^{-1}\cdot s^{-1}\) \\
+\hline
+Un & \(s^{-1}\) \\
+\hline
+Deux & \(L\cdot mol^{-1}\cdot s^{-1}\) \\
+\hline
+Trois & \(L^2\cdot mol^{-2}\cdot s^{-1}\) \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Déterminer les ordres de réaction}
+
+On peut déterminer l'ordre d'une réaction de type \(A \rightarrow Produits\) via le type de graphe ([A], ln[A], 1/[A]) en fonction de t. \par
+Pour les réactions à plusieurs réactifs \(A + B + C + ... \rightarrow Produits\) on doit utiliser soit la méthode des \textbf{vitesses initiales}, soit la méthode des \textbf{réactifs en excès}.
+
+\subsubsection{Méthode des vitesses initiales}
+
+Soit notre réaction \(A + B + C + ... \rightarrow Produits\):
+\begin{enumerate}
+\item On suppose que la vitesse initiale corresponde à la vitesse moyenne au début de la réaction.
+\item On définit la vitesse initiale à partir des concentrations connues des réactifs au temps t = 0.
+\item On change la concentration initiale d’une seule espèce par un facteur n (connu).
+\item En mesurant le rapport des vitesses de réaction on obtient l’ordre de la réaction pour l’espèce considérée.
+\item On réitère le processus pour les différentes espèces chimiques.
+\end{enumerate}
+Soit \(v_0 = k[A]^{\alpha}_0[B]^{\beta}_0[C]^{\gamma}_0\) et \(v_0' = k[nA]^{\alpha}_0[B]^{\beta}_0[C]^{\gamma}_0\):
+\[\frac{v_0'}{v_0} = \frac{k[nA]^{\alpha}_0[B]^{\beta}_0[C]^{\gamma}_0}{k[A]^{\alpha}_0[B]^{\beta}_0[C]^{\gamma}_0}\]
+Si on choisit n = 2: \\
+si \(\frac{v_0'}{v_0} = 1\) on aura $\alpha$ = 0. \\
+si \(\frac{v_0'}{v_0} = 2\) on aura $\alpha$ = 1. \\
+si \(\frac{v_0'}{v_0} = 4\) on aura $\alpha$ = 2, etc... \par
+En faisant cette modification de n pour chaque espèce individuellement on peut déterminer à toutes leurs \textbf{ordres partiels}.
+\\
+Exemple: \(2NO(g) + Cl_2(g) \longrightarrow 2NOCl(g)\) \\
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/method_vitesse_exemple.png}
+\caption{Expériences sur les concentrations initiales}
+\label{fig:speed_method_example}
+\end{center}
+\end{figure}
+On note que la vitesse \textbf{double} pour \([nCl_2]\) avec n = 2 (expériences 1 et 2)\footnote{On fait ici référence à la figure qui suit: \ref{fig:speed_method_example}}. \\
+De même on note que la vitesse \textbf{quadruple} pour \([nNO]\) avec n = 2 (expériences 1 et 3). \par
+Ceci nous permet de déduire \(v = k[NO]^2[Cl_2]\)\;\;\footnote{Ici les ordres partiels correspondent aux coefficients stoechiométriques mais ce n'est \textbf{pas} un cas général.}, on peut ensuite déterminer k en introduisant les concentrations $[NO]_0$ et $[Cl_2]_0$ 
+
+\subsubsection{Méthode des réactifs en excès}
+\[n_AA + n_BB + n_CC + ... \longrightarrow Produits\]
+On introduit dans ce cas là les réactifs (sauf un) en excès tel que \([A]_0 \ll [B]_0, [C]_0, ...\), ce qui nous permet de faire les approximations: \([B] \approx [B]_0\), \([C] \approx [C]_0\) et ainsi de suite.
+\[-\frac{d[A]}{dt} \approx k[A]^{\alpha}[B]^{\beta}_0[C]^{\gamma}_0 = k'[A]^{\alpha}\]
+Avec \(k' = k[B]^{\beta}_0[C]^{\gamma}_0\) on obtient une réaction de \textbf{pseudo-ordre $\alpha$}.
 \end{document}
