@@ -1,0 +1,150 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage[ruled, lined, longend]{algorithm2e}
+\usepackage[shortlabels]{enumitem}
+\usepackage{textcomp}
+\usepackage{chemfig}
+
+\setlength{\parindent}{20pt}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=darkgray
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\x}{$\times$ }
+\newcommand{\ind}{\hspace*{\parindent}}
+
+\title{Chimie générale \vspace{0.2cm} - Notes et Résumés}
+\author{Mahel Coquaz}
+\date{Semestre de printemps 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+%\part*{Atomistique}
+\section*{Introduction}
+Ce qui suit se veut être un résumé du cours d'Algèbre pour MàN (PREPA-092) donné au semestre de printemps 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours des Professeurs Mathieu Huruguen, Simon Bossoney et Sacha Friedli qui l'ont enseigné. J'ai cependant modifié des formulations et ajouté des notes lorsqu'il me semblait pertinent de le faire. \par
+Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
+Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres).
+
+\chapter{Calcul matriciel}
+
+\section{Opérations matricielles}
+
+\paragraph{Définition d'une matrice} Une matrice est un tableau de taille \textbf{n \x p}\footnote{On utilise aussi \textbf{m \x n} dans certaines notations.} avec n le nombre de \textbf{lignes} et p le nombre de \textbf{colonnes}. \\
+Exemple avec n = p = 2:
+\[\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\] \\
+On dénote un élément quelconque position de la matrice par $\alpha_{ij}$ avec \textbf{i sa ligne} et \textbf{j sa colonne}. Exemple: a est l'élément $\mathbf{\alpha_{11}}$ et b l'élément $\mathbf{\alpha_{12}}$.
+
+\subsection{Addition de matrices}
+
+Soit deux matrices A et B de \textbf{même taille} n \x p. 
+\[
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
++
+\begin{pmatrix}
+a' & b' \\
+c' & d'
+\end{pmatrix}
+=
+\begin{pmatrix}
+a + a' & b + b' \\
+c + c' & d + d'
+\end{pmatrix}
+\]
+Formant une nouvelle matrice C composés d'éléments $\gamma_{ij}$. \par
+Soit pour tout élément $\gamma_{ij} \in$ C, la nouvelle matrice on a:
+\[\gamma_{ij} = \alpha_{ij} + \beta_{ij}\]
+
+\subsection{Multiplication scalaire}
+
+Soit une matrice A d'éléments $\alpha_{ij}$ et un scalaire $\lambda \in \R$ et C notre matrice de résultat composés des éléments $\gamma_{ij}$.
+\[\lambda A = C\]
+\[\lambda
+\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+=
+\begin{pmatrix}
+\lambda a & \lambda b \\
+\lambda c & \lambda d 
+\end{pmatrix}\]
+Soit tous les éléments $\in$ C:
+\[\gamma_{ij} = \lambda \times \alpha_{ij}\]
+
+\subsection{Produit matriciel}
+Soit trois matrices A, B et C respectivement composées des éléments $\alpha_{ij}$, $\beta_{ij}$, $\gamma_{ij}$, on a:
+\[A \cdot B = C\]
+\[\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+a' & b' \\
+c' & d'
+\end{pmatrix}
+=
+\begin{pmatrix}
+aa' + bc'  & ab' + bd' \\
+ca' + dc' & cb' + dd'
+\end{pmatrix}\]
+On note qu'il faut que A, de taille m \x n, et B de taille n \x p pour que la multiplication soit possible (avec m et p $\in \R$)
+Ou de manière générale:
+\[\gamma_{ij} = \sum_{k=1}^n \alpha_{ik} \beta_{kj}\]
+et on obtient une matrice C de taille \textbf{m \x p}.
+
+\subsection{Propriétés}
+
+\begin{itemize}
+\item A + B = B + A (commutativité)
+\item A + (B + C) = (A + B) + C (associativité)
+\item A $\cdot$ (B + C) = A $\cdot$ B + A $\cdot$ C (distributivité)
+\item A $\cdot$ (B $\cdot$ C) = (A $\cdot$ B) $\cdot$ C
+\end{itemize}
+
+\section{Opérations et matrices élémentaires}
+
+\subsection{Opérations élémentaires}
+
+Soit A une matrice de taille n \x p, d'éléments $\alpha_{ij}$, de colonnes $C_i$ et de lignes $L_j$.
+\paragraph{Sur les lignes $L_j$}
+\begin{itemize}
+\item $L_j \leftrightarrow L_k$ ($j \neq k$)
+\item $L_j \leftarrow \lambda L_j$ ($\lambda \neq 0$)
+\item $L_j \leftarrow L_j + \lambda L_k$ ($\lambda \in \R$, $j \neq k$)
+\end{itemize}
+Ces opérations ne changent \textbf{pas} l'ensemble de solutions de A$\vec{x}$ = $\vec{b}$. Elles sont dites \textbf{inversibles}.
+
+\paragraph{Sur les colonnes $C_i$}
+\begin{itemize}
+\item $C_i \leftrightarrow C_k$ ($j \neq k$)
+\item $C_i \leftarrow \lambda C_i$ ($\lambda \neq 0$)
+\item $C_i \leftarrow C_i + \lambda C_k$ ($\lambda \in \R$, $j \neq k$)
+\end{itemize}
+
+Ces \textbf{opérations élémentaires} sont la base de la méthode de Gauss pour résoudre des systèmes linéaires: \textbf{l'échelonnement}.
+\end{document}
