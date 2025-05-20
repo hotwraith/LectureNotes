@@ -39,9 +39,21 @@
 \newpage
 %\part*{Atomistique}
 \section*{Introduction}
-Ce qui suit se veut être un résumé du cours d'Algèbre pour MàN (PREPA-092) donné au semestre de printemps 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours des Professeurs Mathieu Huruguen, Simon Bossoney et Sacha Friedli qui l'ont enseigné. J'ai cependant modifié des formulations et ajouté des notes lorsqu'il me semblait pertinent de le faire. \par
+Ce qui suit se veut être un résumé du cours d'Algèbre pour MàN (PREPA-032) donné au semestre de printemps 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours des Professeurs Mathieu Huruguen, Simon Bossoney et Sacha Friedli qui l'ont enseigné. J'ai cependant modifié des formulations et ajouté des notes lorsqu'il me semblait pertinent de le faire. \par
 Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
-Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres).
+Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres). \par
+Enfin (et surtout) l'algèbre linéaire est une matière où la visualisation des concepts peut permettre d'avoir une bien meilleure intuition, comme ce résumé se concentre sur l'aspect calculatoire je ne peux que vous recommander de visionner les vidéos 
+\textbf{\href{https://youtube.com/playlist?list=PLZHQObOWTQDPD3MizzM2xVFitgF8hE_ab}{Essence of linear algebra}} de 3Blue1Brown pour vous faire une meilleure intuition des concepts abordés.
+
+\subsection*{Notations}
+Dans ce résumé les notations suivantes seront utilisées sauf mention du contraire:
+\begin{itemize}
+\item Les matrices seront dénotées par une lettre majuscule (A, B, C, ...)
+\item Les éléments de ces matrices seront dénotés par une lettre grecque avec ij la ligne et colonne de position de l'élément (\(\alpha_{ij}, \beta_{ij}, \gamma_{ij}\), ...)
+\item rg(A) = rang de la matrice A. dim(A) = dimension de la matrice A. det(A) = déterminant de la matrice A.
+\item Les constantes quelconques appartenant à $\R$ seront \textbf{en général} dénotées par $\lambda$ ou k.
+\item $\hat{i}$ et $\hat{j}$ sont les vecteurs unitaires de la base canonique, \(\hat{i} = \left(\begin{array}{c} 1 \\ 0 \end{array}\right)\), \(\hat{j} = \left(\begin{array}{c} 0 \\ 1 \end{array}\right)\)
+\end{itemize}
 
 \chapter{Calcul matriciel}
 
@@ -147,4 +159,101 @@ Ces opérations ne changent \textbf{pas} l'ensemble de solutions de A$\vec{x}$ =
 \end{itemize}
 
 Ces \textbf{opérations élémentaires} sont la base de la méthode de Gauss pour résoudre des systèmes linéaires: \textbf{l'échelonnement}.
+
+\section{Rang, déterminant et décomposition colonne-ligne}
+
+\subsection{Rang}
+Lors d'une application linéaire représentée par une matrice A on appelle \textbf{rang(A) = dim(Im(A))}. \par
+Le rang de A (ou sa dimension image) représente l'ensemble des possibilités après une application linéaire. Il est représenté par le \textbf{nombre de pivots} restants après l'échelonnement d'une matrice. \\
+Un exemple: \\
+On prend A de taille 2 \x 2 et de rg(A) = 2. Pour un $\vec{x}$ quelconque A$\vec{x}$ sera représenté sur un plan de dimension 2. \par
+Une application linéaire représente une transformation de l'espace d'origine vers un nouvel espace. Celui ci peut-être au mieu de même dimension que la matrice d'origine, au pire de rang 0 (l'espace se contracte en un point: l'origine (0, 0)). \\
+Exemple avec rg(A) = 1:
+\[A \cdot I_2 = ?\]
+\[\begin{pmatrix}
+1 & 2 \\
+2 & 4
+\end{pmatrix}
+\cdot
+\begin{pmatrix}
+1 & 0 \\
+0 & 1
+\end{pmatrix}
+=
+\begin{pmatrix}
+1 & 2 \\
+2 & 4
+\end{pmatrix}
+\]
+Ici les colonnes des la matrice $I_2$ représentent les vecteurs de la base canonique $\hat{i}$ et $\hat{j}$ auxquels on applique l'application linéaire A. \\
+On remarque qu'après coup $\hat{i}$ = \(\left(\begin{array}{c} 1 \\ 2 \end{array}\right)\) et $\hat{j}$ = \(\lambda \hat{i}\) avec $\lambda = 2$. Par conséquent l'ensemble représentable est devenu une ligne et non plus un plan ($\R_2 \rightarrow \R_1$).
+
+\subsection{Déterminant}
+
+\paragraph{Propriétés}
+\begin{itemize}
+\item Le déterminant n'est pas affecté par les opération élémentaires sur les lignes/colonnes. 
+\item Multiplier une ligne de la matrice A par $\lambda \in \R \rightarrow \lambda \cdot det(A)$ 
+\item Échanger deux lignes ou deux colonnes (\(L_i \leftrightarrow L_k\) ou \(C_i \leftrightarrow C_k\)) revient à changer le signe du déterminant.
+\item Le déterminant $det(A)$ représente dans $\R_2$ la multiplication de l'aire causée par l'application linéaire A, et dans $\R_3$ la multiplication du volume.
+\item $det(AB) = det(A) \cdot det(B)$
+\item Si $det(A) \neq 0$ alors A possède une matrice inverse $A^{-1}$ qui satisfait $AA^{-1} = A^{-1}A = I_n$ 
+\end{itemize}
+
+\paragraph{Déterminant d'une matrice 2 \x 2} Le déterminant d'une matrice 2 \x 2 s'écrit de la manière suivante: 
+\[det\left(\begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}\right)
+= ad - bc
+\]
+Note de lecture:
+\begin{itemize}
+\item det(A) = 0 $\Longleftrightarrow$ rg(A) $\leq$ 1 
+\item det(A) $\neq$ 0 $\Longleftrightarrow$ rg(A) = 2 
+\end{itemize}
+Comme nous sommes dans $\R_2$ un déterminant = 0 signifie que tous les points de notre espace ont été "écrasés" sur une ligne ($\R_1$) ou un point (l'origine), donc l'aire du parallépipède formés par les vecteurs d'une matrice quelconque est forcément nulle (vecteurs colinéaires). Si on a encore une aire après l'application linéaire alors notre rg(A) = 2 car on peut encore former un parallépipède.
+
+
+\paragraph{Déterminant d'une matrice 3 \x 3}
+\[det(A)= det\left( 
+\begin{pmatrix}
+ a & b & c \\
+ d & e & f \\
+ g & h & i
+\end{pmatrix}\right)\]
+\[\Rightarrow det(A) = a\cdot det\left(\begin{pmatrix}
+e & f \\
+h & i
+\end{pmatrix}\right)
+-b\cdot det\left(\begin{pmatrix}
+d & f \\
+g & i
+\end{pmatrix}\right)
++c\cdot det\left(\begin{pmatrix}
+d & e \\
+g & h
+\end{pmatrix}\right)\]
+\[\Rightarrow det(A) = a\cdot (ei-fh) - b \cdot (di - fg) + c \cdot (dh -eg)\]\\
+\footnote{Développement par colonnes.}
+ou
+\[\Rightarrow det(A) = a\cdot det\left(\begin{pmatrix}
+e & f \\
+h & i
+\end{pmatrix}\right)
+-d\cdot det\left(\begin{pmatrix}
+b & c \\
+h & i
+\end{pmatrix}\right)
++g\cdot det\left(\begin{pmatrix}
+b & c \\
+e & f
+\end{pmatrix}\right)\]
+\[\Rightarrow det(A) = a\cdot (ei-fh) - d \cdot (bi - ch) + g \cdot (bf - ce)\]\footnote{Développement par lignes.}
+Le signe du coefficient est déterminé par la logique suivante:
+\[\begin{pmatrix}
++ & - & + \\
+- & + & - \\
++ & - & +
+\end{pmatrix}\]
 \end{document}
