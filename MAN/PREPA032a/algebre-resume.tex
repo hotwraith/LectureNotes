@@ -256,4 +256,100 @@ Le signe du coefficient est déterminé par la logique suivante:
 - & + & - \\
 + & - & +
 \end{pmatrix}\]
+
+\subsection{Décomposition colonne ligne}
+%TODO méthode généraliste
+Exemple pour une matrice 2x2:
+\[\begin{pmatrix}
+2 & 4 \\
+3 & 6
+\end{pmatrix}
+= \left\lbrace \begin{array}{rcl}
+2x & + & 4y \\
+3 x & + & 6y
+\end{array} \right.
+\]
+\[\Rightarrow \left\lbrace \begin{array}{rcl}
+2 & (x + 2y) \\
+3 & (x + 2y)
+\end{array} \right.
+\Rightarrow
+\begin{pmatrix}
+2 \\ 3
+\end{pmatrix}
+\begin{pmatrix}
+1 & 2
+\end{pmatrix}
+\]
+
+\section{Inverses}
+Un inverse existe pour une matrice A quelconque n'existe que pour $det(A) \neq 0$, la logique ? Si la matrice d'application linéaire A n'est pas de rg(A) = dim(A) alors il n'est pas possible pour elle de faire $\R_n \rightarrow \R_{n-1} \rightarrow \R_n$ telle que $AA^{-1} = A^{-1}A = I_n$.
+
+\subsection{Inverses 2 \x 2}
+
+\[A = \begin{pmatrix}
+a & b \\
+c & d
+\end{pmatrix}
+\]
+\[A^{-1} = \frac{1}{det(A)} \begin{pmatrix}
+\mathbf{d} & \textcolor{green}{-b} \\
+\textcolor{green}{-c} & \mathbf{a}
+\end{pmatrix}
+\]
+
+\subsection{Inverses 3 \x 3}
+
+On échelonne réduit A face à $I_3$ en répétant chaque opération élémentaire faites pour réduire A sur $I_3$
+\[A | I_3 \]
+Exemple:
+\[\left(\begin{array}{ccc|ccc}
+1 & 2 & 0 & 1 & 0 & 0 \\
+0 & 4 & 1 & 0 & 1 & 0 \\
+-1 & 2 & 2 & 0 & 0 & 1
+\end{array}
+\right)\]
+\[\Rightarrow \left(\begin{array}{ccc|ccc}
+1 & 2 & 0 & 1 & 0 & 0 \\
+0 & 4 & 1 & 0 & 1 & 0 \\
+0 & 4 & 2 & 1 & 0 & 1
+\end{array}
+\right)\]
+\[\Rightarrow \left(\begin{array}{ccc|ccc}
+1 & 2 & 0 & 1 & 0 & 0 \\
+0 & 4 & 1 & 0 & 1 & 0 \\
+0 & 0 & 1 & 1 & -1 & 1
+\end{array}
+\right)\]
+\[\Rightarrow \left(\begin{array}{ccc|ccc}
+1 & 2 & 0 & 1 & 0 & 0 \\
+0 & 4 & 0 & -1 & 2 & -1 \\
+0 & 0 & 1 & 1 & -1 & 1
+\end{array}
+\right)\]
+\[\Rightarrow \left(\begin{array}{ccc|ccc}
+1 & 2 & 0 & 1 & 0 & 0 \\
+0 & 1 & 0 & -\frac{1}{4} & \frac{1}{2} & -\frac{1}{4} \\
+0 & 0 & 1 & 1 & -1 & 1
+\end{array}
+\right)\]
+\[\Rightarrow \left(\begin{array}{ccc|ccc}
+1 & 0 & 0 & \frac{3}{2} & -1 & \frac{1}{2} \\
+0 & 1 & 0 & -\frac{1}{4} & \frac{1}{2} & -\frac{1}{4} \\
+0 & 0 & 1 & 1 & -1 & 1
+\end{array}
+\right)\]
+Le côté droit est la matrice inversée $A^{-1}$.
+
+\chapter{Structures vectorielles de \texorpdfstring{$\R^2$ et $\R^3$}{R2 et R3}}
+
+\section{Bases de \texorpdfstring{$\R^2$ et $\R^3$}{R2 et R3}}
+
+\subsection{\texorpdfstring{$\R^2$}{R2}}
+
+Une base de $\R^2 $ nécessite deux vecteurs linéairement indépendants, donc non-colinéaires, on écrit alors:
+\[B = vec\left(\vec{v_1}, \vec{v_2}\right)\]
+La base canonique $\hat{i}$, $\hat{j}$ de $R^2$ est \(\begin{pmatrix}
+1 & 0 \\ 0 & 1 \end{pmatrix}\)
+
 \end{document}
