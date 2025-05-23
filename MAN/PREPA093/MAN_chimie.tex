@@ -1341,4 +1341,89 @@ Ceci nous permet de déduire \(v = k[NO]^2[Cl_2]\)\;\;\footnote{Ici les ordres p
 On introduit dans ce cas là les réactifs (sauf un) en excès tel que \([A]_0 \ll [B]_0, [C]_0, ...\), ce qui nous permet de faire les approximations: \([B] \approx [B]_0\), \([C] \approx [C]_0\) et ainsi de suite.
 \[-\frac{d[A]}{dt} \approx k[A]^{\alpha}[B]^{\beta}_0[C]^{\gamma}_0 = k'[A]^{\alpha}\]
 Avec \(k' = k[B]^{\beta}_0[C]^{\gamma}_0\) on obtient une réaction de \textbf{pseudo-ordre $\alpha$}.
+
+\subsection{Influence de la température}
+
+La "constante" de vitesse k varie fortement avec la température k=k(T), en 1889 Svante Arrhenius proposa l’équation suivante:
+\[k = A_fe^{-\frac{E_a}{RT}}\]
+\[\Rightarrow \ln(k) = -\ln(A_f)\frac{E_a}{RT}\]
+Pour deux températures $T_1$ et $T_2$ différentes:
+\[\ln\left(\frac{k_2}{k_1}\right) = \frac{E_a}{R}\left(\frac{1}{T_1}-\frac{1}{T_2}\right)\]
+Avec:
+\begin{itemize}
+\item $A_f$ = facteur de fréquence
+\item $E_a$ = énergie d'activation\footnote{En $J\cdot mol^{-1}$}
+\item R = constante des gaz parfaits\footnote{Voir tableau \ref{eq:PVNRT}}
+\item T = température absolue\footnote{En Kelvin (K)}
+\end{itemize}
+
+\subsubsection{Énergie d'activation \texorpdfstring{$E_a$}{Ea}}
+
+\paragraph{Définition} L'énergie d’activation est la hauteur de la barrière à franchir au-dessus de l’énergie potentielle des réactifs pour que la réaction se passe. \par
+En isolant les différentes composantes de la formule d'Arrhenius on a:
+\begin{itemize}
+\item $A_f$: le facteur de fréquence qui décrit le nombre de fois que la réaction essaie de passer la barrière d’activation par unité de temps.
+\item \(e^{-\frac{E_a}{RT}}\): le facteur exponentiel désigne la fraction des molécules disposant d’une énergie suffisante pour passer la barrière
+\end{itemize}
+Il est à noter que $A_f$ et $E_a$ sont des valeurs empiriques qui peuvent être
+interprétées et calculées selon plusieurs théories.
+
+\section{Mécanismes de réactions chimiques}
+
+La loi de vitesse est trouvée d’une façon \textbf{empirique}, par expérimentation.
+Le \textbf{mécanisme réactionnel} explique la loi de vitesse en termes d’une série de réactions élémentaires.
+
+\subsection{Molécularité}
+
+La mécanisme réactionnel  est le nombre de particules qui participent à un processus élémentaire. L'ordre d'une réaction élémentaire est égal à la molécularité.
+
+\begin{center}
+\begin{tabular}{| c | c | c | c |}
+\hline
+\textbf{Molécularité} & \textbf{Processus} & \textbf{Loi de vitesse} & \textbf{Ordre de la réaction} \\
+\hline
+unimoléculaire & A $\rightarrow$ produits & $v = k\cdot [A]$ & 1 \\
+\hline
+bimoléculaire & A + A $\rightarrow$ produits & $v = k\cdot [A]^2$ & 2 \\
+\hline
+bimoléculaire & A + B $\rightarrow$ produits & $v = k\cdot [A]\cdot [B]$ & 2 \\
+\hline
+trimoléculaire & A + A + A $\rightarrow$ produits & $v = k\cdot [A]^3$ & 3 \\
+\hline
+trimoléculaire & A + A + B $\rightarrow$ produits & $v = k\cdot [A]^2\cdot [B]$ & 3 \\
+\hline
+trimoléculaire & A + B + C $\rightarrow$ produits & $v = k\cdot [A]\cdot [B]\cdot [C]$ & 3 \\
+\hline
+\end{tabular}
+\end{center}
+
+\subsection{Réactions multi-étapes}
+
+On décompose une réaction en une succession de réactions élémentaires. \par
+Lors d'une réaction \textbf{multi-étapes} le profil énergétique présentes plusieurs \textbf{barrières d'activation}, la plus haute: $\mathbf{E_a}$, correspond à l'étape la plus \textbf{lente} qui détermine la vitesse.
+
+\paragraph{Exemple de réaction multi-étapes:}
+\[NO_2(g)+CO_2(g)\longrightarrow NO(g)+CO_2(g)\]
+On peut décomposer cette réaction en deux "sous réactions":
+\[NO_2(g)+NO_2(g)\longrightarrow NO_3(g)+NO(g) \tag*{1}\]
+\[+ \; NO_3(g)+CO(g)\longrightarrow NO_2(g)+CO_2(g) \tag*{2}\]
+\hrule
+\[= \; 2NO_2(g)+NO_3(g)+CO(g) \longrightarrow NO_3(g)+NO(g)+NO_2(g)+CO_2(g)\]
+\[\Rightarrow NO_2(g)+CO(g) \longrightarrow NO(g)+CO_2(g)\]\footnote{On annule les termes présents des deux côtés et on retrouve bien notre réaction de départ.}
+On a donc nos lois de vitesses pour les sous réactions 1 et 2:
+\[v_1 = k_1 \cdot [NO_2]^2\]
+\[v_2 = k_2 \cdot [NO_3][CO]\]
+Comme ici on a $k_1 \ll k_2$ la première étape est \textbf{déterminante}.
+
+\section{Catalyseur d'une réaction}
+
+\subsection{Définition}
+
+Substance qui accroît la vitesse d’une réaction \textbf{sans être elle-même consommée}. \par
+Elle offre une autre voie ou un autre mécanisme pour passer des réactifs aux produits avec une énergie d’activation \textbf{plus faible} que celle de la réaction initiale. \par
+Il existe deux types de catalyseurs:
+\begin{itemize}
+\item Catalyseurs \textbf{homogènes}: Sont dans la même \textbf{phase} que les réactifs.
+\item Catalyseurs \textbf{hétérogènes}: Sont dans une phase \textbf{différente} que les réactifs\footnote{Il s'agit souvent de solides finement divisés ou poreux afin offrir la plus grande surface possible à \href{https://fr.wikipedia.org/wiki/Adsorption}{\textbf{l'adsorption}} des réactifs}.
+\end{itemize}
 \end{document}
