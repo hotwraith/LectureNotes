@@ -694,7 +694,7 @@ $\eta$ < 100\% dans les cas suivants:
 \item Formation de produits secondaires A $\rightarrow$ B + C
 \end{itemize}
 
-\section{Réactions rédox}
+\section{Réactions rédox} \label{redox}
 
 \subsection{Introduction}
 
@@ -711,7 +711,7 @@ La masse serait alors bien conservée mais pas la charge globale: la réaction n
 Au niveau moléculaire la réaction qui a lieu est un \textbf{transfer d'électrons} allant de Cu (donneur d'électrons, \textbf{réducteur}) à Ag$^+$ (accepteur d'électrons, \textbf{oxydant}). \par
 Comme Cu libère deux électrons il nous faut deux cations Ag$^+$ prêts à les recevoir. Il faut que \textbf{le nombre d'électrons donnés par le réducteur soit égal au nombre d'électrons acceptés par l'oxydant}.
 
-\subsection{Degré d'oxydation}
+\subsection{Degré d'oxydation} \label{DO}
 
 Le degré d'oxydation (d.o) indique le nombre d'électrons que chaque atome aurait donné ou reçu par rapport à l'état neutre si les liaisons dans lesquelles ces atomes sont impliqués étaient de nature purement ionique. \par 
 Si l'électronégativité des deux atomes liés est la même (par exemple, si les atomes liés sont un même élément), alors la liaison \textbf{ne contribue pas} au calcul du d.o. \\
@@ -1429,7 +1429,7 @@ Il existe deux types de catalyseurs:
 
 \subsection{Procédé Haber-Bosch}
 
-\paragraph{La synthèse de l'ammoniac} À température ambiante l'équilibre de la réaction de synthèse de l'ammoniac \(N_2(g) + 3H_2(g) \leftrightarrow 2NH_3(g)\) est favorable au \textbf{produits} mais la vitesse de réaction est très lente. \par
+\paragraph{La synthèse de l'ammoniac} À température ambiante l'équilibre de la réaction de synthèse de l'ammoniac \(N_2(g) + 3H_2(g) \leftrightarrows 2NH_3(g)\) est favorable au \textbf{produits} mais la vitesse de réaction est très lente. \par
 Augmenter la température n'est pas, ici, une solution car cela déplacerait l'équilibre en faveur des \textbf{réactifs} plutôt que des produits. \\
 Les deux méthodes envisagées sont les suivantes: \par
 La première est dite \textbf{thermodynamique}, on prend une pression élevée et une température faible, en plus de ça on \textbf{retire l'ammoniac au fur et à mesure} qu'il est produit pour ne pas atteindre d'état d'équilibre. \par
@@ -1465,5 +1465,47 @@ Catalase\footnotemark & $10^{7}$ & 8 \\
 
 \chapter{Éléctrochimie}
 
+\section{Introduction}
 
+On a déjà vu la notion de réactions avec transfert d'électrons: les réactions \textbf{d'oxydo-réduction} ou \textbf{RedOx} (voir \ref{redox}). \par
+Si ces réactions sont \textbf{spontanées} elles \textbf{génèrent} de l'électricité, à l'inverse on peut utiliser de l'électricité pour provoquer une réaction \textbf{non-spontanée}. \\
+On rappelle que:
+\begin{itemize}
+\item \textbf{\color{red}{Oxydation}}: \textbf{perte} d'électrons, D.O.\footnote{Voir \ref{DO}} \textbf{augmente}.
+\item \textbf{\color{cyan}{Réduction}}: \textbf{gain} d'électrons, D.O. \textbf{diminue}.
+\end{itemize}
+Un exemple est la réaction \(Cu^{2+}(aq) + Zn(s) \leftrightarrows Cu(s) + Zn^{2+}(aq)\)\footnote{Rappel: dans les réactions rédox il faut toujours \textbf{conserver les charges} lors d'une réaction.} dont le $\Delta G^0_r < 0$ donc elle est \textbf{spontanée} dans le sens direct\footnote{De gauche à droite.}. \par
+On peut séparer cette réaction en deux \textbf{demi-réactions}:
+\begin{center}
+\(Zn(s) \rightarrow Zn^{2+}(aq) + 2e^-\) \textcolor{red}{oxydation} \\
+\(Cu^{2+}(aq) + 2e^- \rightarrow Cu(s)\) \textcolor{cyan}{réduction}
+\end{center}
+On parle alors des \textbf{couples oxydo-réducteurs} $Cu^{2+}/Cu$ et $Zn^{2+}/Zn$.
+
+\section{Cellule galvanique}
+
+On peut séparer chaque demi-réaction et les relier \textbf{électriquement} pour créer une \textbf{pile électrochimique}\footnote{Aussi appelée \textbf{cellule galvanique}.}.
+Une réaction chimique spontanée provoque un flux d’électrons de l'anode \textbf{vers la cathode}, le pont salin est nécessaire pour assurer \textbf{l’électroneutralité} des solutions.
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.75]{./assets/cellule_galvanique.png}
+\end{center}
+\caption{Cellule galvanique}
+\label{fig:galv_cell}
+\end{figure}
+Lorsque la pile débite du courant: \\
+\begin{center}
+\begin{tabular}{| c | c |}
+\hline
+\textbf{Cathode} & \textbf{Anode} \\
+\hline
+Concentration de $Cu^{2+}$ diminue & Concentration de $Zn^{2+}$ augmente \\
+\hline
+Attraction de cations (via pont salin) & Attraction d’anions (via pont salin) \\
+\hline
+Masse de cuivre \textbf{augmente} & Masse de zinc \textbf{diminue} \\
+\hline
+\end{tabular}
+\end{center}
+%TODO catch up sur le cours (slide 10)
 \end{document}
