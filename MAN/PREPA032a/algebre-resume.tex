@@ -52,7 +52,9 @@ Dans ce résumé les notations suivantes seront utilisées sauf mention du contr
 \item Les éléments de ces matrices seront dénotés par une lettre grecque avec ij la ligne et colonne de position de l'élément (\(\alpha_{ij}, \beta_{ij}, \gamma_{ij}\), ...)
 \item rg(A) = rang de la matrice A. dim(A) = dimension de la matrice A. det(A) = déterminant de la matrice A.
 \item Les constantes quelconques appartenant à $\R$ seront \textbf{en général} dénotées par $\lambda$ ou k.
-\item $\hat{i}$ et $\hat{j}$ sont les vecteurs unitaires de la base canonique, \(\hat{i} = \left(\begin{array}{c} 1 \\ 0 \end{array}\right)\), \(\hat{j} = \left(\begin{array}{c} 0 \\ 1 \end{array}\right)\)
+\item $\hat{i}$ et $\hat{j}$ sont les vecteurs unitaires de la base canonique, \(\hat{i} = \left(\begin{array}{c} 1 \\ 0 \end{array}\right)\), \(\hat{j} = \left(\begin{array}{c} 0 \\ 1 \end{array}\right)\) (pour $\R^2$)
+\item On note $\vec{v}$ un vecteur quelconque exprimé en base canonique et $[\vec{v}]_B$ le même vecteur exprimé en coordonées de la base B.
+\item On note $\mathbb{B}$ la base canonique et \textbf{B} une base autre quelconque. 
 \end{itemize}
 
 \chapter{Calcul matriciel}
@@ -349,7 +351,46 @@ Le côté droit est la matrice inversée $A^{-1}$.
 
 Une base de $\R^2 $ nécessite deux vecteurs linéairement indépendants, donc non-colinéaires, on écrit alors:
 \[B = vec\left(\vec{v_1}, \vec{v_2}\right)\]
-La base canonique $\hat{i}$, $\hat{j}$ de $R^2$ est \(\begin{pmatrix}
-1 & 0 \\ 0 & 1 \end{pmatrix}\)
+La base canonique $\hat{i}$, $\hat{j}$ de $\R^2$ est représentée par la matrice \(\begin{pmatrix}
+1 & 0 \\ 0 & 1 \end{pmatrix}\), et un exemple de matrice de base de $\R^2$ serait \(\begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix}\), car $\vec{v_1}$ et $\vec{v_2}$ ne sont pas linéairement dépendants. \\
+Si $\vec{v_1}$ et $\vec{v_2}$ forment une base \textbf{B} de $\R^2$ et $\vec{v} \in \R^2$ ce $\vec{v}$ peut se décomposer en éléments \(\vec{v} = t_1\vec{v_1} + t_2\vec{v_2}\). On a $[\vec{v}]_B = \begin{pmatrix} t_1 \\ t_2 \end{pmatrix}$. \\
+Exemple:
+\[B = \begin{pmatrix}1 & 2 \\ 3 & 4\end{pmatrix} B^{-1} = \begin{pmatrix}-2 & 1 \\ 3/2 & -1/2\end{pmatrix} \; et \; \vec{v} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\]
+\[[\vec{v}]_B = \begin{pmatrix}-2 & 1 \\ 3/2 & -1/2\end{pmatrix}\begin{pmatrix} 2 \\ 1 \end{pmatrix} = \begin{pmatrix} -3 \\ \frac{5}{2} \end{pmatrix}\]
+On vérifie:
+\[\vec{v} = -3\cdot \begin{pmatrix}1 \\ 3\end{pmatrix} + \frac{5}{2}\cdot \begin{pmatrix} 2 \\ 4 \end{pmatrix} = \begin{pmatrix} -3+5 \\ -9+10 \end{pmatrix} = \begin{pmatrix} 2 \\ 1 \end{pmatrix}\]
+De manière plus générale:
+\[\mathbf{\vec{v} = B\cdot [\vec{v}]_B}\]
+\[\mathbf{[\vec{v}]_B = B^{-1}\cdot \vec{v}}\]
 
+\subsection{\texorpdfstring{$\R^3$}{R3}}
+
+Même logique que pour $R^2$, ici la base canonique $\hat{i}$, $\hat{j}$, $\hat{k}$ est représentée par la matrice $\begin{pmatrix} 1 & 0 & 0 \\ 0 & 1 & 0 \\ 0 & 0 & 1\end{pmatrix}$.\\
+La logique de changement de base est la même.
+
+\subsubsection{Droites et plans dans $\R_3$}
+
+Si la base B est de rg(B) = 1 on a une droite vectorielle dans $R^3$, tous les éléments peuvent êtres accédés par $t\cdot \vec{v}$ avec $\vec{v}$ le vecteur directeur de la droite.\par
+Si la base B est de rg(B) = 2 (soit Vect($\vec{v_1}, \vec{v_2}$)) elle engendre un plan au sein de l'espace. \\
+L'équation du plan s'écrit:
+\[det\left(\begin{pmatrix}
+x & \alpha_1 & \beta_1 \\
+y & \alpha_2 & \beta_2 \\
+z & \alpha_3 & \beta_3 \\
+\end{pmatrix}\right) = 0\]
+La logique derrière ? Tous les vecteurs expressibles par $\vec{v} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$ doivent, pour appartenir au plan engendré, être la combinaison linéaire $\vec{v} = t_1\vec{v_1} + t_2\vec{v_2}$ des deux vecteurs linéairement indépendants de la base. \par
+Une autre manière d'exprimer cela est avec det(Vect($\vec{v}, \vec{v_1}, \vec{v_2}$)) = 0, car cela implique que rg(Vect($\vec{v}, \vec{v_1}, \vec{v_2}$)) $\leq$ 2, or comme on sait que $v_1$ et $v_2$ engendrent un plan alors rg = 2 si det = 0. %TODO reformulate, c'est confus
+
+\paragraph{Intersection de deux plans vectoriels dans $\R^3$}
+Soit deux plans V et V' respectivement définis par \(\left\lbrace \begin{array}{rcl}
+ax + by + cz = 0 \\
+a'x + b'y + c'z = 0
+\end{array} \right.\). \\
+Si (a, b, c) et (a', b', c') sont \textbf{proportionnels} alors V = V' et l'intersection s'exprime selon l'équation de l'un des deux plans. \\
+Si (a, b, c) et (a', b', c') ne sont \textbf{pas} proportionnels, 
+\[V\cap V' = Vect(\vec{v_{int}})\]
+où
+\[v_{int} = \begin{pmatrix} a \\ b \\ c \end{pmatrix} \times \begin{pmatrix} a' \\ b' \\ c' \end{pmatrix} = \begin{pmatrix} -cb' + bc' \\ ca' - ac' \\ -ba' + ab'\end{pmatrix}\]
+
+%TODO next leçon 10 ?
 \end{document}
