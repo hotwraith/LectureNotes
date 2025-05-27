@@ -392,5 +392,97 @@ Si (a, b, c) et (a', b', c') ne sont \textbf{pas} proportionnels,
 où
 \[v_{int} = \begin{pmatrix} a \\ b \\ c \end{pmatrix} \times \begin{pmatrix} a' \\ b' \\ c' \end{pmatrix} = \begin{pmatrix} -cb' + bc' \\ ca' - ac' \\ -ba' + ab'\end{pmatrix}\]
 
-%TODO next leçon 10 ?
+\section{Sous-espaces affines}
+
+\subsection{Droites affines de \texorpdfstring{$\R^2$}{R2}}
+
+On appelle droite affine \textbf{contenant} $\vec{v_0}$ et \textbf{dirigée par} $\vec{v_1}$ la droite V telle que:
+\[V:= \left\lbrace\ v_0 + tv_1 \;|\; t \in \R \right\rbrace \subset \R^2\]
+avec $v_0$, $v_1$ $\in \R^2$ ($v_1 \neq$ (0, 0))
+\begin{figure}[h!]
+\begin{center}
+\includegraphics[scale=0.8]{./assets/schema_droites_affines.png}
+\label{fig:droites_affines}
+\caption{Exemple de droite affine}
+\end{center}
+\end{figure}
+\\ Remarque: 
+\begin{itemize}
+\item Si $v_0$ = (0,0), V est une droite (et un espace) vectorielle.
+\item Si $v_0$ $\neq$ (0,0), V n'est \textbf{pas} un espace vectoriel.
+\item $v \in V$ $\Leftrightarrow$ $v-v_0 \in$ Vect($v_1$) $= W$
+\item On a V le translaté de W par $v_0$:
+\[V = v_0 + W = v_0 + Vect(v_1)\]
+\item On appelle W la \textbf{droite vectorielle associée} à V.
+\end{itemize}
+
+\paragraph{Équation}
+\[V: ax+by = c \tag*{Équation de la droite}\]
+Il faut noter que $\vec{v_1} = \left( \begin{array}{c} -b \\ a \end{array} \right)$
+
+\[W: ax+by= 0 \tag*{Équation de la droite vectorielle associée}\]
+
+\subsection{Plans affines de \texorpdfstring{$\R^3$}{R3}}
+
+\paragraph{Définition} Si $v_0, v_1, v_2 \in \R^3$ tels que $v_1, v_2$ non colinéaire, alors:
+\[V:= \left\lbrace v_0 + t_1v_1 + t_2v_2 \;|\; t_1, t_2 \in \R \right\rbrace\ \subset \R^3 \]
+\begin{itemize}
+\item Si $v_0$ = (0,0,0), V est le plan et espace vectoriel.
+\item Si $v_0 \neq$ (0,0,0), V est le plan affine \textbf{contenant} $v_0$ \textbf{dirigé par} $v_1$ et $v_2$
+\item V = $v_0$ + Vect($v_1$, $v_2$) 
+\item W = Vect($v_1$, $v_2$) est le \textbf{plan vectoriel associé à V}, ils sont \textbf{parallèles}.
+\end{itemize}
+
+\paragraph{Équation}
+On prend $v_0 = \begin{pmatrix} x_0 \\ y_0 \\ z_0 \end{pmatrix}$, $v_1 = \begin{pmatrix} \alpha_1 \\ \alpha_2 \\ \alpha_3 \end{pmatrix}$, $v_1 = \begin{pmatrix} \beta_1 \\ \beta_2 \\ \beta_3 \end{pmatrix}$ et un $\vec{v} = \begin{pmatrix} x \\ y \\ z \end{pmatrix}$ on pose:
+\[\begin{pmatrix}
+x - x_0 & \alpha_1 & \beta_1 \\
+y - y_0 & \alpha_2 & \beta_2 \\
+z - z_0 & \alpha_3 & \beta_3
+\end{pmatrix} = 0
+\]
+\[\Rightarrow ax+by+cz = ax_0+by_0+cz_0\]
+Avec:
+\[a = det \begin{pmatrix} \alpha_2 & \beta_ 2 \\ \alpha_3 & \beta_3 \end{pmatrix} \;
+b = det \begin{pmatrix} \alpha_1 & \beta_ 1 \\ \alpha_3 & \beta_3 \end{pmatrix} \;
+c = det \begin{pmatrix} \alpha_1 & \beta_ 1 \\ \alpha_2 & \beta_2 \end{pmatrix}
+\]
+\\
+Comme pour la droite affine on a aussi les équation du plan vectoriel associé:
+\[\begin{pmatrix}
+x & \alpha_1 & \beta_1 \\
+y & \alpha_2 & \beta_2 \\
+z & \alpha_3 & \beta_3
+\end{pmatrix} = 0
+\]
+\[\Rightarrow ax+by+cz = 0\]
+Avec:
+\[a = det \begin{pmatrix} \alpha_2 & \beta_ 2 \\ \alpha_3 & \beta_3 \end{pmatrix} \;
+b = det \begin{pmatrix} \alpha_1 & \beta_ 1 \\ \alpha_3 & \beta_3 \end{pmatrix} \;
+c = det \begin{pmatrix} \alpha_1 & \beta_ 1 \\ \alpha_2 & \beta_2 \end{pmatrix}
+\]
+
+\chapter{Applications linéaires}
+
+\section{Caractérisation}
+Une application \(f:\R^n \rightarrow \R^p\) (\(v \rightarrow f(v)\) est linéaire ssi \( \left\lbrace \begin{array}{rcl}
+1) & \forall t \in \R, \forall v \in \R^n, & f(tv) = t\cdot f(v) \\
+2) & \forall v, v' \in \R^n, & f(v+v') = f(v)+f(v') 
+\end{array} \right.
+\) \\
+Si l'application $f$ est \textbf{linéaire} alors $f$ est associée à une matrice.
+
+\section{Ensemble image et rang}
+
+\subsection{Ensemble image}
+
+\paragraph{Définition} L'ensemble image de $f: \R^n \rightarrow \R^p$ est:
+\begin{equation}
+\begin{split}
+Im(f) & = \left\lbrace f(v) \; | \; v \in \R^n \right\rbrace \subset \R^p \\
+ & = \left\lbrace v' \in \R^p \; | \; \exists v \in \R^n: f(v) = v' \right\rbrace
+\end{split}
+\end{equation}
+
+%TODO fin ensemble image (leçon 12) & leçon 13
 \end{document}
