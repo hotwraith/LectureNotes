@@ -185,7 +185,7 @@ La configuration électronique d'une atome décrit la distribution des électron
 \paragraph{Notation spdf}
 \begin{itemize}
 \item Niveau d'énergie \textit{n} $\rightarrow$ désigné par un nombre
-\item Type d'orbitale \textit{l} $\rightarrow$ désigné par une lettre (s, p, d, f)
+\item Type d'orbitale (sous-couche) \textit{l} $\rightarrow$ désigné par une lettre (s, p, d, f)
 \item Nombre d'électrons dans l'orbitale $\rightarrow$ désigné par un exposant
 \end{itemize}
 \begin{displaymath}
@@ -1525,7 +1525,7 @@ $\Delta_rG^0$ est le travail \textbf{maximal} qu'une réaction chimique peut fou
 \begin{itemize}
 \item $\Delta E^0$: potentiel standard de la pile (mesuré à \ref{condStands})
 \item z: nombre d'électrons transférés
-\item constante de Faraday 96'485 $C\cdot mol^{-1}$ (charge d’une mole d'électrons)
+\item constante de Faraday 96'485 $C\cdot mol^{-1}$ (charge d’une mole d'électrons \(\mathbf{F = e^- \cdot N_A}\) \label{cte:Faraday})
 \end{itemize}
 Si on pose face à face la formule précédente et la formule \ref{eq:GR0} on obtient:
 \begin{displaymath}
@@ -1591,4 +1591,64 @@ On fait le constat que pendant l’utilisation d’une pile, sa tension diminue.
 Pile complète: \(\Delta E = \Delta E^0- \frac{RT}{zF}\ln(Q)\) \\
 À partir des électrodes (demi-pile): \(\Delta E = E_{cathode} - E_{anode}\) \\
 Potentiel d’une demi-pile\footnote{Équation simplifiée valable lorsque T = 298K et les coefficients stoechiométriques des demi-réactions valent 1}: \(E_{O/R} = E_{O/R}^0 + \frac{0,059V}{z} \log\left(\frac{a_O}{a_R}\right)\)
+
+\section{Électrolyse}
+
+\paragraph{Une application de l'électrochimie} L'électrolyse est une application directe de l'électrochimie, on peut forcer une réaction non spontanée avec un potentiel externe !
+
+\subsection{Loi de Faraday}
+
+\paragraph{Définition} Le nombre de moles n de produit formé par un courant électrique est stoechiométriquement équivalent au nombre de moles d’électrons fournis.
+
+\begin{displaymath}
+n = \frac{I \cdot t}{z \cdot F}
+\end{displaymath}
+\begin{itemize}
+\item \textbf{n}: le nombre de moles du produit (mol)
+\item \textbf{I}: courant en ampères (A)
+\item \textbf{t}: temps (s)
+\item \textbf{z}: nombre d'électrons transférés pour former le produit
+\item \textbf{F}: voir \ref{cte:Faraday}
+\end{itemize}
+
+\subsubsection{Exemple}
+Calculer la quantité de Cu déposée à la cathode, par électrolyse d'une solution de CuSO$_4$ pendant 10 min avec un courant de 2 A.
+\[Cu^{2+} + 2e^- = Cu\]
+\[n = \frac{I\cdot t}{z\cdot F} = \frac{2 \cdot 10 \cdot 60}{2 \cdot 96'485} = 6,22\cdot 10^{-3}mol\]
+Pour obtenir la masse déposée on multiplie par la masse molaire M(Cu) = 63,5$g\cdot mol^{-1}$ du cuivre:
+\[n\cdot M(Cu) = 6,22 \cdot 10^{-3} \cdot 63,5 = 0,394g\]
+
+\subsection{La pile à combustion \texorpdfstring{$\mathbf{H_2/O_2}$}{H2/O2}}
+\[H_2(g) + \frac{1}{2}O_2(g)\longrightarrow H_2O (l)\]
+Le principe d’une pile à combustible est d’alimenter en continu le \textbf{compartiment cathodique avec un oxydant} (souvent air) et le \textbf{compartiment anodique avec un réducteur} (souvent H$_2$) et éliminer les produits de réaction (H$_2$O). \par
+Ce type de pile possède les avantages suivants: pas de production de CO$_2$ et un rendement énergétique très élevé.
+
+\subsection{Bilan énergétique}
+
+Dans une transformation de la pile seule une partie de l'énergie chimique disponible est transformée en énergie électrique. On peut réécrire la formule de \textbf{l'enthalpie libre} (voir \ref{eq:GR0}):
+\[\Delta_rG^0 = \Delta_rH^0 - T\Delta_rS^0\]
+\[\Rightarrow \left[ \begin{array}{c} \acute{E}nergie \; \acute{e}lectrique \\ \mathbf{utile} \end{array} \right]
+=
+\left[ \begin{array}{c} \acute{E}nergie \; chimique \\ \mathbf{disponible} \end{array} \right]
+-
+\left[ \begin{array}{c} \acute{E}nergie \; thermique \\ \mathbf{pertes} \end{array} \right]
+\]
+
+\subsubsection{Exemple}
+On reprend la formule de la pile à combustion 
+\[H_2(g) + \frac{1}{2}O_2(g)\longrightarrow H_2O (l) \left\lbrace \begin{array}{c c}
+\Delta_rG^0 = & -237,13 kJ\cdot mol^{-1}\\
+\Delta_rH^0 = & -285,83 kJ\cdot mol^{-1}\\
+\Delta_rS^0 = & -163,4 J\cdot K^{-1}\cdot mol^{-1}
+\end{array} \right.\]
+Donc le rendement énergétique:
+\[\eta_{max} = \frac{\Delta_rG^0}{\Delta_rH^0}= \frac{-237,13}{-285,83} = 0,83\]
+La valeur que l'on a trouvé ici est \textbf{théorique}, en réalité le rendement énergétique environne les $\simeq$ 60\%.
+
+\chapter*{}
+
+%"No amount of French mathematicians can save us now."
+%-Physics professor
+%https://mathprofessorquotes.com/
+
 \end{document}
