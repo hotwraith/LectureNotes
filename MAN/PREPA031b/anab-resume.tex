@@ -1,0 +1,267 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage[ruled, lined, longend]{algorithm2e}
+\usepackage[shortlabels]{enumitem}
+\usepackage{textcomp}
+\usepackage{chemfig}
+
+\setlength{\parindent}{20pt}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=darkgray
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\x}{$\times$ }
+\newcommand{\ind}{\hspace*{\parindent}}
+
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{definition}{Définition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollaire}{Corollaire}[theorem]
+
+
+\title{Algèbre linéaire \vspace{0.2cm} - Résumé}
+\author{Mahel Coquaz}
+\date{Semestre de printemps 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section*{Introduction}
+
+Ce qui suit se veut être un résumé ultra condensé du cours d'Analyse B pour MàN (PREPA-031b) donné au semestre de printemps 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours des Professeurs Sébastien Basterrechea, Anastasia Khukhro et Ghid Maatouk qui l'ont enseigné. J'ai cependant pris la liberté de sauter/raccourcir certain passages et d'ajouter des notes lorsqu'il me semblait pertinent de le faire. \par
+Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
+Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres).
+
+\chapter{Suites réelles}
+
+\section{Suites convergentes}
+
+\subsection{Preuve} \label{thm:limites}
+On veut montrer que \(a_n\) une suite quelconque tend vers une limite $l$.
+\begin{theorem}
+Avec $\epsilon > 0$ et $n,N \in \N$, on cherche $N: \forall n \geq N: \left| a_n - l \right| \leq \epsilon$.
+\end{theorem}
+La limite s'écrit $\lim_{\pm \infty} = l$
+
+\subsection{Exemple}
+On veut montrer que la suite \(a_n = \frac{2n^2-1}{n^2+1}\) tend vers 2 à $\pm \infty$
+\begin{displaymath}
+\left| a_n - 2 \right| \leq \epsilon
+\end{displaymath}
+Avec $\epsilon > 0$
+\begin{equation*}
+\begin{split}
+\left| a_n - 2 \right| & = \left| \frac{2n^2-1}{n^2+1} - 2 \right| \\
+ & = \left| \frac{2n^2 - 1 - 2n^2 - 2}{n^2+1} \right| \\
+ & = \frac{3}{n^2+1}
+\end{split}
+\end{equation*}
+Donc:
+\begin{equation*}
+\begin{split}
+\left| a_n - 2 \right| \leq \epsilon \\
+\frac{3}{n^2+1} \leq \epsilon \\
+\frac{3}{\epsilon} - 1 \leq n^2 \\
+n \geq \sqrt{\frac{3}{\epsilon} - 1}
+\end{split}
+\end{equation*}
+
+\section{Propriétés des limites}
+
+\subsection{Propriétés simples}
+\begin{enumerate}
+\item $a_n \rightarrow L, \lambda \in \R \Rightarrow \lambda a_n \rightarrow \lambda L $
+\item $a_n \rightarrow L_1, b_n \rightarrow L_2 \Rightarrow a_n + b_n \rightarrow L_1 + L_2 $
+\item $a_n \rightarrow L_1, b_n \rightarrow L_2 \Rightarrow a_nb_n \rightarrow L_1L_2 $
+\item $a_n \rightarrow L_1, b_n \rightarrow L_2 \neq 0 \Rightarrow \frac{a_n}{b_n} \rightarrow \frac{L_1}{L_2}$
+\item $a_n \rightarrow L_1, b_n \rightarrow L_2 \; et \; a_n \leq b_n \forall n \Rightarrow L_1 \leq L_2 $
+\item $a_n \rightarrow L \Rightarrow \left| a_n \right| \rightarrow \left| L \right| $
+\item $a_n \rightarrow 0 \Leftrightarrow \left| a_n \right| \rightarrow 0 $
+\item Une suite croissante et majorée converge. 
+\item Une suite décroissante et minorée converge.
+\end{enumerate}
+
+\subsection{Théorème des gendarmes} 
+\begin{theorem} \label{thm:gendarmes}
+Soit $x_n$ une suite, s'il existe deux suites $a_n$, $b_n$ telles que:
+\begin{itemize}
+\item $a_n \leq x_n \leq b_n \forall n$ suffisamment grand.
+\item $\lim_{n\rightarrow \infty} a_n = \lim_{n\rightarrow \infty} b_n = L$
+\end{itemize}
+alors $\lim_{n\rightarrow \infty} x_n = L$
+\end{theorem}
+
+\chapter{Fonctions réelles}
+
+\section{Parité}
+\begin{itemize}
+\item f est \textbf{paire} si $f(-x) = f(x) \forall x \in D_f$
+\item f est \textbf{impaire} si $f(-x) = -f(x) \forall x \in D_f$ 
+\end{itemize}
+
+\section{Compositions de fonctions}
+
+\begin{theorem}\footnote{Sorry not sorry on oubliera toute la partie sur les tracés de graphes.}
+La composée de fonctions deux fonctions $f$ et $g$, notée $f\circ g$ est définie par:
+\begin{equation*}
+(g\circ f)(x) = g(f(x))
+\end{equation*}
+\end{theorem}
+
+\section{Surjectivité, injectivité, bijectivité}
+
+\begin{definition}
+Soit $f: A \rightarrow B$ une fonction.
+\begin{itemize}
+\item $f$ est \textbf{surjective} si $Im(f) = B$
+\item $f$ est \textbf{injective} si $\forall y \in B$, il y a \textbf{au plus un} $x \in A$ tel que $f(x) = y$.
+\item $f$ est \textbf{bijective} si elle est \textbf{à la fois} injective et bijective.
+\end{itemize}
+\end{definition}
+
+\subsection{Fonction réciproque}
+Si on a une fonction bijective $f: A \rightarrow B$, on a alors $\forall y \in B$ exactement une préimage. Ceci permet de définir la fonction:
+\begin{equation*}
+\begin{split}
+f^{-1}: & B \rightarrow A \\
+y \mapsto l'unique \; & pr\acute{e}image \; de \; y.
+\end{split}
+\end{equation*}
+Cette fonction appelée \textbf{fonction réciproque} de $f$, on a:
+\begin{itemize}
+\item $f(f^{-1}(y))=y$ $\forall y \in B$
+\item $f^{-1}(f(x))=x$ $\forall x \in A$
+\end{itemize}
+
+\chapter{Limites de fonctions}
+
+\section{Limites en \texorpdfstring{$x \rightarrow \pm \infty$}{l'infini}}
+
+Cette section et ses preuves sont plus ou moins équivalentes à celles utilisées pour les suites (voir \ref{thm:limites} et \ref{thm:gendarmes}), pour des exemples vous pouvez consulter \href{https://botafogo.saitis.net/analyse-B/?page=m_limitesfonctions_x_tendant_infini}{le polycop d'Analyse B}.
+
+\section{Limites en \texorpdfstring{$x \rightarrow x_0$}{x0}}
+
+Idem que pour la sous-section précédente.
+
+\subsection{Remarques}
+\begin{itemize}
+\item Pour montrer que $\lim_{x \rightarrow x_0}f(x) \neq L$, il suffit de trouver une suite $x_n \rightarrow x_0$ telle que $\lim_{n \rightarrow \infty}f(x_n) \neq L$.
+\item Pour montrer que $\lim_{x \rightarrow x_0}f(x)$ \textbf{n'existe pas} il suffit de trouver une suite $x_n \rightarrow x_0$ telle que $\lim_{n \rightarrow \infty}f(x_n)$ n'existe pas. On peut aussi trouver deux suites $a_n$ et $b_n$ telles que $\lim_{n \rightarrow \infty} a_n = \lim_{n \rightarrow \infty} b_n = x_0$, mais que $\lim_{n \rightarrow \infty} f(a_n) \neq \lim_{n \rightarrow \infty} f(b_n)$.
+\end{itemize}
+
+\section{Limites latérales}
+
+\begin{theorem}
+$\lim_{x \rightarrow x_0} f(x) = L \Longleftrightarrow \lim_{x \rightarrow x_0^+} f(x) = \lim_{x \rightarrow x_0^-} f(x) = L$
+\end{theorem}
+
+\section{Infiniment petits équivalents (IPE)}
+
+\begin{definition}
+Soient $f$ et $g$ définies sur un voisinage épointé de $x_0 \in \R$, telles que $g(x) \neq 0$ sur un voisinage épointé de à $x_0$. Les fonctions $f$ et $g$ sont des infiniment petits équivalents (IPE) au voisinage de $x_0$ si:
+\begin{itemize}
+\item $\lim_{x \rightarrow x_0} f(x) = \lim_{x \rightarrow x_0} g(x) = 0$ (infiniments petits).
+\item $\lim_{x \rightarrow x_0} \frac{f(x)}{g(x)} = 1$ (équivalents).
+\end{itemize}
+On écrit $f \sim g$ au voisinage de $x_0$.
+\end{definition}
+
+\begin{proposition}
+Au voisinage de $x_0 = 0$,
+\begin{itemize}
+\item $\sin(x) \sim x$
+\item $\tan(x) \sim x$
+\item $1 - \cos(x) \sim \frac{x^2}{2}$
+\end{itemize}
+\end{proposition}
+
+\chapter{Fonction continues}
+
+\begin{definition}
+Si $f$ est définie en $x_0 \in \R$ et dans son voisinage, et si
+\begin{equation*}
+\lim_{x \rightarrow x_0} f(x) = f(x_0)
+\end{equation*}
+on dit que $f$ est \textbf{continue en} $\mathbf{x_0}$. Sinon, $f$ est dite \textbf{discontinue en} $\mathbf{x_0}$.
+\end{definition}
+La définition de continuité comporte implicitement trois exigences:
+\begin{itemize}
+\item $f(x_0)$ existe, c'est à dire que $x_0 \in D_f$
+\item $\lim_{x \rightarrow x_0} f(x)$ existe, $\lim_{x \rightarrow x_0} f(x) = L \in \R$
+\item cette limite $L = f(x_0)$
+\end{itemize}
+
+\begin{proposition}
+Soient $f$ et $g$ continues en $x_0$. Alors les fonctions suivantes sont aussi continues en $x_0$:
+\begin{itemize}
+\item $\lambda f$ pour $\lambda \in \R$
+\item $\left| f \right|$
+\item $f \pm g$
+\item $f \cdot g$
+\item $\frac{f}{g}$ $(si \; g(x_0) \neq 0)$
+\end{itemize}
+\end{proposition}
+
+\begin{theorem}
+Soit $f$ définie sur un voisinage épointé de $x_0$ telle que $\lim_{x \rightarrow x_0} f(x) = L \in \R$, et soit $g$ continue au point $L$. Alors
+\begin{equation*}
+\lim_{x \rightarrow x_0} g(f(x)) = g(\lim_{x \rightarrow x_0} f(x)) = g(L)
+\end{equation*}
+\end{theorem}
+
+\begin{corollaire}
+Si $f$ est continue en $x_0$ et $g$ est continue $f(x_0)$, alors la composition $g \circ f$ est continue en $x_0$.
+\end{corollaire}
+
+\begin{definition} Continuité à droite/gauche
+\begin{itemize}
+\item Si $\lim_{x \rightarrow x_0^+} f(x) = f(x_0)$, la fonction $f$ est dite \textbf{continue à droite}.
+\item Si $\lim_{x \rightarrow x_0^-} f(x) = f(x_0)$, la fonction $f$ est dite \textbf{continue à gauche}.
+\end{itemize}
+\end{definition}
+
+\section{Théorème de la valeur intermédiaire}
+
+\begin{definition} Une fonction $f: \left[a,b\right] \rightarrow \R$ est dite \textbf{continue} si:
+\begin{itemize}
+\item $f$ est continue en tout $x_0 \in \left]a,b\right[$
+\item $f$ est continue à droite en $a$
+\item $f$ est continue à gauche en $b$
+\end{itemize}
+\end{definition}
+
+\begin{theorem} \label{thm:TVI}
+Théorème de la valeur intermédiaire (TVI). \\
+Soit $f: \left[a,b\right] \rightarrow \R$ continue, telle que $f(a) < f(b)$. Alors $\forall h \in \left]f(a),f(b)\right[$, il existe $c \in \left]a,b\right[$ tel que $f(c) = h$.
+\end{theorem}
+
+\begin{corollaire}
+Un polynôme de degré impair possède \textbf{toujours} une racine.
+\end{corollaire}
+
+\begin{theorem}
+Soit $f: \left[a,b\right] \rightarrow \R$ une fonction continue:
+\begin{itemize}
+\item Si $f$ est strictement (dé)croissante, alors $Im(f) = \left[f(a),f(b)\right]$, et $f: \left[a,b\right] \rightarrow Im(f)$ est bijective.
+\end{itemize}
+\end{theorem}
+
+\end{document}
