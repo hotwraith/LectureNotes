@@ -266,4 +266,189 @@ Soit $f: \left[a,b\right] \rightarrow \R$ une fonction continue:
 \end{itemize}
 \end{theorem}
 
+\chapter{Dérivabilité}
+
+\section{Définition et propriétés}
+
+\begin{equation*} \tag*{\textbf{Rapport de Newton}}
+\frac{f(x_0 + h) -f(x_0)}{h}
+\end{equation*}
+Lorsque $h \rightarrow 0$, le rapport peut:
+\begin{itemize}
+\item tendre vers une limite finie.
+\item tendre vers $\pm \infty$.
+\item rester borné mais ne pas converger.
+\end{itemize}
+
+\begin{definition}
+Soit f est définie sur un voisinage de $x_0$. f est \textbf{dérivable en} $\mathbf{x_0}$ si la limite $h \rightarrow 0$ existe. Dans ce cas, cette limite est appelée la dérivée (ou nombre dérivé) de $f$ en $x_0$ et on la note $f'(x_0)$.
+\begin{equation*}
+f'(x_0) = lim_{h \rightarrow 0} \frac{f(x_0 + h) -f(x_0)}{h} = lim_{x \rightarrow x_0} \frac{f(x) - f(x_0)}{x - x_0}
+\end{equation*}
+\end{definition}
+
+\section{Approximation linéaire}
+
+\subsection{Équation de la tangente}
+\begin{equation}
+y = f'(x_0)(x-x_0)+f(x_0)
+\end{equation}
+
+\subsection{Tangente à deux courbes}
+
+Considérons deux fonctions $y = f(x)$ et $y = g(x)$, et considérons une tangente commune à leurs graphes, on nomme les points de tangence $x_1$ et $x_2$. \\
+Pour trouver $y = mx + c$ de la tangente commune il faut que
+\[m = f'(x_1) = g'(x_2)\]
+et que les points $(x_1, f(x_1))$ et $(x_2, f(x_2))$ soient sur la droite $y = mx + c$.
+%TODO add exemple maybe
+
+\section{Fonction dérivée et règles de dérivation}
+
+\begin{theorem}
+\begin{enumerate}
+\item \((f+g)'(x) = f'(x) + g'(x)\)
+\item \((\lambda f)'(x) = \lambda f'(x), \lambda \in \R\)
+\item \((f\cdot g)'(x) = f'(x)g(x) + f(x)g'(x)\)
+\item Si \(g(x) \neq 0, (\frac{f}{g})'(x) = \frac{f'(x)g(x) - f(x)g'(x)}{g^2(x)}\)
+\end{enumerate} 
+Si $f$ est dérivable en x et $g$ et dérivable en $f(x)$, on a aussi:
+\[(g\circ f)'(x) = g'(f(x))\cdot f'(x)\]
+\end{theorem}
+
+\begin{theorem}
+Soit $n \in \Z$. Alors
+\[ (x^n)' = nx^{n-1}\]
+\end{theorem}
+
+\begin{theorem}
+Pour tout $x \in \R$
+\begin{equation*}
+\begin{split}
+(\sin(x))' = \cos(x) \\
+(\cos(x))' = -\sin(x) \\
+(\tan(x))' = \left\lbrace \begin{array}{c}
+1 + \tan^2(x) \\
+\frac{1}{\cos^2(x)}
+\end{array} \right.
+\end{split}
+\end{equation*}
+\end{theorem}
+
+\begin{theorem}
+$\forall x \in \R,$
+\[(e^x)' = e^x\]
+$\forall x \in \R^*_+,$
+\[(ln(x))' = \frac{1}{x}\]
+\end{theorem}
+
+\section{Théorème de Rolle}
+
+\begin{definition}
+Une fonction $f: \left[a,b\right] \rightarrow \R$ possède
+\begin{itemize}
+\item un \textbf{maximum global} en $x_0$ si $\forall x \in \left[a,b\right], on a f(x) \leq f(x_0)$ on dit alors que son \textbf{maximum est atteint} en $x_0$.
+\item un \textbf{minimum global} en $x_0$ si $\forall x \in \left[a,b\right], on a f(x) \geq f(x_0)$ on dit alors que son \textbf{minimum est atteint} en $x_0$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+Soit $f:\left[a,b\right] \rightarrow \R$ continue. Alors $f$ atteint son maximum et son minimum sur $\left[a,b\right]$.
+\end{theorem}
+
+\begin{definition}
+Une fonction $f$ possède
+\begin{itemize}
+\item un \textbf{maximum local} en $x_0$ si il existe un voisinage de $x_0$ sur lequel $f(x)\leq f(x_0)$.
+\item un \textbf{minimum local} en $x_0$ si il existe un voisinage de $x_0$ sur lequel $f(x)\geq f(x_0)$.
+\end{itemize}
+\end{definition}
+
+\begin{theorem}
+Soit $f$ dérivable sur $\left]a,b\right[$. Si $f$ possède un minimum ou maximum local en $x_0 \in \left]a,b\right[$, alors $f'(x_0)=0$.
+\end{theorem}
+
+
+\begin{theorem}[Théorème de Rolle]
+Soit $f$ continue sur $\left[a,b\right]$ et dérivable sur $\left]a,b\right[$. Si $f(a)=f(b)$, alors il existe $x_0 \in \left]a,b\right[$ tel que $f'(x_0)=0$.
+\end{theorem}
+
+\section{Théorème des accroissements finis}
+
+\begin{theorem}[Théorème des accroissements finis (TAF)]
+Soit $f$ continue $\left[a,b\right]$ et dérivable sur $\left]a,b\right[$. Alors il existe $x_0 \in \left]a,b\right[$ tel que
+\[f'(x_0) = \frac{f(b)-f(a)}{b-a}\]
+\end{theorem}
+
+\section{Bernouilli-l'Hôpital}
+
+\begin{theorem}[Règle de BH]
+Soient $f$ et $g$ définies sur un voisinage épointé $V$ de $x_0 \in \R$, telles que $f$ et $g$ y sont dérivables et $g(x)$,$g'(x)\neq 0$ sur $V$. Si 
+\[\lim_{x \rightarrow x_0} f(x) = \lim_{x \rightarrow x_0} g(x) \in \left\lbrace 0, +\infty, -\infty \right\rbrace\]
+et la limite $\lim_{x \rightarrow x_0} \frac{f'(x)}{g'(x)}$ existe ou est égale à $+\infty$ ou $-\infty$, alors on a
+\[\lim_{x \rightarrow x_0}\frac{f(x)}{g(x)} = \lim_{x \rightarrow x_0}\frac{f'(x)}{g'(x)}\]
+\end{theorem}
+Ce théorème reste vrai si on remplace
+\begin{itemize}
+\item $\lim_{x \rightarrow x_0}$ par $\lim_{x \rightarrow x_0^+}$ ou $\lim_{x \rightarrow x_0^-}$
+\item $V$ par un voisinage de $\pm \infty$ et $\lim_{x \rightarrow x_0}$ par $\lim_{x \rightarrow \pm \infty}$
+\end{itemize}
+
+%TODO add \section{Études de fonctions} 
+
+\chapter{Courbes paramétrées} %yippee
+
+\section{Introduction}
+
+\begin{definition}
+Soit $D \subset \R$. Une \textbf{courbe paramétrée} (ou \textbf{arc paramétré}) est une fonction
+\begin{equation*}
+\begin{split}
+M: & D \rightarrow \R^2 \\
+& t \rightarrow M(t) = (x(t), y(t))
+\end{split}
+\end{equation*}
+La position $M(t)$ peut également se décrire à l'aide du \textbf{rayon vecteur}, défini par 
+\[\vec{r}(t) = \vec{OM(t)} = \left( \begin{array}{c} x(t) \\ y(t) \end{array} \right)\]
+\end{definition}
+
+\section{Vecteur tangent}
+
+\begin{definition}
+Lorsque $x(t_0)$ et $y(t_0)$ sont dérivables au temps $t_0$, le vecteur 
+\[\dot{\vec{r}}(t_0) := \left( \begin{array}{c} \dot{x}(t_0) \\ \dot{y}(t_0) \end{array} \right)\]
+est appelé le vecteur tangent de la courbe paramétrée $M$ au temps $t_0$. \\
+En particulier,
+\begin{itemize}
+\item si $\dot{x}(t) \neq 0$ et $\dot{y}(t) = 0$ la courbe possède un point de \textbf{tangence horizontale} en $M(t)$.
+\item si $\dot{x}(t) = 0$ et $\dot{y}(t) \neq 0$ la courbe possède un point de \textbf{tangence verticale} en $M(t)$.
+\end{itemize}
+\end{definition}
+
+\subsection{Points stationnaire}
+
+\begin{definition}
+$M(t_0)$ est un \textbf{point stationnaire} de $\Gamma$ si $\dot{\vec{r}}(t_0) = \left( \begin{array}{c} 0 \\ 0\end{array} \right)$.
+\end{definition}
+Pour étudier $\Gamma$ au voisinage d'un point stationnaire, on pourra procéder avec
+\begin{itemize}
+\item l'étude des signes de $\dot{x}(t)$ et $\dot{y}(t)$ pour $t < t_0$ et $t > t_0$.
+\item étudier la pente de $\dot{\vec{r}}(t)$, donnée par $\lim_{t \rightarrow t_0^{\pm}} \frac{\dot{y}(t)}{\dot{x}(t)}$.
+\end{itemize}
+
+\section{Branches infinies}
+
+On trois types de branches infinies,
+\begin{itemize}
+\item Si $x(t)\rightarrow \pm \infty$ et $y(t) \rightarrow L$, alors la droite $y=L$ est une \textbf{asymptote horizontale}.
+\item Si $x(t)\rightarrow L$ et $y(t) \rightarrow \pm \infty$, alors la droite $x=L$ est une \textbf{asymptote verticale}.
+\item Si $x(t)\rightarrow \pm \infty$ et $y(t) \rightarrow \pm \infty$, et si
+\begin{equation*}
+\begin{split}
+m := & \lim \frac{y(t)}{x(t)} \in \R \\
+h := & \lim(y(t) - m\cdot x(t)) \in R
+\end{split}
+\end{equation*}
+alors la droite d'équation $y = mx + h$ est une \textbf{asymptote oblique}. \\
+Dans le cas où $\lim(y(t) - m\cdot x(t)) = \pm \infty$, il s'agit d'une \textbf{branche parabolique} de pente $m$.
+\end{itemize}
 \end{document}
