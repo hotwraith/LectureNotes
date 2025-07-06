@@ -572,7 +572,7 @@ On introduit $F(x)\vert_a^b := F(b) - F(a)$, et on peut écrire:
 \section{Intégration de fonctions rationelles}
 
 \paragraph{Méthode générale} On décrit maintenant la procédure à suivre dans le cas général. Soit
-\[f(x) \frac{P(x)}{Q(x)}\]
+\[f(x) = \frac{P(x)}{Q(x)}\]
 une fonction rationelle avec $P(x)$ et $Q(x)$ des polynômes.
 
 \begin{enumerate}
@@ -585,7 +585,7 @@ où $S(x)$ et $R(x)$ sont des polynômes tel que $deg(R) < deg(Q)$.
 \begin{itemize}
 \item Cas 1: Si $Q(x)$ peut être factorisé en $k$ facteurs de degré 1,
 \[Q(x)= (a_1x + b_1)(a_2x + b_2)...(a_kx + b_k)\]
-\[\frac{R(x)}{Q(x)} = \frac{A_1}{(a_1x + b_1)}+ \frac{A_2}{(a_2x + b_2) + ... + \frac{A_k}{(a_kx + b_k)}}\]
+\[\frac{R(x)}{Q(x)} = \frac{A_1}{(a_1x + b_1)}+ \frac{A_2}{(a_2x + b_2)} + ... + \frac{A_k}{(a_kx + b_k)}\]
 \item Cas 2: Si l'un des facteurs de degré 1 de $Q(x)$ apparaît "plusieurs fois", à savoir on a $(ax+b)^r$ on ajoute à la décomposition les termes $(ax + b)^1$ à $(ax+b)^r$.
 \[\frac{A_1}{(ax+b)} + \frac{A_2}{(ax+b)^2} + ... + \frac{A_r}{(ax+b)^r}\]
 \item Cas 3: Si l'un des facteurs de $Q(x)$ est un polynôme de degré 2 irréductible ($\Delta < 0$) alors on ajoute à la décomposition le terme
