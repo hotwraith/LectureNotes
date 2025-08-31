@@ -1,0 +1,9 @@
+*.aux
+*.log
+*.out
+*.gitignore
+*.toc
+*.gz
+*.dvi
+tests.pdf
+tests.tex
