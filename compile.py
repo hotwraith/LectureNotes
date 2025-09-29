@@ -6,12 +6,21 @@ from subprocess import run as run
 def main() -> None:
     """This function finds and compiles all .tex files into pdf
     """    
+    localPath = os.path.abspath(os.getcwd())
+    allPdfPaths = []
     allPaths = search([], 0)
     for el in allPaths:
         texFiles = glob.glob(fr"{el}\*.tex")
         if len(texFiles) > 0:
             for tex in texFiles:
                 os.system(fr"pdflatex -output-directory {el} {tex}")
+                allPdfPaths += texFiles
+    for i in range(len(allPdfPaths)):
+        allPdfPaths[i] = allPdfPaths[i].replace('.tex', '.pdf')
+    print("All paths: \033[33m")
+    for el in allPdfPaths:
+        print(localPath + '\\' + el)
+    print('\033[0m')
 
 def search(paths:list, index:int) -> list:
     """This function recursively maps all directories and subdirectories of a path.
@@ -29,7 +38,7 @@ def search(paths:list, index:int) -> list:
             el = paths[i]
             subdirs = os.listdir(el)
             for j in range(len(subdirs)):
-                subdirs[j] = el + '/' + subdirs[j]
+                subdirs[j] = el + '\\' + subdirs[j]
             subdirs = removeFiles(subdirs)
             for dir in subdirs:
                 newPath.append(dir)
