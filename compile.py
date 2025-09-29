@@ -28,9 +28,11 @@ def search(paths:list, index:int) -> list:
         for i in range(index, len(paths)):
             el = paths[i]
             subdirs = os.listdir(el)
+            for j in range(len(subdirs)):
+                subdirs[j] = el + '/' + subdirs[j]
             subdirs = removeFiles(subdirs)
             for dir in subdirs:
-                newPath.append(fr"{el}\{dir}")
+                newPath.append(dir)
         if(len(newPath) == len(paths)):
             return paths
         return search(newPath, len(paths)-1)
@@ -58,7 +60,7 @@ def removeFiles(liste:list) -> list:
     """
     removable = []
     for el in liste:
-        if len(re.findall(r'\.', el)) > 0:
+        if os.path.isfile(el):
             removable.append(el)
     for el in removable:
         liste.remove(el)
