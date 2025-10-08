@@ -1,0 +1,171 @@
+\documentclass[10pt,a4paper]{book}
+\usepackage[utf8]{inputenc}
+\usepackage{amsmath}
+\usepackage{amsfonts}
+\usepackage{amssymb}
+\usepackage{wasysym}
+\usepackage{multicol}
+\usepackage{hyperref}
+\usepackage{tabularx}
+\usepackage{subfig}
+\usepackage{tikz}
+\usepackage[ruled, lined, longend]{algorithm2e}
+\usepackage[shortlabels]{enumitem}
+\usepackage{textcomp}
+\usepackage{chemfig}
+\usepackage{mathtools}
+\usepackage{dirtytalk}
+
+\setlength{\parindent}{20pt}
+\hypersetup{
+    colorlinks,
+    citecolor=black,
+    filecolor=black,
+    linkcolor=black,
+    urlcolor=darkgray
+}
+
+\newcommand{\R}{\mathbb{R}}
+\newcommand{\N}{\mathbb{N}}
+\newcommand{\Z}{\mathbb{Z}}
+\newcommand{\x}{$\times$ }
+\newcommand{\spa}{\vspace{0.2cm}}
+\newcommand{\ind}{\hspace*{\parindent}}
+
+\DeclarePairedDelimiter\abs{\lvert}{\rvert}
+\DeclarePairedDelimiter\norm{\lVert}{\rVert}
+
+\newtheorem{theorem}{Théorème}[section]
+\newtheorem{definition}{Définition}[section]
+\newtheorem{proposition}{Proposition}[section]
+\newtheorem{corollaire}{Corollaire}[theorem]
+
+
+\title{Analyse I \vspace{0.2cm} - Résumé}
+\author{Mahel Coquaz}
+\date{Semestre d'automne 2025}
+
+\begin{document}
+\maketitle
+\tableofcontents
+\newpage
+
+\section*{Introduction}
+
+Ce qui suit se veut être un résumé ultra condensé du cours d'Analyse I pour IN (MATH-101e) donné au semestre d'automne 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours des Professeurs Anna Lachowska qui l'a enseigné. J'ai cependant pris la liberté de sauter/raccourcir certains passages et d'ajouter des notes lorsqu'il me semblait pertinent de le faire. \par
+Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
+Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres).
+
+\chapter{Prérequis}
+
+\section{Identités algébriques}
+
+\begin{itemize}
+\item $(x+y)^2 = x^2 + 2xy + y^2$
+\item $(x+y)(x-y) = x^2-y^2$
+\item $(x-y)(x^2+xy+y^2) = x^3-y^3$
+\item $(x+y)(x^2-xy+y^2) = x^3+y^3$
+\end{itemize}
+
+\section{Exponentielles \& Logarithmes}
+
+\subsection{Exponentielles}
+
+Avec $a,b \in \R$
+\begin{itemize}
+\item $a^xa^y = a^{x+y}$
+\item $\frac{a^x}{a^y} = a^{x-y}$
+\item $(ab)^x = a^xb^x$
+\item $a^0 = 1$
+\item $(a^x)^y = a^{xy}$
+\item $\sqrt[n]{a} = a^{1/n}$
+\item $\left(\frac{a}{b}\right)^x = \frac{a^x}{b^x}$
+\item $a^1 = a$
+\end{itemize}
+
+\subsection{Logarithmes}
+
+Avec $\mathbb{\ln = \log_e}$ le logarithme naturel
+\begin{itemize}
+\item $\ln(xy) = \ln(x) + \ln(y)$
+\item $\ln(\frac{x}{y}) = \ln(x) - \ln(y)$
+\item $\ln(x^c) = c\cdot \ln(x)$
+\item $\ln(1) = 0$
+\item $\log_a(a) = 1$
+\end{itemize}
+
+\section{Trigonométrie}
+
+Avec $\sin(x), \cos(x)$  $\forall x \in \R$
+\begin{itemize}
+\item $\tan x = \frac{\sin x}{\cos x}$ \& $\cot x = \frac{\cos x}{\sin x}$
+\item $\sin(x\pm y) = \sin(x)\cos(y) \pm \cos(x)\sin(y)$
+\item $\cos(x \pm y) = \cos(x)\cos(y) \mp \sin(x)\sin(y)$
+\item $\cos(0) = \cos(x-x) = \cos^2(x) + \sin^2(x) = 1$
+\item $\sin(2x) = \sin(x+x) = \sin(x)\cos(x) + \cos(x)\sin(x) = 2\sin(x)\cos(x)$
+\item $\cos(2x) = \cos(x+x) = \cos^2(x) - \sin^2(x)$
+\end{itemize}
+
+\section{Fonctions élémentaires}
+
+\subsection{Types de fonctions}
+\begin{enumerate}
+\item Polynomiales
+\begin{itemize}
+\item Linéaire: $f(x) = ax + b$; $a,b \in \R$
+\item Quadratiques: $f(x) = ax^2 + bx + c$; $a,b,c \in \R, a \neq 0$
+\end{itemize}
+\item Fonctions rationnelles: $f(x) \frac{P(x)}{Q(x)}$ où $P(x)$ et $Q(x)$ sont des polynômes, et $Q(x) \neq 0$
+\item Fonctions algébriques: Toute fonction qui est une solution d'une équation polynomiale, ex: $f(x) = \sqrt{x}$
+\item Fonctions transcendantes: fonctions non algébriques
+\begin{enumerate}
+\item Exponentielles et logarithmiques: $f(x) = e^x$, $g(x) = \ln(x)$
+\item Fonctions trigos et réciproques: $f(x) = \sin(x)$, $g(x) = \cos(x)$ 
+\end{enumerate}
+\end{enumerate}
+
+\subsection{Injectivité, surjectivité, bijectivité}
+
+\begin{definition}
+$D(f) = \left\lbrace x \in \R: f(x) \right.$ est bien définie $\left. \right\rbrace$ = le \textbf{domaine de définition} de $f$ \\
+$f(D) = \left\lbrace y \in R: \exists x \in D(f): f(x) = y \right\rbrace$ = \textbf{l'ensemble image} de $f$
+\end{definition}
+
+\begin{definition} \textbf{Surjectivité}\\
+$f: E \rightarrow F$ est \textbf{surjective} si $\forall y \in F, \exists$ \textbf{au \underline{moins} un} $x\in E: f(x) = y$
+\end{definition}
+
+\begin{definition} \textbf{Injectivité}\\
+$f: E \rightarrow F$ est \textbf{injective} si $\forall y \in F, \exists$ \textbf{au \underline{plus} un} $x\in E: f(x) = y$ \\
+Autrement dit: Soit $x_1, x_2 \in D_f: f(x_1) = f(x_2) \rightarrow x_1 = x_2$
+\end{definition}
+
+\begin{definition} \textbf{Bijectivité}
+Si $f: E \rightarrow F$ est injective \textbf{ET} surjective, alors elle est \textbf{bijective}
+\end{definition}
+
+\subsection{Fonctions réciproques}
+
+\begin{definition}
+N'existent que si $f: E \rightarrow F$ est \textbf{bijective} et est définie par $f^{-1}: F \rightarrow E$ donc $f(x) = y \Leftrightarrow x = f^{-1}(y)$
+\end{definition}
+
+\subsection{Fonctions composées}
+
+Soit $f: D_f \rightarrow \R$ et $g: D_g \rightarrow \R$ avec $f(D_f) \subset D_g$ on peut alors définir la fonction composée $g\circ f : D_f \rightarrow$ par $g\circ f(x) = g(f(x))$ \footnote{Il est bon de noter que de manière générale: $g\circ f \neq f\circ g$}
+
+\chapter{Nombre réels}
+
+\section{Ensembles}
+
+Un ensemble est une \say{Collection des objets définis et distincts} (G. Cantor) 
+
+\begin{definition} $\mathbf{X \subset Y}$
+Soit $\forall b \in X \Rightarrow b \in Y$ \\
+Sa négation: $\mathbf{X \not\subset Y}$ \\
+$\exists a \in X: a \notin Y$
+
+\end{definition}
+
+
+\end{document}
