@@ -15,6 +15,7 @@
 \usepackage{chemfig}
 \usepackage{mathtools}
 \usepackage{dirtytalk}
+\usepackage{fancyhdr}
 
 \setlength{\parindent}{20pt}
 \hypersetup{
@@ -40,6 +41,7 @@
 \newtheorem{proposition}{Proposition}[section]
 \newtheorem{corollaire}{Corollaire}[theorem]
 
+\pagestyle{fancy}
 
 \title{Analyse I \vspace{0.2cm} - Résumé}
 \author{Mahel Coquaz}
@@ -56,7 +58,18 @@ Ce qui suit se veut être un résumé ultra condensé du cours d'Analyse I pour 
 Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
 Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres).
 
-\chapter{Prérequis}
+\newpage
+
+\section*{Organisation par cours}
+
+\title{\nameref{lecture:1}}
+
+
+\chapter{Prérequis} 
+\section*{Cours 1 - 8 septembre 2025: "C'est trivial ça"} \label{lecture:1}
+
+\fancyhead[R]{\nameref{lecture:1}}
+\fancyhead[L]{}
 
 \section{Identités algébriques}
 
@@ -115,7 +128,7 @@ Avec $\sin(x), \cos(x)$  $\forall x \in \R$
 \item Linéaire: $f(x) = ax + b$; $a,b \in \R$
 \item Quadratiques: $f(x) = ax^2 + bx + c$; $a,b,c \in \R, a \neq 0$
 \end{itemize}
-\item Fonctions rationnelles: $f(x) \frac{P(x)}{Q(x)}$ où $P(x)$ et $Q(x)$ sont des polynômes, et $Q(x) \neq 0$
+\item Fonctions rationnelles: $f(x) = \frac{P(x)}{Q(x)}$ où $P(x)$ et $Q(x)$ sont des polynômes, et $Q(x) \neq 0$
 \item Fonctions algébriques: Toute fonction qui est une solution d'une équation polynomiale, ex: $f(x) = \sqrt{x}$
 \item Fonctions transcendantes: fonctions non algébriques
 \begin{enumerate}
@@ -156,6 +169,8 @@ Soit $f: D_f \rightarrow \R$ et $g: D_g \rightarrow \R$ avec $f(D_f) \subset D_g
 
 \chapter{Nombre réels}
 
+\section*{Cours 2 - 10 septembre 2025: For $\R$ ?}
+
 \section{Ensembles}
 
 Un ensemble est une \say{Collection des objets définis et distincts} (G. Cantor) 
@@ -164,8 +179,33 @@ Un ensemble est une \say{Collection des objets définis et distincts} (G. Cantor
 Soit $\forall b \in X \Rightarrow b \in Y$ \\
 Sa négation: $\mathbf{X \not\subset Y}$ \\
 $\exists a \in X: a \notin Y$
-
 \end{definition}
+\begin{definition}
+$X=Y \Leftrightarrow Y\subset X$ et $X\subset Y$
+\end{definition}
+\begin{definition}
+$\O$ l'ensemble vide: $\O=\{\}$ \\
+$\forall X: \O \subset X$ \\
+$\forall X: X \subset X$
+\end{definition}
+
+\subsection{Opération ensemblistes}
+
+\begin{itemize}
+\item Réunion: $X\cup Y = \left\lbrace a \in \cup: a\in X \; ou\; a \in Y\right\rbrace$
+\item Intersection: $X\cap Y = \left\lbrace a \in \cap: a\in X \; et\; a \in Y\right\rbrace$
+\item Différence: $X\backslash Y = \left\lbrace a \in \backslash : a\in X \; et\; a\notin Y\right\rbrace$
+\end{itemize}
+
+\paragraph{Propriété} $\mathbf{A\backslash (B\backslash C) =
+(A\backslash B) \cup (A\cap C)}$
+
+\section{Nombres naturels, rationnels, réels}
+
+\subsection{Borne inférieure et supérieure}
+
+
+
 
 
 \end{document}
