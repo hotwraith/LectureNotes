@@ -7,7 +7,7 @@
 \usepackage{multicol}
 \usepackage{hyperref}
 \usepackage{tabularx}
-\usepackage{subfig}
+%\usepackage{subfig}
 \usepackage{tikz}
 \usepackage[ruled, lined, longend]{algorithm2e}
 \usepackage[shortlabels]{enumitem}
@@ -16,6 +16,7 @@
 \usepackage{mathtools}
 \usepackage{dirtytalk}
 \usepackage{fancyhdr}
+\usepackage{tocloft}
 
 \setlength{\parindent}{20pt}
 \hypersetup{
@@ -26,12 +27,21 @@
     urlcolor=darkgray
 }
 
+\newlistof[chapter]{lectures}{lect}{Cours}
+
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\x}{$\times$ }
 \newcommand{\spa}{\vspace{0.2cm}}
 \newcommand{\ind}{\hspace*{\parindent}}
+\newcommand{\lecture}[3]{\subsection*{Cours #1 - #2: #3} \label{lecture:#1}
+\addcontentsline{lect}{lectures}{Cours #1 - #2}
+\fancyhead[R]{\nameref{lecture:#1}}
+\fancyhead[L]{}
+}
+%\renewcommand{\lectures}{} % No section numbers 
+\newcommand{\lecturetitle}[1]{\nameref{lecture:#1} p.\pageref{lecture:#1}}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
@@ -51,6 +61,8 @@
 \maketitle
 \tableofcontents
 \newpage
+\listoflectures
+\newpage
 
 \section*{Introduction}
 
@@ -62,14 +74,15 @@ Le repository GitHub est aussi où se trouvent les dernières versions des fichi
 
 \section*{Organisation par cours}
 
-\title{\nameref{lecture:1}}
-
+\begin{itemize}
+\item \lecturetitle{1}
+\item \lecturetitle{2}
+\item \lecturetitle{3}
+\item \lecturetitle{4}
+\end{itemize}
 
 \chapter{Prérequis} 
-\section*{Cours 1 - 8 septembre 2025: "C'est trivial ça"} \label{lecture:1}
-
-\fancyhead[R]{\nameref{lecture:1}}
-\fancyhead[L]{}
+\lecture{1}{8 septembre 2025}{"C'est trivial ça"}
 
 \section{Identités algébriques}
 
@@ -169,7 +182,7 @@ Soit $f: D_f \rightarrow \R$ et $g: D_g \rightarrow \R$ avec $f(D_f) \subset D_g
 
 \chapter{Nombre réels}
 
-\section*{Cours 2 - 10 septembre 2025: For $\R$ ?}
+\lecture{2}{10 septembre 2025}{For $\R$ ?}
 
 \section{Ensembles}
 
@@ -204,7 +217,42 @@ $\forall X: X \subset X$
 
 \subsection{Borne inférieure et supérieure}
 
+\begin{definition}
+Soit $S\subset \R, S\neq \O$. Alors $a\in \R (b\in \R)$ est un minorant/majorant de $S$ si $\forall x \in S$ on a: $a\leq x \; ou \; x\leq b$ \\
+Si $S$ possède un minorant/majorant on dit que $S$ est \textbf{minoré/majoré}. \\
+Si $S$ est majoré \textbf{et} minoré, alors $S$ est dit \textbf{borné}.
+\end{definition}
 
+\lecture{3}{15 septembre 2025}{Élisabeth Born(é)e}
+
+\subsection{Supremum et infimum}
+
+\begin{theorem}
+Tout sous-ensemble non-vide majoré/minoré $S\subset \R$ admet un supremum/infimum qui est unique. \\
+\paragraph{Unicité} Si inf/sup$S$ existe alors il est le plus grand minorant/majorant de $S$
+\end{theorem}
+
+\subsection{Notations d'intervalles}
+Soit $a < b,\; a,b \in \R$. \\
+Intervalles bornés
+\begin{itemize}
+\item $\left\lbrace x\in \R : a\leq x\leq b\right\rbrace = \left[ a,b\right]$ intervalle fermé borné
+\item $\left\lbrace x\in \R : a < x < b\right\rbrace = \left] a,b\right[$ intervalle ouvert borné
+\item $\left\lbrace x\in \R : a\leq x < b\right\rbrace = \left[ a,b\right[$ intervalle borné ni ouvert ni fermé
+\item $\left\lbrace x\in \R : a < x\leq b\right\rbrace = \left] a,b\right]$ intervalle borné ni ouvert ni fermé
+\end{itemize}
+
+Intervalles non-bornés:
+\begin{itemize}
+\item $\left\lbrace x\in \R : x\geq a\right\rbrace = \left[ a,+\infty \right[$ fermé
+\item $\left\lbrace x\in \R : x > a\right\rbrace = \left] a,+\infty \right[$ ouvert
+\item $\left\lbrace x\in \R : x\leq b\right\rbrace = \left] -\infty , b\right]$ fermé
+\item $\left\lbrace x\in \R : x < b\right\rbrace = \left] -\infty , b\right[$ ouvert
+\end{itemize}
+
+\section{Nombres complexes}
+
+\lecture{4}{17 septembre 2025}{ça se complique...}
 
 
 
