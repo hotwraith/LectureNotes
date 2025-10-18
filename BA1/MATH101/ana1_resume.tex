@@ -32,13 +32,14 @@
 \newcommand{\R}{\mathbb{R}}
 \newcommand{\N}{\mathbb{N}}
 \newcommand{\Z}{\mathbb{Z}}
+\newcommand{\C}{\mathbb{C}}
 \newcommand{\x}{$\times$ }
 \newcommand{\spa}{\vspace{0.2cm}}
 \newcommand{\ind}{\hspace*{\parindent}}
 \newcommand{\lecture}[3]{\subsection*{Cours #1 - #2: #3} \label{lecture:#1}
 \addcontentsline{lect}{lectures}{Cours #1 - #2}
-\fancyhead[R]{\nameref{lecture:#1}}
-\fancyhead[L]{}
+\fancyhead[R]{\hyperref[lecture:#1]{#3}}
+\fancyhead[L]{\hyperref[lecture:#1]{Cours #1 - #2}}
 }
 %\renewcommand{\lectures}{} % No section numbers 
 \newcommand{\lecturetitle}[1]{\nameref{lecture:#1} p.\pageref{lecture:#1}}
@@ -254,6 +255,49 @@ Intervalles non-bornés:
 
 \lecture{4}{17 septembre 2025}{ça se complique...}
 
+On sait que $x^2=-1$ n'a pas de solutions dans $\R$, alors on introduit $i$ tel que $i^2 = -1$ \footnote{Oui, en maths quand un truc marche pas on invente un truc pour que ça marche, si seulement on pouvait faire ça en exam...}
+
+\subsection{Propriétés des nombres complexes}
+Prenons les $\C$\footnote{$\C$ dénote l'ensemble des complexes} de la forme $\left\lbrace z = a +ib\right\rbrace$, où $a,b\in \R$
+\begin{itemize}
+\item $(+) \; (a+ib)+(c+id) = (a+c) + i(b+d)$
+\begin{itemize}
+\item $\exists = \in C: 0+0i = 0$ tel que $(a+ib) + 0 + 0i = a+ib\; \forall a,b\in \R$
+\item $\exists$ l'opposé pour $(a+ib)$: $(-a + i(-b)) + (a+ib) = 0+0i=0$
+\end{itemize}
+\item $(\cdot ) (a+ib)\cdot (c+id) = ac-bd + i(ad+bc)$
+\begin{itemize}
+\item $\exists 1 \in \C:\; 1+0i=1:\; (a+ib)\cdot (1+0i) = a+ib$
+\item $z\in \C ,\; z\neq 0 \Rightarrow \exists z^{-1}\in \C: z\cdot z^{-1} = z^{-1}\cdot z = 1$
+\item Pour $z = a+ib\in \C^* \Rightarrow z^{-1} = \frac{a-ib}{a^2+b^2}$
+\item $z_1(z_2 + z_3) = z_1z_2 + z_1z_3$
+\item $\C$ n'est pas ordonné: $i > 0 \Rightarrow i^2 = -1 > 0$ et $i < 0 \Rightarrow (-i)^2 = -1 > 0$, on voit qu'on a $-1>0$ ce qui est absurde.
+\end{itemize}
+\end{itemize}
+
+\subsection{Les 3 formes de nombres \texorpdfstring{$\C$}{complexes}}
+
+\subsubsection{Forme cartésienne}
+
+$\mathbf{z=a+ib}$, $a,b\in \R$ \\
+$z = Re(z) + Im(z)i$ (Re et Im respectivement les parties réelles et imaginaires de $z$) \\
+$\abs{z}= \sqrt{(Re(z)^2 + (Im(z))^2} = \sqrt{a^2 + b^2} \geq 0$\footnote{$\abs{z} = 0 \Leftrightarrow z = 0$} \\
+Trouver $\varphi \; et\; arg(z)$:
+\begin{itemize}
+\item  $a>0$ : $arg(z) = \arctan(\frac{b}{a})\; \in \; ]-\frac{\pi}{2}, \frac{\pi}{2}[$ à $2k\pi$ près, $k\in \Z$
+\item  $a<0$ : $arg(z) = \arctan(\frac{b}{a})+\pi \; \in \; ]\frac{\pi}{2}, \frac{3\pi}{2}[$ à $2k\pi$ près, $k\in \Z$
+\item Si $a=0$:
+\begin{itemize}
+\item $arg(z) = \frac{\pi}{2}$ si $Im(z)=b > 0$
+\item $arg(z) = \frac{3\pi}{2}$ si $Im(z)=b < 0$
+\end{itemize}
+\end{itemize}
+
+\subsubsection{Forme polaire trigonométrique}
+
+$\mathbf{z = \rho (\cos(\varphi) + i\sin(\varphi)} \; \rho \leq 0, \; \varphi \in \R$ \\
+$\abs{z} = \rho \leq 0$
+$\rho \neq 0 \Rightarrow \sin(\varphi) = \frac{Im(z)}{\rho}, \; \cos(\varphi) = \frac{Re(z)}{\rho}, \; \tan(\varphi) = \frac{Im(z)}{Re(z)} = \frac{a}{b}$ si $a = Re(z)\neq 0$
 
 
 \end{document}
