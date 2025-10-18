@@ -299,5 +299,34 @@ $\mathbf{z = \rho (\cos(\varphi) + i\sin(\varphi)} \; \rho \leq 0, \; \varphi \i
 $\abs{z} = \rho \leq 0$
 $\rho \neq 0 \Rightarrow \sin(\varphi) = \frac{Im(z)}{\rho}, \; \cos(\varphi) = \frac{Re(z)}{\rho}, \; \tan(\varphi) = \frac{Im(z)}{Re(z)} = \frac{a}{b}$ si $a = Re(z)\neq 0$
 
+\subsubsection{Forme polaire exponentielle}
+
+\begin{equation} \tag{Formule d'Euler}
+e^{iy} = \cos(y) + i\sin(y) \\
+\end{equation}
+\begin{equation*}
+z = \rho(\cos(\varphi) + i\sin(\varphi)) = \rho e^{i\varphi}
+\end{equation*}
+
+\subsubsection{Les trois formes}
+
+\begin{equation*}
+z = Re(z) + Im(z)i = \abs{z}(\cos(arg(z)) + i\sin((arg(z)) = \abs{z}\cdot e^{i\cdot arg(z)}
+\end{equation*}
+où
+\begin{equation*} \tag{module de z}
+\abs{z} = \sqrt{(Re(z))^2 + (Im(z))^2} 
+\end{equation*}
+
+\begin{equation*} \tag{argument de z}
+\begin{split}
+\abs{z} \neq 0 \Rightarrow arg(z) &= \arctan\left(\frac{Im(z)}{Re(z)}\right), \; Re(z)>0 \\
+test &= \arctan\left(\frac{Im(z)}{Re(z)}\right)+\pi,\; Re(z) < 0 \\
+&= \frac{\pi}{2},\; Re(z) = 0,\; Im(z) > 0 \\
+&= \frac{3\pi}{2},\; Re(z) = 0,\; Im(z) < 0
+\end{split}
+\end{equation*}
+
+
 
 \end{document}
