@@ -42,7 +42,7 @@
 \fancyhead[L]{\hyperref[lecture:#1]{Cours #1 - #2}}
 }
 %\renewcommand{\lectures}{} % No section numbers 
-\newcommand{\lecturetitle}[1]{\nameref{lecture:#1} p.\pageref{lecture:#1}}
+\newcommand{\lecturetitle}[1]{\nameref{lecture:#1} p.\pageref{lecture:#1} \label{resume:#1}}
 
 \DeclarePairedDelimiter\abs{\lvert}{\rvert}
 \DeclarePairedDelimiter\norm{\lVert}{\rVert}
@@ -67,9 +67,13 @@
 
 \section*{Introduction}
 
-Ce qui suit se veut être un résumé ultra condensé du cours d'Analyse I pour IN (MATH-101e) donné au semestre d'automne 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours des Professeurs Anna Lachowska qui l'a enseigné. J'ai cependant pris la liberté de sauter/raccourcir certains passages et d'ajouter des notes lorsqu'il me semblait pertinent de le faire. \par
+Ce qui suit se veut être un résumé condensé du cours d'Analyse I pour IN (MATH-101e) donné au semestre d'automne 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours de la Professeur Anna Lachowska qui l'a enseigné. J'ai cependant pris la liberté de sauter/raccourcir certains passages et d'ajouter des notes lorsqu'il me semblait pertinent de le faire. \par
+Il faut également noter que la nature de résumé de ce qui suit ne permet pas d'appréhender toutes les notions ou subtilités du cours, rien de ce qui est fait à l'EPFL ne peut être considéré comme "trivial" contrairement à ce que l'ont peut régulièrement entendre, ce document à donc plus vocation à être un aide mémoire plutôt qu'un support complet de cours.  \par
 Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
-Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres).
+Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres). 
+\linebreak
+\par 
+Rendons à César ce qui appartient à César, merci à \href{https://github.com/JoachimFavre}{Joachim Favre} et \href{https://github.com/FocusedFaust}{Faust} dont les notes et polycopiés dactylographiés m'ont inspiré dans la réalisation de ces résumés. %TODO: rajouter les liens github
 
 \newpage
 
@@ -77,9 +81,40 @@ Le repository GitHub est aussi où se trouvent les dernières versions des fichi
 
 \begin{itemize}
 \item \lecturetitle{1}
+\begin{itemize}
+\item Présentation et explications du cours et de sa forme
+\item Révisions et passage en revue des prérequis
+\end{itemize}
 \item \lecturetitle{2}
+\begin{itemize}
+\item Notations ensemblistes
+\item Opérations ensemblistes
+\item Nombres \& théorème des bornes inférieure et supérieure
+\end{itemize}
 \item \lecturetitle{3}
+\begin{itemize}
+\item Supremum et infimum
+\item Notations d'intervalles
+\end{itemize}
 \item \lecturetitle{4}
+\begin{itemize}
+\item Arguments et modules de nombres complexes
+\item Les 3 formes de nombres complexes
+\item Formule de Moivre et puissance de nombres complexes
+\end{itemize}
+\item \lecturetitle{5}
+\begin{itemize}
+\item Conjugué d'un complexe
+\item Racines de complexes
+\item Équations polynomiales dans $\C$
+\end{itemize}
+\item \lecturetitle{6}
+\begin{itemize}
+\item Définition des suites
+\item Le raisonnement par récurrence
+\item Limites de suites
+\end{itemize}
+\item \lecturetitle{7}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -321,12 +356,139 @@ où
 \begin{equation*} \tag{argument de z}
 \begin{split}
 \abs{z} \neq 0 \Rightarrow arg(z) &= \arctan\left(\frac{Im(z)}{Re(z)}\right), \; Re(z)>0 \\
-test &= \arctan\left(\frac{Im(z)}{Re(z)}\right)+\pi,\; Re(z) < 0 \\
+&= \arctan\left(\frac{Im(z)}{Re(z)}\right)+\pi,\; Re(z) < 0 \\
 &= \frac{\pi}{2},\; Re(z) = 0,\; Im(z) > 0 \\
 &= \frac{3\pi}{2},\; Re(z) = 0,\; Im(z) < 0
 \end{split}
 \end{equation*}
 
+\begin{equation*} \tag{Formule d'Euler}
+e^{i\pi} = -1
+\end{equation*}
+
+$\forall \rho > 0, \varphi \in \R, n\in \N^*$:
+\begin{equation*} \tag{Formule de Moivre}
+\begin{split}
+(\rho (\cos(\varphi) + i\sin(\varphi))^n &= \rho^n(\cos(n\varphi)+i\sin(n\varphi)) \\
+(\rho e^{i\varphi})^n &= \rho^n e^{in\varphi}
+\end{split}
+\end{equation*}
+
+\lecture{5}{22 septembre 2025}{C'est du français ou des maths ?}
+
+\subsection{Conjugué}
+
+\begin{definition}
+$z = a +ib \; \in \C$ alors le conjugué de $z$ est $\overline{z} = a-ib$ \\
+$\mathbf{z\overline{z} = \abs{z}^2\in \R}$ \\
+En forme polaire le conjugué s'écrit:
+\begin{equation*}
+\begin{split}
+z = \rho(\cos(\varphi) + i\sin(\varphi)) \Rightarrow \overline{z} &= \rho(\cos(\varphi) - i\sin(\varphi)) \\
+&= \rho(\cos(-\varphi) + i\sin(-\varphi)) \\
+&= \rho e^{-i\varphi}
+\end{split}
+\end{equation*}
+\end{definition}
+
+\subsubsection{Propriétés}
+$\forall z\in \C$:
+\begin{enumerate}
+\item $\overline{z \pm w} = \overline{z} \pm \overline{w}$
+\item $\overline{z \cdot w} = \overline{z} \cdot \overline{w}$
+\item $\overline{\left(\frac{z}{w}\right)} = \frac{\overline{z}}{\overline{w}}$
+\item $\abs{\overline{z}} = \abs{z}$
+\item $a = Re(z) = \frac{z + \overline{z}}{2}$
+\item $b = Im(z) = \frac{z - \overline{z}}{2i}$
+\item $\cos(\varphi) = \frac{e^{i\varphi} + e^{-i\varphi}}{2}$
+\item $\sin(\varphi) = \frac{e^{i\varphi} - e^{-i\varphi}}{2i}$
+\end{enumerate}
+
+\subsection{Racines de \texorpdfstring{$\C$}{complexes}}
+
+\begin{proposition}
+$w = s\cdot e^{i\varphi},\; w\in \C^*$ alors $\forall n\in \N^*$ \\
+$\left\lbrace z\in \C^*: z^n = w \right\rbrace = \left\lbrace \sqrt[n]{s} e^{i\cdot \frac{\varphi+2k\pi}{n}},\; k=0,1,...,n-1\right\rbrace$
+\end{proposition}
+
+\subsection{Équations polynomiales dans \texorpdfstring{$\C$}{C}}
+
+\subsubsection{Quadratiques}
+
+\begin{equation*}
+az^2 + bz + c = 0,\; a,b,c\in \C,\; a\neq 0
+\end{equation*}
+\begin{equation*}
+\begin{split}
+z &= \frac{-b \pm \sqrt{b^2-4ac}}{2a} \\
+b^2-4ac &= 0 \Rightarrow \; z = -\frac{b}{2a} \\
+&\neq 0 \Rightarrow \; 2\; solutions 
+\end{split}
+\end{equation*}
+
+\subsubsection{Théorème fondamental de l'algèbre}
+
+\begin{theorem}
+Tout polynôme $P(z)= a_nz^n + a_{n-1}z^{n-1} + ... + a_1z + a_0$, $a_n, a_{n-1}, ..., a_0\in \C$. \\
+\begin{equation*}
+\begin{split}
+P(z) &= a_n(z-z_1)(z-z_2)...(z-z_n) \; o\grave{u} \; z_1,...,z_n\in \C \\
+&= a_n(z-w_1)^{m_1}(z-w_2)^{m_2}...(z-w_p)^{m_p}
+\end{split}
+\end{equation*}
+\end{theorem}
+
+\subsubsection{Polynômes à coefficients réels}
+
+\begin{proposition}
+Si $z\in \C$ est une racine de $P(z)$ à coefficients réels, alors $\overline{z}$ l'est aussi. \\
+Donc $P(z)=P(\overline{z})=0$ et $(x-z)(x-\overline{z})$ divise le polynôme
+\end{proposition}
+
+\chapter{Suites de nombres réels}
+
+\lecture{6}{24 septembre 2025}{Classé sans suite}
+
+\section{Définition}
+\begin{definition}
+On définit une suite de nombre réels comme une application $f:\N \rightarrow \R$ définie pour tout nombre naturel $(\forall n \leq n_0 \in \N)$
+\end{definition}
+
+\begin{definition}
+Une suite $(a_n)$ est majorée (minorée) s'il existe un nombre $M(m)\in \R$ tel que $a_n \leq M \; \forall n \in \N$ ($a_n \geq m \; \forall n \in \N$). \\
+On dit que la suite est \textbf{bornée} si elle est majorée \textbf{et} minorée.
+\end{definition}
+
+\begin{definition}
+Une suite $(a_n)$ est croissante (strictement croissante) si $\forall n \in \N$ on a $a_{n+1} \geq a_n \; (a_{n+1} > a_n)$. \\
+Une suite $(a_n)$ est décroissante (strictement décroissante) si $\forall n \in \N$ on a $a_{n+1} \leq a_n \; (a_{n+1} < a_n)$. \\
+Une suite est dite (strictement) \textbf{monotone} si elle est (strictement) croissante ou (strictement) décroissante.
+\end{definition}
+
+\section{Raisonnement par récurrence}
+
+Soit $P(n)$ une proposition dépendant d'un entier naturel $n$, telle que:
+\begin{enumerate}
+\item \textbf{Initialisation}: $P(n_0)$ est vraie, et...
+\item \textbf{Hérédité}: $\forall n \geq n_0$, $P(n)$ implique $P(n+1)$, alors $P(n)$ est \textbf{vraie} pour tout $n\geq n_0$.
+\end{enumerate}
+
+\textbf{Il est \textit{très} important de bien démontrer les deux étapes de la récurrence, autrement il est facile d'obtenir une preuve qui est fausse.}
+
+\section{Limite des suites}
+
+\begin{definition}
+On dit que la suite $(x_n)$ est \textbf{convergente} et admet pour \textbf{limite} le nombre réel $l\in \R$ si pour tout $\epsilon > 0, \; \exists n_0 \in \N: \forall n\geq n_0$ on a $\abs{x_n - l} \leq \epsilon$. \\
+Une suite qui n'est \textbf{pas} convergente est dite \textbf{divergente}.
+\end{definition}
+
+\lecture{7}{29 septembre 2025}{C'est limite ça}
 
 
+
+
+
+ %"You can integrate that, but only if you’re bad at math. Now get off the drugs, will you?"
+ %-Calculus teacher
+ %https://mathprofessorquotes.com/
 \end{document}
