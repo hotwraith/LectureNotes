@@ -5,5 +5,6 @@
 *.toc
 *.gz
 *.dvi
+*.lect
 tests.pdf
 tests.tex
