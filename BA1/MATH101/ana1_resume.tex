@@ -36,7 +36,7 @@
 \newcommand{\x}{$\times$ }
 \newcommand{\spa}{\vspace{0.2cm}}
 \newcommand{\ind}{\hspace*{\parindent}}
-\newcommand{\lecture}[3]{\subsection*{Cours #1 - #2: #3} \label{lecture:#1}
+\newcommand{\lecture}[3]{\subsection*{\hyperref[resume:#1]{Cours #1 - #2: #3}} \label{lecture:#1}
 \addcontentsline{lect}{lectures}{Cours #1 - #2}
 \fancyhead[R]{\hyperref[lecture:#1]{#3}}
 \fancyhead[L]{\hyperref[lecture:#1]{Cours #1 - #2}}
@@ -68,7 +68,7 @@
 \section*{Introduction}
 
 Ce qui suit se veut être un résumé condensé du cours d'Analyse I pour IN (MATH-101e) donné au semestre d'automne 2025 à l'EPFL. Le contenu de ce cours ne m'appartient pas et est quasiment intégralement extrait du cours de la Professeur Anna Lachowska qui l'a enseigné. J'ai cependant pris la liberté de sauter/raccourcir certains passages et d'ajouter des notes lorsqu'il me semblait pertinent de le faire. \par
-Il faut également noter que la nature de résumé de ce qui suit ne permet pas d'appréhender toutes les notions ou subtilités du cours, rien de ce qui est fait à l'EPFL ne peut être considéré comme "trivial" contrairement à ce que l'ont peut régulièrement entendre, ce document à donc plus vocation à être un aide mémoire plutôt qu'un support complet de cours.  \par
+Il faut également noter que la nature de résumé de ce qui suit ne permet pas d'appréhender toutes les notions ou subtilités du cours, rien de ce qui est fait à l'EPFL ne peut être considéré comme "trivial" contrairement à ce que l'ont peut régulièrement entendre dans la bouche des profeusseurs, ce document à donc plus vocation à être un aide mémoire ou complément plutôt qu'un support complet de cours.  \par
 Ce résumé/polycopié n'est pas exempt d'erreurs, si vous en trouvez une, vous pouvez me contacter sur mon adresse EPFL \texttt{\href{mailto:mahel.coquaz@epfl.ch}{mahel.coquaz@epfl.ch}} ou via le repo GitHub \url{https://github.com/hotwraith/LectureNotes}. \par
 Le repository GitHub est aussi où se trouvent les dernières versions des fichiers PDFs et \TeX pour ce cours (et éventuellement d'autres). 
 \linebreak
@@ -77,7 +77,7 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 
 \newpage
 
-\section*{Organisation par cours}
+\section{Organisation par cours}\footnote{À cause d'une skill issue il faut cliquer sur le \textbf{numéro} de page pour être envoyé sur la section correspondante du pdf.}
 
 \begin{itemize}
 \item \lecturetitle{1}
@@ -115,6 +115,18 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Limites de suites
 \end{itemize}
 \item \lecturetitle{7}
+\begin{itemize}
+\item Limites finies
+\item Quotient de suites polynomiales
+\item Théorème des deux gendarmes
+\end{itemize}
+\item \lecturetitle{8}
+\begin{itemize}
+\item Suites géométriques
+\item Critère d'Alembert
+\item Limites infinies \& formes indéterminées
+\end{itemize}
+\item \lecturetitle{9}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -484,11 +496,116 @@ Une suite qui n'est \textbf{pas} convergente est dite \textbf{divergente}.
 
 \lecture{7}{29 septembre 2025}{C'est limite ça}
 
+\begin{proposition}
+Si elle existe, la limite $l$ d'une suite $(a_n)$ est \textbf{unique}.
+\end{proposition}
+\begin{proposition}
+Toute suite convergente est bornée. \textbf{Attention}, la réciproque est fausse, ex: $a_n = (-1)^n$ est bornée mais non convergente.
+\end{proposition}
+
+\begin{equation*} \tag{Inégalité triangulaire}
+\abs{x+y} \geq \abs{x} + \abs{y}
+\end{equation*}
+
+\begin{proposition}
+Soient $(a_n)$ et $(b_n)$ deux suites convergentes: $\lim_{n\rightarrow \infty}a_n=a$ et $\lim_{n\rightarrow \infty}b_n=b$.
+\begin{enumerate}
+\item $\lim_{n\rightarrow \infty}(a_n \pm b_n) = a\pm b$
+\item $\lim_{n\rightarrow \infty}(a_n \cdot b_n) = a\cdot b$
+\item $\lim_{n\rightarrow \infty}(\frac{a_n}{b_n}) = \frac{a}{b}, \; \forall b \neq 0$
+\end{enumerate}
+\end{proposition}
+
+%\paragraph{•} Add remarques p.6 slides cours 7
+
+\subsection{Quotient de deux suites polynomiales}
+
+Prenons:
+\begin{equation*}
+\begin{split}
+x_n &= a_pn^p +...+ a_1n + a_0 \\
+y_n &= b_qn^q +...+ b_1n + b_0 \\
+\lim_{n\rightarrow \infty} \left(\frac{x_n}{y_n}\right) &= 0,\; p < q \\
+&= \frac{a_p}{b_q},\; p = q \\
+&= diverge,\; p > q
+\end{split}
+\end{equation*}
+L'idée est la suivante:
+\begin{equation*}
+\frac{x_n}{y_n} = \frac{a_pn^p+...+a_1n+a_0}{b_qn^q+...+b_1n+b_0} = \frac{n^p}{n^q}\cdot \frac{(a_p + a_{p-1}\frac{1}{n}+...+a_0\frac{1}{n^p})}{(b_q + b_{q-1}\frac{1}{n}+...+b_0\frac{1}{n^q})}
+\end{equation*}
+Le terme de droite tendant vers $\frac{a_p}{b_q}$ et le terme de gauche tendant vers différentes possibilités listées plus haut selon $p$ et $q$.
+
+\subsection{Théorème des deux gendarmes}
+Soient $(a_n)$, $(b_n)$, $(c_n)$, trois suites telles que:
+\begin{enumerate}
+\item $\lim_{n\rightarrow \infty}a_n =\lim_{n\rightarrow \infty}c_n = l$
+\item $\exists k\in \N : \forall n \leq k \Rightarrow a_n \geq b_n \geq c_n$
+\end{enumerate}
+Alors $\lim_{n\rightarrow \infty}b_n = l$
 
 
+\lecture{8}{1 octobre 2025}{Le roi d'Alembert...}
+
+\subsection{Cas des suites géométriques}
+Les suites géométriques ont la forme $a_n=a_0\cdot r^n$, $a_0\in \R$ et $a_0 \neq 0$, $r\in \R$.
+\begin{equation*}
+\begin{split}
+\lim_{n\rightarrow \infty} a_0r^n = 0, &\; \abs{r} < 1 \\
+\lim_{n\rightarrow \infty} a_0r^n = a_0, &\; r = 1 \\
+\lim_{n\rightarrow \infty} a_0r^n = divergente, &\; \abs{r} > 1\; ou\; r = -1
+\end{split}
+\end{equation*}
+
+\subsection*{Intermède notation}
+$\binom{n}{k} = \frac{n!}{k!(n-k)!}$ avec $0\leq k\leq n$
+
+\subsection{Remarques sur les limites}
+
+\begin{enumerate}
+\item Si $\lim_{n\rightarrow \infty}x_n = l\in \R$ alors $\lim_{n\rightarrow \infty}\abs{x_n} = \abs{l}$
+\item Si $\lim_{n\rightarrow \infty}\abs{x_n} = 0 \Rightarrow \lim_{n\rightarrow \infty}x_n = 0$
+\item Si $\lim_{n\rightarrow \infty}\abs{x_n} = l \neq 0$ n'implique pas la convergence de $x_n$ (ex $a_n = (-1)^n$)
+\item Si $(a_n)$ est bornée et $\lim_{n\rightarrow \infty}b_n = 0$, alors $\lim_{n\rightarrow \infty}a_n b_n = 0$
+\end{enumerate}
+
+\subsection{Critère de D'Alembert}
+
+Soit $(a_n)$ une suite telle que $a_n \neq 0 \; \forall n\in \N$ et $\lim_{n\rightarrow \infty}\abs{\frac{a_{n+1}}{a_n}} = \rho \geq 0$, alors:
+\begin{itemize}
+\item Si $\rho < 1 \Rightarrow \lim_{n\rightarrow \infty}a_n = 0$
+\item Si $\rho > 1 \Rightarrow \lim_{n\rightarrow \infty}a_n \;diverge$
+\end{itemize}
+
+\subsection{Limites infinies}
+
+\begin{definition}
+On dit que $(a_n)/(b_n)$ tends vers $+\infty/-\infty$ si $\forall A > 0\; \exists n_0 \in \N: \; \forall n \leq n_0,\; a_n \geq A / b_n \leq -A$ \\
+Notation: $\lim_{n\rightarrow \infty}a_n = \infty, \; \lim_{n\rightarrow \infty}b_n = -\infty$ \\
+Attention: les suites $(a_n)$ et $(b_n)$ sont \textbf{divergentes}.\\
+Propriétés:
+\begin{enumerate}
+\item $\lim_{n\rightarrow \infty}a_n = \lim_{n\rightarrow \infty}b_n = \infty \Rightarrow \lim_{n\rightarrow \infty}(a_n + b_n) = \infty$
+\item $\lim_{n\rightarrow \infty}a_n = \pm \infty$ et $(b_n)$ est bornée $\Rightarrow \lim_{n\rightarrow \infty}(a_n \pm b_n) = \pm \infty$
+\item $\lim_{n\rightarrow \infty}b_n = \infty / -\infty$ et $a_n\geq/\leq b_n$ $\Rightarrow \lim_{n\rightarrow \infty}a_n = \infty/-\infty$\footnote{C'est la "règle d'un seul gendarme" ou théorème du chien méchant, ou etc...}
+\item $(a_n)$ bornée et $\lim_{n\rightarrow \infty}b_n = \pm \infty \Rightarrow = \lim_{n\rightarrow \infty}\frac{a_n}{b_n} = 0$
+\item $\lim_{n\rightarrow \infty}\frac{a_{n+1}}{a_n},\; a_n\neq\forall n \Rightarrow$ alors $(a_n)$ diverge\footnote{Extension du critère d'Alembert}.
+\end{enumerate}
+\end{definition}
+
+\subsection{Formes indéterminées}
+
+\begin{enumerate}
+\item $\infty - \infty$
+\item $\frac{\infty}{\infty}$
+\item $\frac{0}{0}$
+\item $0\cdot \infty$
+\end{enumerate}
+
+\lecture{9}{6 octobre 2025}{eeeaaaooo}
 
 
- %"You can integrate that, but only if you’re bad at math. Now get off the drugs, will you?"
- %-Calculus teacher
- %https://mathprofessorquotes.com/
+%"You can integrate that, but only if you’re bad at math. Now get off the drugs, will you?"
+%-Calculus teacher
+%https://mathprofessorquotes.com/
 \end{document}
