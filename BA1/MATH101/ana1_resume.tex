@@ -127,6 +127,12 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Limites infinies \& formes indéterminées
 \end{itemize}
 \item \lecturetitle{9}
+\begin{itemize}
+\item Convergence de suites monotones
+\item Le nombre $e$
+\item Suites définies par récurrence
+\end{itemize}
+\item \lecturetitle{10}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -603,6 +609,101 @@ Propriétés:
 \end{enumerate}
 
 \lecture{9}{6 octobre 2025}{eeeaaaooo}
+
+\subsection{Convergence de suites monotones}
+
+\begin{theorem}
+Toute suite croissante/décroissante qui est majorée/minorée converge vers son supremum/infimum. \par
+Toute suite croissante/décroissante qui n'est \textbf{pas} majorée/minorée tend vers $+\infty/-\infty$. \par 
+On utilise $(a_n)\uparrow = (a_n)$ est croissante, $(b_n)\downarrow = (b_n)$ est décroissante.
+\end{theorem}
+
+\section{Le nombre \texorpdfstring{$e$}{e}}
+
+Soit $(x_n): x_0=1,\; x_n = \left(1+\frac{1}{n}\right)^n \; \forall n \geq 1$ \\
+$(y_n): y_0=1,\; y_n= \sum^n_{k=0} \; \forall n \geq 1$, ($y_n=1+\frac{1}{1!}+\frac{1}{2!}+...+\frac{1}{n!}$) \\
+Alors:
+\begin{enumerate}
+\item $x_n \leq y_n \; \forall n\in \N$
+\item $y_n \leq 3 \; \forall n\in \N$
+\item $(y_n)\uparrow \; \forall n\in \N$
+\item $(x_n)\uparrow \; \forall n\in \N$
+\end{enumerate}	
+Donc $\exists \lim_{n\rightarrow \infty}y_n = l \leq 3$ $\Rightarrow$ $\exists \lim_{n\rightarrow \infty}x_n = l' \leq 3$. \par
+On peut prouver ceci par récurrence, on se rend compte qu'en vrai $\lim_{n\rightarrow \infty}x_n = e$.
+
+\begin{definition}
+$\lim_{n\rightarrow \infty}\left(1 + \frac{1}{n}\right)^n \overset{def}{=} e$
+\end{definition}
+
+\section{Suites définies par récurrence}
+
+Soit $x_0=a\in \R$ et $x_{n+1} = g(x)$ où $g:\R \rightarrow \R$ une fonction.
+
+\begin{proposition} Récurrence linéaire \\
+Soit $a_0 \in \R$, $a_{n+1} = qa_n + b$, où $q,b \in \R$. \\
+Alors
+\begin{enumerate}
+\item si $\abs{q} < 1 \Rightarrow (a_n)$ converge vers $\lim_{n\rightarrow \infty}a_n = \frac{b}{1-q}$
+\item si $\abs{q} \geq 1 \Rightarrow (a_n)$ diverge sauf si $(a_n)$ est une suite constante.
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition}
+Si $x_0 \in \R$, $x_{n+1} = g(x_n)$ et $g: E\rightarrow E \subset \R$ telle que:
+\begin{enumerate}
+\item $\exists m, M \in \R: m\leq g(x)\leq M \; \forall x\in E$
+\item $g$ est croissante: $\forall x_1,x_2 \in E: x_1 \leq x_2 \Rightarrow g(x_1) \leq g(x_2)$
+\end{enumerate}
+Alors la suite $(x_n)$, $x_{n+1} = g(x_n)$ est bornée et monotone $\Rightarrow$ convergente. \\
+\underline{Remarque:} Si (2) est remplacé par $x_1 \leq x_2 \Rightarrow g(x_1) \leq g(x_2)$ (g décroissante) $\Rightarrow$ alors $(x_n)$ n'est pas monotone (mais peut être convergente).
+\end{proposition}
+
+% \subsection{Méthodes pour les suites définies par récurrences} TODO: reread and adapt (cours 9)
+
+\lecture{10}{8 octobre 2025}{Netflix}
+
+\section{Sous-suites de Cauchy}
+
+\begin{definition}
+Une sous suite d'une suite $(a_n)$ est une suite $k\mapsto a_{n_k}$ où $k \mapsto n_k$ est suite strictement croissante de nombres naturels.
+\end{definition}
+Ex: 
+\begin{equation*}
+\begin{split}
+a_n = (-1)^n \; \forall n\in \N \Rightarrow & a_{2k} = (-1)^{2k},\; (a_{2k})\subset (a_n) \lim_{k\rightarrow \infty}a_{2k} = 1 \\
+& a_{2k+1} = (-1)^{2k+1},\; (a_{2k+1})\subset (a_n) \lim_{k\rightarrow \infty}a_{2k+1} = -1 \\
+& (a_n) \; est\; divergente
+\end{split}
+\end{equation*}
+
+\begin{proposition} Convergence d'une sous-suite \\
+Si $\lim_{n\rightarrow \infty}a_n = l \Rightarrow$ toute sous-suite $(a_{n_k})$ converge aussi vers $l$.
+\end{proposition}
+\begin{theorem} Théorème de Bolzano-Weierstrass \\
+Dans toute suite bornée il existe une sous-suite convergente.
+\end{theorem}
+
+\subsection{Suites de Cauchy}
+
+\begin{definition}
+La suite $(a_n)$ est une suite de Cauchy si $\forall \epsilon > 0$ il existe $n_0\in \N$ tel que $\forall n\geq n_0$ et $\forall m\geq n_0$, $\abs{a_n - a_m} \leq \epsilon$
+\end{definition}
+\begin{proposition}
+Une suite $(a_n)$ est une suite de Cauchy $\Leftrightarrow$ $(a_n)$ est convergente.
+\end{proposition}
+
+\section{Limite supérieure et limite inférieure d'une suite bornée}
+
+\begin{definition}
+Soit $(x_n)$ une suite bornée: $\exists m,M\in \R$: $m\leq x_n\leq M \; \forall n\in \N$. 
+\begin{align*}
+On\; d\acute{e}finit\; & la\; suite\; y_n = sup\left\lbrace x_k, k\geq n\right\rbrace \; y_n\downarrow \; y_n \geq x_n \geq m \; \forall n \in \N \\
+& la\; suite\; z_n = inf\left\lbrace x_k, k\geq n\right\rbrace \; y_n\uparrow \; z_n \leq x_n \leq M \; \forall n \in \N
+\end{align*}
+\end{definition}
+
+%TODO cours 10
 
 
 %"You can integrate that, but only if you’re bad at math. Now get off the drugs, will you?"
