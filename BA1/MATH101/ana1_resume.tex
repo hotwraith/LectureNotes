@@ -34,6 +34,7 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\x}{$\times$ }
+\newcommand{\limpar}[2]{\lim_{#1 \rightarrow #2}}
 \newcommand{\spa}{\vspace{0.2cm}}
 \newcommand{\ind}{\hspace*{\parindent}}
 \newcommand{\lecture}[3]{\subsection*{\hyperref[resume:#1]{Cours #1 - #2: #3}} \label{lecture:#1}
@@ -133,6 +134,17 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Suites définies par récurrence
 \end{itemize}
 \item \lecturetitle{10}
+\begin{itemize}
+\item Sous-suites et suites de Cauchy
+\item Limite supérieure et inférieure
+\item Définition et exemples de suites numériques
+\end{itemize}
+\item \lecturetitle{11}
+\begin{itemize}
+\item Convergence absolue
+\item Critère de Leibniz et de comparaison
+\item Critère de Cauchy et d'Alembert
+\end{itemize}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -392,7 +404,7 @@ $\forall \rho > 0, \varphi \in \R, n\in \N^*$:
 \end{split}
 \end{equation*}
 
-\lecture{5}{22 septembre 2025}{C'est du français ou des maths ?}
+\lecture{5}{24 septembre 2025}{C'est du français ou des maths ?}
 
 \subsection{Conjugué}
 
@@ -465,7 +477,7 @@ Donc $P(z)=P(\overline{z})=0$ et $(x-z)(x-\overline{z})$ divise le polynôme
 
 \chapter{Suites de nombres réels}
 
-\lecture{6}{24 septembre 2025}{Classé sans suite}
+\lecture{6}{29 septembre 2025}{Classé sans suite}
 
 \section{Définition}
 \begin{definition}
@@ -500,7 +512,7 @@ On dit que la suite $(x_n)$ est \textbf{convergente} et admet pour \textbf{limit
 Une suite qui n'est \textbf{pas} convergente est dite \textbf{divergente}.
 \end{definition}
 
-\lecture{7}{29 septembre 2025}{C'est limite ça}
+\lecture{7}{1 octobre 2025}{C'est limite ça}
 
 \begin{proposition}
 Si elle existe, la limite $l$ d'une suite $(a_n)$ est \textbf{unique}.
@@ -551,7 +563,7 @@ Soient $(a_n)$, $(b_n)$, $(c_n)$, trois suites telles que:
 Alors $\lim_{n\rightarrow \infty}b_n = l$
 
 
-\lecture{8}{1 octobre 2025}{Le roi d'Alembert...}
+\lecture{8}{6 octobre 2025}{Le roi d'Alembert...}
 
 \subsection{Cas des suites géométriques}
 Les suites géométriques ont la forme $a_n=a_0\cdot r^n$, $a_0\in \R$ et $a_0 \neq 0$, $r\in \R$.
@@ -608,7 +620,7 @@ Propriétés:
 \item $0\cdot \infty$
 \end{enumerate}
 
-\lecture{9}{6 octobre 2025}{eeeaaaooo}
+\lecture{9}{8 octobre 2025}{eeeaaaooo}
 
 \subsection{Convergence de suites monotones}
 
@@ -661,7 +673,7 @@ Alors la suite $(x_n)$, $x_{n+1} = g(x_n)$ est bornée et monotone $\Rightarrow$
 
 % \subsection{Méthodes pour les suites définies par récurrences} TODO: reread and adapt (cours 9)
 
-\lecture{10}{8 octobre 2025}{Netflix}
+\lecture{10}{13 octobre 2025}{Netflix}
 
 \section{Sous-suites de Cauchy}
 
@@ -701,12 +713,113 @@ Soit $(x_n)$ une suite bornée: $\exists m,M\in \R$: $m\leq x_n\leq M \; \forall
 On\; d\acute{e}finit\; & la\; suite\; y_n = sup\left\lbrace x_k, k\geq n\right\rbrace \; y_n\downarrow \; y_n \geq x_n \geq m \; \forall n \in \N \\
 & la\; suite\; z_n = inf\left\lbrace x_k, k\geq n\right\rbrace \; y_n\uparrow \; z_n \leq x_n \leq M \; \forall n \in \N
 \end{align*}
+Alors: \\
+$\exists \lim y_n \overset{\mathbf{def}}{=} \lim_{n\rightarrow \infty}\sup x_n$, $(y_n)\downarrow$, minorée par $m$ \\
+$\exists \lim z_n \overset{\mathbf{def}}{=} \lim_{n\rightarrow \infty}\inf x_n$, $(z_n)\uparrow$, majorée par $M$ \\
+$z_n \leq x_n \leq y_n,\; \forall n\in \N$ \\
+\paragraph{Remarque:} Si $\liminf x_n = \limsup x_n = l \Rightarrow \lim_{n\rightarrow \infty} y_n = \lim_{n\rightarrow \infty} z_n = l$. On a, par les deux gendarmes, $\exists \lim_{n\rightarrow \infty} x_n = l$
+\paragraph{Remarque} Si $\liminf x_n = l_1$, $\limsup x_n = l_2 \Rightarrow \exists$ une sous-suite $\left\lbrace x_{n_k}\right\rbrace$ convergente vers $l_1$ et une sous-suite $\left\lbrace x_{n_j}\right\rbrace$ convergente vers $l_2$ 
 \end{definition}
 
-%TODO cours 10
+\chapter{Séries numériques}
+
+\section{Définitions et exemples}
+
+\begin{definition} La série de terme général $a_n$ est un couple:
+\begin{enumerate}
+\item la suite $(a_n)$
+\item La suite des sommes partielles $S_n \overset{\mathbf{def}}{=} \sum^n_{k=0} a_k = a_0 + a_1 + a_2 + ... + a_n$
+\end{enumerate}
+Notation: 
+\begin{itemize}
+\item $\sum^{\infty}_{k=0}a_k$: Série de terme général $a_k$
+\item $S_n = \sum^{n}_{k=0}a_k$: 'n'ième somme partielle
+\end{itemize}
+\end{definition}
+
+\begin{definition}
+Série $\sum^{\infty}_{k=0}a_k$ est convergente $\overset{\mathbf{def}}{\Leftrightarrow}$ la suite $(S_n)$ des sommes partielles est convergente. \\
+\begin{align*}
+\lim_{n\rightarrow \infty} S_n &= l \Longrightarrow \sum^{\infty}_{k=0}a_k &= l \\
+&= \pm \infty &= \pm \infty
+\end{align*}
+\end{definition}
+
+\paragraph{Exemples}
+\begin{itemize}
+\item $\sum^{\infty}_{k=0}r^k = \frac{1}{1-r}\; \; \abs{r} < 1$
+\item $\sum^{\infty}_{k=1} \frac{1}{k}= \infty$
+\item $\sum^{\infty}_{k=1} \frac{1}{k^2}$ converge
+\item $\sum^{\infty}_{k=1} \frac{1}{k^p}\; \; \forall p>1$
+\end{itemize}
+
+\lecture{11}{15 octobre 2025}{Critères}
+
+\begin{definition}
+Une série $\sum^{\infty}_{k=1} a_k$ est dite \textbf{absolument convergente} si la série $\sum^{\infty}_{k=1} \abs{a_k}$ est convergente.
+\paragraph{Proposition:} Une série absolument convergente est convergente.
+\paragraph{Proposition:} Si la série $\sum^{\infty}_{n=1}a_n$ converge, alors $\lim_{n\rightarrow \infty}a_n = 0$
+\paragraph{Remarque:} $\lim_{n\rightarrow \infty}a_n = 0$ n'implique pas la convergence.
+\end{definition}
+
+\section{Critères de convergence}
+
+\subsection{Critère de Leibniz}
+
+\begin{proposition}
+Soit $\sum^{\infty}_{n=0}a_n$ une série telle que:
+\begin{enumerate}
+\item $\exists p\in \N$: $\forall n\geq p \Rightarrow \abs{a_{n+1}} \leq \abs{a_n}$
+\item $\exists q\in \N$: $\forall n\geq q \Rightarrow \abs{a_{n+1}}\cdot \abs{a_n} \leq 0$
+\item $\lim_{n\rightarrow \infty}a_n = 0$
+\end{enumerate}
+Alors $\sum^{\infty}_{n=0}a_n$ est convergente.
+\end{proposition}
+
+\subsection{Critère de comparaison}
+
+\begin{proposition}
+Soit $(a_n)$ et $(b_n)$ deux suites telles que $\exists k\in \N$: $0\leq a_n \leq b_n\; \; \forall n\geq k$
+Alors:
+\begin{itemize}
+\item Si $\sum^{\infty}_{n=0} b_n$ converge $\Longrightarrow \sum^{\infty}_{n=0} a_n$ converge.
+\item Si $\sum^{\infty}_{n=0} a_n$ diverge $\Longrightarrow \sum^{\infty}_{n=0} b_n$ diverge.
+\end{itemize}
+\paragraph{Remarque} Si $\sum^{\infty}_{n=0} a_n$ ne possède que des termes positifs/négatifs, et la suite des sommes partielles est \textbf{majorée/minorée}, alors la série $\sum^{\infty}_{n=0} a_n$ est convergente.
+\end{proposition}
+
+\subsection{Critère d'Alembert}
+
+Soit $(a_n)$ une suite: $a_n \neq 0\; \forall n\in \N$ et $\lim_{n\rightarrow \infty}\frac{a_{n+1}}{a_n} = \rho \in \R$
+Alors si:
+\begin{itemize}
+\item $p<1 \Longrightarrow \sum^{\infty}_{n=0}a_n$ converge absolument.
+\item $p>1 \Longrightarrow \sum^{\infty}_{n=0}a_n$ diverge.
+\item $p=1 \Longrightarrow$ pas de conclusion.
+\end{itemize}
 
 
-%"You can integrate that, but only if you’re bad at math. Now get off the drugs, will you?"
-%-Calculus teacher
+
+\subsection{Critère de Cauchy}\footnote{de la racine}
+
+Soit $(a_n)$ une suite et $\exists \lim_{n\rightarrow \infty} \sqrt[n]{\abs{a_n}} = \rho \in \R$. \\
+\begin{align*}
+Alors\; si & p<1 \Longrightarrow \sum^{\infty}_{n=0}a_n\; converge\; absolument \\
+& p>1 \Longrightarrow \sum^{\infty}_{n=0}a_n \;diverge
+\end{align*}
+
+
+
+\subsection{Remarques}
+
+\begin{enumerate}
+\item Si $\limpar{n}{\infty}\abs{\frac{a_{n+1}}{a_n}}=r$ et $\limpar{n}{\infty}\abs{a_n^{\frac{1}{n}}}=l$ alors $r=l$
+\item Parfois $\limpar{n}{\infty}\sqrt[n]{\abs{a_n}}$ existe, mais $\limpar{n}{\infty}\abs{\frac{a_{n+1}}{a_n}}$ n'existe pas.
+\item Si $\limpar{n}{\infty}\abs{\frac{a_{n+1}}{a_n}}=1$ ou $\limpar{n}{\infty}\sqrt[n]{\abs{a_n}}=1$, alors pas de conclusion sur la convergence de $\sum^{\infty}_{n=0}a_n$.
+\end{enumerate}
+
+
+%“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
+%— Analysis 1 lecturer
 %https://mathprofessorquotes.com/
 \end{document}
