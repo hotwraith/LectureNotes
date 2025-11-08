@@ -35,6 +35,9 @@
 \newcommand{\Z}{\mathbb{Z}}
 \newcommand{\C}{\mathbb{C}}
 \newcommand{\x}{$\times$ }
+\newcommand{\fEF}{f:E\rightarrow F}
+\newcommand{\gGH}{g:G\rightarrow H}
+\newcommand{\fpar}[3]{#1:#2 \rightarrow #3}
 \newcommand{\limpar}[2]{\lim_{#1 \rightarrow #2}}
 \newcommand{\spa}{\vspace{0.2cm}}
 \newcommand{\ind}{\hspace*{\parindent}}
@@ -151,6 +154,23 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Critère de Cauchy et d'Alembert
 \end{itemize}
 \item \lecturetitle{12}
+\begin{itemize}
+\item Définition
+\item et propriétés de fonctions réelles
+\end{itemize}
+\item \lecturetitle{13}
+\begin{itemize}
+\item Limite d'une fonction
+\item Caractérisation de la limite d'une fonction à partir des suites \& critère de Cauchy pour les fonctions
+\item Opérations algébriques sur les limites et théorème des deux gendarmes pour les fonctions
+\end{itemize}
+\item \lecturetitle{14}
+\begin{itemize}
+\item Limites de fonctions composées
+\item Limites à $\pm \infty$
+\item Limite infinies et formes indeterminées
+\end{itemize}
+\item \lecturetitle{15}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -827,6 +847,149 @@ Alors\; si & p<1 \Longrightarrow \sum^{\infty}_{n=0}a_n\; converge\; absolument 
 \chapter{Fonctions réelles}
 
 \lecture{12}{27 octobre 2025}{"Cours le plus facile" -Lachowska}
+
+\section{Définitions et propriétés}
+
+\begin{definition}
+Une fonction $f:E\rightarrow F$ où $E,F\in \R$ est une application qui $\forall x\in D(f)=E$ done un élément $y=f(x)\in F$.\\
+On note
+\begin{itemize}
+\item $D(f) = E$ le domaine de définition
+\item $f(D) \in F$ l'ensemble image/d'arrivée
+\end{itemize}
+\end{definition}
+
+\subsection{Propriétés de base}
+
+\begin{enumerate}
+\item $f$ est (\textbf{strictement}) croissante sur $D(f)$ si $\forall x_1, x_2 \in D(f), x_1 < x_2 \Rightarrow f(x_1) \leq f(x_2)\; || \; f(x_1) < f(x_2)$. On note $f(x)\uparrow$ "$f(x)$ croissante".
+\item Même logique mais opposée pour (\textbf{strictement}) décroissante, notée $f
+(x)\downarrow$ "$f(x)$ décroissante".
+\item Si $f$ est (\textbf{strictement}) croissante/décroissante sur $D(f)$, alors elle est (\textbf{strictement}) monotone sur $D(f)$.
+\item $f$ est \textbf{paire} si $D(f)$ est symmétrique: $x\in D(f) \Rightarrow -x\in D(f)$ et $f(-x)=f(x)\; \forall x\in D(f)$.
+\item $f$ est \textbf{impaire} si $D(f)$ est symmétrique: $x\in D(f)\Rightarrow -x\in D(f)$ et $f(-x)=-f(x)\; \forall x\in D(f)$.
+\item $f:E\rightarrow F$ est \textbf{périodique} si $\exists P\in \R^*$ tel que $\forall x\in E \Rightarrow x\pm P\in E$ et $f(x\pm P) = f(x)\; \forall x\in E$.
+\item $f:E\rightarrow F$ est \textbf{majorée (minorée)} sur $A\in E$ si l'ensemble $f(A)\in \R$ est \textbf{majoré (minoré)}.\\
+Si $f(x)$ est majorée \textbf{et} minorée sur $A$, alors elle est dit bornée sur ce même ensemble.
+\item 
+\begin{enumerate}
+\item borne supérieure $\sup_{x\in A} f(x) \overset{def}{=} \sup\left\lbrace f(x),x\in A\right\rbrace$
+\item borne inférieure $\inf_{x\in A} f(x) \overset{def}{=} \inf\left\lbrace f(x),x\in A\right\rbrace$
+\end{enumerate}
+\item Maximum et minimum local d'une fonction:\\
+$f:E\rightarrow F, x_0\in E$. Alors $f$ admet un max/min local au point $x_0$ si $\exists \delta >0: \forall x\in D(f)$ et tels que $\abs{x-x_0} \leq \delta$. \\
+On a $f(x)\leq f(x_0)$ (max loc), $f(x)\geq f(x_0)$ (min loc).
+\item Maximum et minimum global d'une fonction:\\
+Même logique, sauf que cela s'applique $\forall x\in E$.
+\textbf{Remarque:} Une fonction bornée (majorée \textbf{et} minorée sur $E$) n'atteint pas forcément son min ou max sur cet intervalle.
+\item $f:E\rightarrow F$ est \textbf{surjective} si $\forall y\in F,\; exists$ au moins un $x\in E: f(x)=y$
+\item $f:E\rightarrow F$ est \textbf{injective} si $\forall y\in F,\; exists$ au plus un $x\in E: f(x)=y$\\
+\item Remarque:
+\begin{itemize}
+\item Si $\fEF$ n'est pas injective $\Rightarrow$ il faut réduire $E$
+\item Si $\fEF$ n'est pas surjective $\Rightarrow$ il faut réduire $F$
+\end{itemize}
+\item Si $\fEF$ est injective \textbf{et} surjective, alors elle est \textbf{bijective}.
+\item Si $\fEF$ est bijective, on peut définir la fonction réciproque par la formule:\\
+$y=f(x),\; x\in E \Longleftrightarrow x = f^{-1}(y),\; y\in F$
+\item Composition des fonctions: soit $\fEF$ et $\gGH$, $E,F,G,H\in \R$
+\par Supposons $f(E)\in G \Rightarrow$ On définit la fonction composée: \\
+$g\circ f(x) = g(f(x)): E\longrightarrow H$
+\par Supposons $g(G)\in E \Rightarrow$ On définit la fonction composée: \\
+$f\circ g(x) = f(g(x)): G\longrightarrow F$
+\end{enumerate}
+
+\lecture{13}{29 octobre 2025}{I'm reaching my limit}
+\section{Limite d'une fonction}
+
+\begin{definition}
+Une fonction $\fEF$ est définie \textbf{au voisinage} de $x_0\in \R$ si $\exists \delta >0: \left\lbrace x\in \R : 0<\abs{x-x_0}<\delta \right\rbrace \in E$\\
+\textbf{Remarque:} $f$ n'est pas forcément définie en $x_0$ même.
+\end{definition}
+
+\begin{definition}
+Une fonction $\fEF$ définie au voisinage de $x_0$ \textbf{admet pour limite} $l\in \R$ lorsque $x\rightarrow x_0$ si $\forall \epsilon >0\; \exists \delta >0:\; \forall x\in E:\; 0<\abs{x-x_0}\leq \delta$ on a $\abs{f(x)-l} \leq \epsilon$
+\end{definition}
+
+\subsection{Caractérisation de la limite d'une fonction à partir des suites}
+
+Soit $\fEF$ tel que $\limpar{x}{x_0}f(x) = l \Longleftrightarrow \forall$ suite $(a_n)\in \left\lbrace x\in E,\; x\neq x_0\right\rbrace :\; \limpar{n}{\infty}a_n = x_0$, on a $\limpar{n}{\infty}f(a_n) = l$
+
+\begin{corollaire}
+Soit $\fEF$ définie au voisinage de $x_0$.\\
+Supposons que $\forall (a_n)\in E\backslash \left\lbrace x_0\right\rbrace:\; \limpar{n}{\infty} a_n = x_0$, la suite $(f(a_n))$ converge. Alors $\limpar{x}{x_0}f(x)$ existe.
+\end{corollaire}
+
+\begin{proposition}
+Si $\limpar{x}{x_0}f(x) = l_1$ et $\limpar{x}{x_0}f(x) = l_2$, alors $l_1 = l_2$.
+\end{proposition}
+
+\subsection{Critère de Cauchy pour les fonctions}
+
+$\exists \limpar{x}{x_0} \Longleftrightarrow \forall \epsilon >0,\; \exists \delta > 0:\: \forall x_1,x_2 \in \left\lbrace x\in E: 0<\abs{x-x_0}\leq \delta\right\rbrace$ on a $\abs{f(x_1)-f(x_2)} \leq \epsilon$
+
+\subsection{Opérations algébriques sur  les limites}
+
+Soit $\fpar{f}{E}{\R}$, $\fpar{g}{E}{\R}$ telles que $\limpar{x}{x_0}f(x)=l_1,\in \R$, $\limpar{x}{x_0}g(x)=l_2,\in \R$, alors:
+\begin{enumerate}
+\item $\limpar{x}{x_0}(\alpha f(x)+\beta g(x)) = \alpha l_1 + \beta l_2$
+\item $\limpar{x}{x_0}(f(x)\cdot g(x)) = l_1\cdot l_2$
+\item $\limpar{x}{x_0}(\frac{f(x)}{g(x)}) = \frac{l_1}{l_2}$, si $l_2 \neq 0$
+\end{enumerate}
+
+\subsection{Théorème des 2 gendarmes pour les fonctions}
+
+Soient $\fpar{f,g,h}{E}{F}$ telles que:
+\begin{enumerate}
+\item $\limpar{x}{x_0}f(x)= \limpar{x}{x_0}g(x)=l$
+\item $\exists \alpha >0:\forall x\in \left\lbrace x\in E: 0<\abs{x-x_0}\leq \alpha \right\rbrace$, on a $f(x)\leq h(x)\leq g(x)$
+\item Alors $\limpar{x}{x_0}h(x) = l$
+\end{enumerate}
+
+\lecture{14}{3 novembre 2025}{Infinite number of mathematicians walk into a bar}
+
+\subsection{Théorème: Limite de la composée de deux fonctions}
+
+\begin{theorem}
+Soit $fEF$, $\limpar{x}{x_0}f(x)=y_0$; $\gGH ,\limpar{y}{y_0}g(y)=l$.
+\par Supposons que $f(E)\in G$ et $\exists \alpha >0: 0<\abs{x-x_0}<\alpha \Rightarrow f(x) \neq y_0$. \\
+Alors: $\limpar{x}{x_0}(g\circ f)(x) = l$.
+\end{theorem}
+
+\section{Limites lorsque x tend vers \texorpdfstring{$\pm \infty$}{l'infini}}
+
+\begin{definition}
+$\fEF$ est définie au voisinage de $\pm \infty$, si $\exists \alpha\in \R :\left] \alpha, +\infty \right[ \in E$ (resp $\left] -\infty ,\alpha \right[ \in E$)
+\end{definition}
+
+\begin{definition}
+Une fonction $\fEF$ définie au voisinage de $\pm \infty$ \textbf{admet pour limite} $l\in \R$ lorsque $x\rightarrow \pm \infty$ si $\forall \epsilon >0\; \exists \alpha >0:$\\
+$\forall x \in E: x\geq \alpha \Rightarrow \abs{f(x)-l} \leq \epsilon$\\
+resp. $\forall x \in E: x\leq \alpha \Rightarrow \abs{f(x)-l} \leq \epsilon$
+\par Notation: $\limpar{x}{+\infty}f(x) = l$ et $\limpar{x}{-\infty}f(x) = l$
+\end{definition}
+
+\section{Limites infinies}
+
+\begin{definition}
+$\fEF$ définie au voisinage de $x_0 \in \R$ tend vers $\pm \infty$ lorsque $x\rightarrow x_0$ si $\forall A>0,\; \exists \delta >0:\; 0<\abs{x-x_0}\leq \delta \Rightarrow f(x)\geq A (f(x) \leq -A)$
+\par Notation: $\limpar{x}{x_0}f(x) = \pm \infty$ et $\limpar{x}{\pm \infty}f(x) = \pm \infty$
+\end{definition}
+
+\section{Formes indeterminées}
+
+\begin{itemize}
+\item $\infty - \infty$
+\item  $\frac{\infty}{\infty}$
+\item $\frac{0}{0}$
+\item $0\cdot \infty$
+\item $0^0$
+\item $1^{\infty}$
+\item $\infty^0$
+\end{itemize}
+
+
+\lecture{15}{5 novembre 2025}{NàJ}
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
 %— Analysis 1 lecturer
