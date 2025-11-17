@@ -976,7 +976,7 @@ $\fEF$ définie au voisinage de $x_0 \in \R$ tend vers $\pm \infty$ lorsque $x\r
 \par Notation: $\limpar{x}{x_0}f(x) = \pm \infty$ et $\limpar{x}{\pm \infty}f(x) = \pm \infty$
 \end{definition}
 
-\section{Formes indeterminées}
+\subsection{Formes indeterminées}
 
 \begin{itemize}
 \item $\infty - \infty$
@@ -990,6 +990,54 @@ $\fEF$ définie au voisinage de $x_0 \in \R$ tend vers $\pm \infty$ lorsque $x\r
 
 
 \lecture{15}{5 novembre 2025}{NàJ}
+
+\subsection{Propriétés des limites infinies}
+
+\begin{enumerate}
+\item $\limpar{x}{x_0}f(x) = +\infty\; (-\infty)$ et $\limpar{x}{x_0}g(x) = +\infty\; (-\infty) \Rightarrow \limpar{x}{x_0}(f(x) + g(x)) = +\infty\; (-\infty)$
+\item Si $\limpar{x}{x_0}f(x) = \pm \infty$ et si $g(x)$ est bornée autour de $x_0$. Alors $\limpar{x}{x_0}(f(x)+g(x)) = \pm \infty$
+\item Si $\limpar{x}{x_0}f(x) = +\infty$ et si $\limpar{x}{x_0}g(x) = l \neq 0$. Alors $\limpar{x}{x_0}(f(x)\cdot g(x)) = +\infty\;\; (-\infty)$ si $l>0\;\; (l<0)$ respectivement.
+\item Si $\limpar{x}{x_0}f(x) = \pm \infty$ alors $\limpar{x}{x_0}\frac{1}{f(x)} = 0$
+\item Si $\limpar{x}{x_0}f(x)=0$ et $f(x)\neq 0$ au voisinage de $x_0$, alors $\limpar{x}{x_0}\frac{1}{f(x)}= +\infty\;\; (-\infty)$ si $f(x)>0 (f(x)<0)$ au voisinage de $x_0$ respectivement.
+\item Si $\limpar{x}{x_0}f(x)= +\infty\;\; (-\infty)$ et qu'au voisinage de $x_0$ on a $g(x)\geq f(x)\;\; (g(x)\leq f(x))$ alors, $\forall x$ au voisinage de $x_0$ $\Rightarrow \limpar{x}{x_0}g(x)= +\infty\;\; (-\infty)$
+\item Les propriétés (1) à (6) sont également valables pour $x\rightarrow \pm \infty$
+\end{enumerate}
+
+\section{Limites à droite et à gauche}
+
+\begin{definition}
+$\fEF$ est définie à droite (gauche) de $x_0$ s'il existe $\alpha > 0$ tel que: $\left]x_0, x_0+\alpha\right[ \subset E$ $(\left]x_0-\alpha, x_0\right[ \subset E)$
+\end{definition}
+On dénote la limite:
+\begin{itemize}
+\item à droite: $\limpar{x}{x_0^+}f(x) = l$
+\item à gauche: $\limpar{x}{x_0^-}f(x) = l$
+\end{itemize}
+
+Remarques:
+\begin{itemize}
+\item $\limpar{x}{x_0}f(x)=l \Leftrightarrow \limpar{x}{x_0^+}f(x)=l$ et $\limpar{x}{x_0^-}f(x)=l$
+\item On peut aussi définir les limites $\limpar{x}{x_0^+}f(x)=\pm \infty$ et $\limpar{x}{x_0^-}f(x)=\pm \infty$.\footnote{Par exemple $f(x)=\frac{1}{x}$ dont les limites en $0^+$ et $0^-$ sont respectivement à $+\infty$ et $-\infty$}
+\end{itemize}
+
+\section{Fonction exponentielle et logarithmique}
+
+\subsection{Propriétés et définitions de l'exponentielle}
+\begin{equation} \tag{Définition de l'exponentielle}
+e^x \overset{\mathbf{d\acute{e}f}}{=} \sum^\infty_{n=0}\frac{x^n}{n!}
+\end{equation}
+Par convention on admet: $0^0=1$ et $0!=1$ %TODO ajouter l'origine des ces trucs (page 7, cours 15 2025)
+\begin{proposition}
+\begin{enumerate}
+\item $e^{x+y} = e^x \cdot e^y,\forall x,y \in \R$
+\item $e^{-x} = \frac{1}{e^x}, \forall x \in \R$
+\item $e^x > 0, \forall \in \R$
+\end{enumerate}
+\end{proposition}
+\subsubsection{Propriétés de \texorpdfstring{$f(x)=e^x$}{la fonction e}}
+\begin{enumerate}
+\item $\limpar{x}{+\infty}e^x=+\infty$
+\end{enumerate}
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
 %— Analysis 1 lecturer
