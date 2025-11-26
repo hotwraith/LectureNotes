@@ -171,6 +171,21 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Limite infinies et formes indeterminées
 \end{itemize}
 \item \lecturetitle{15}
+\begin{itemize}
+\item Limites à droite et à gauche
+\item Exponentielle et logarithme
+\item Fonctions continues
+\end{itemize}
+\item \lecturetitle{16}
+\begin{itemize}
+\item Pas de cours, examen blanc.
+\end{itemize}
+\item \lecturetitle{17}
+\begin{itemize}
+\item Prolongement par continuité
+\item Fonctions continues sur un intervalle
+\item Théorème de la valeur intermédiaire (TVI)
+\end{itemize}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -1057,6 +1072,86 @@ Comme $\fpar{e^x}{\R}{\R_+^*}$ est bijective, on peut définir la fonction réci
 \item $\ln(x^r) = r\cdot \ln(x), \forall r\in \R$
 \item $\ln(1) = 0,\; \ln(e)=1,\; e^0=1,\; e'=e$
 \end{enumerate}
+
+\section{Fonctions continues}
+
+\begin{definition}
+Une fonction $\fEF$ est continue en un point $x_0\in E$ si $\limpar{x}{x_0}f(x)=f(x_0)$, soit:
+\begin{enumerate}
+\item $\limpar{x}{x_0}f(x)\in \R$ existe
+\item $f(x_0)$ existe
+\item Les deux valeurs sont égales.
+\end{enumerate}
+\end{definition}
+
+\subsection{Quelques fonctions continues remarquables}
+
+\begin{enumerate}
+\item $f(x)=x^p, p\in \N$ est continue sur $\R$: $\limpar{x}{a}x^p = a^p,\; \forall a\in \R$
+\item Tout polynôme est continue sur $\R$
+\item Toute fonction rationelle est continue sur son domaine
+\item $f(x)=\sqrt[p]{x}$ est continue sur son domaine $\forall p\in \N$ ($\limpar{x}{a}\sqrt{x}=\sqrt{a}, a>0$)
+\item $f(x)=\sin(x)$ et $f(x)=\cos(x)$ sont continues sur $\R$. $f(x)=\tan(x)=\frac{\sin(x)}{\cos(x)}$ et $f(x)=\cot(x)=\frac{\cos(x)}{\sin(x)}$ sont continues sur leurs domaines de définition
+\end{enumerate}
+
+\subsection{Limites remarquables}
+
+\begin{itemize}
+\item $\limpar{x}{0}\frac{e^x-1}{x}=1$
+\item $\limpar{x}{0}\frac{\ln(1+x)}{x}=1$
+\item $\limpar{x}{0}(1+x)^{\frac{1}{x}}=e$
+\item $\limpar{x}{a}\frac{e^{t(x)}-1}{t(x)}=1$ si $\limpar{x}{a}t(x)=0$
+\item $\limpar{x}{a}\frac{\ln(1+t(x)}{t(x)}=1$ si $\limpar{x}{a}t(x)=0$
+\item $\limpar{x}{a}(1+t(x))^{\frac{1}{t(x)}}=e$ si $\limpar{x}{a}t(x)=0$
+\end{itemize}
+
+\lecture{16}{10 novembre 2025}{C'est un peu beaucoup trop calme}
+
+\lecture{17}{12 novembre 2025}{•}
+
+\subsection{Opérations sur les fonctions continues}
+
+Si les fonctions $f$ et $g$ sont continues en $x=x_0$, alors:
+\begin{enumerate}
+\item $\alpha f + \beta g$ est continue en $x=x_0$, $\forall \alpha,\beta \in \R$
+\item $f\cdot g$ est continue en $x=x_0$
+\item $\frac{f}{g}$ est continue en $x=x_0$ si $g(x_0)\neq 0$
+\item Si $\fEF$ et $\gGH$, $f(E)\subset G$, et $f$ est continue en $x_0\in E$, $g$ est continue en $f(x_0)\in G$. Alors $(g\circ f)$ est continue en $x_0$
+\end{enumerate}
+
+\subsection{Prolongement par continuité d'une fonction en un point}
+
+\begin{definition}
+Soit $\fEF$ une fonction telle que $c\notin E$ ($f$ n'est pas définie en $x=c$) et $\limpar{x}{c}f(x)\in \R$ existe. Alors la fonction $\hat{f}:E\cup \left\lbrace c \right\rbrace \rightarrow \R$.
+\begin{equation*}
+\hat{f}(x)\overset{\mathbf{d\acute{e}f}}{=}\left\lbrace \begin{array}{rcl} f(x),& x\in E \\ \limpar{x}{c}f(x),& x=c \end{array} \right.
+\end{equation*}
+est appelée \textbf{le prolongement par continuité} de $f$ au point $x=c$. Un tel prolongement est unique et la fonction $\hat{f}$ est continue en $x=c$
+\end{definition}
+
+\section{Fonctions continues sur un intervalle}
+
+\begin{definition}
+Une fonction $\fpar{f}{I}{F}$, où I est un intervalle ouvert non-vide, est continue si $f$ est continue en tout point $x\in I$. \\
+$\fpar{f}{\left[ a,b\right]}{F}$ est continue sur $\left[ a,b\right]$ si elle est continue sur $\left] a,b\right[$ et continue à gauche en $x=b$ et à droite $x=a$.
+\end{definition}
+
+\begin{theorem}
+Soit $a<b\in \R$ et $\fpar{f}{\left[ a,b\right]}{F}$ une \textbf{fonction continue sur l'intervalle fermé et borné} $\left[ a,b\right]$. Alors $f$ atteint son infimum et son supremum sur $\left[ a,b\right]$ ($\Leftrightarrow \exists \max_{[a,b]}f(x)$ et $\exists \min_{[a,b]}f(x)$)
+\end{theorem}
+
+\subsection{Théorème de la valeur intermédiaire}
+
+Soit $a<b\in \R$, $\fpar{f}{[a,b]}{\R}$ une fonction \underline{continue}. Alors $f$ atteint son $\sup$, son $\inf$ et \textbf{\underline{toute valeur comprise entre les deux}}.
+\begin{equation*}
+f(\left[a,b\right])=\left[\min_{\left[a,b\right]}f(x),\; \max_{\left[a,b\right]}f(x) \right]
+\end{equation*}
+
+\begin{corollaire}
+Soit $a<b\in \R$ et $\fpar{f}{[a,b]}{\R}$ une fonction continue telle que $f(a)\cdot f(b)<0$ (donc $f(a)$ et $f(b)$ de signes différents).\par
+Alors il existe au moins un point $c\in ]a,b[:\; f(c)=0$
+\end{corollaire}
+
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
 %— Analysis 1 lecturer
