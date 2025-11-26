@@ -1037,6 +1037,25 @@ Par convention on admet: $0^0=1$ et $0!=1$ %TODO ajouter l'origine des ces trucs
 \subsubsection{Propriétés de \texorpdfstring{$f(x)=e^x$}{la fonction e}}
 \begin{enumerate}
 \item $\limpar{x}{+\infty}e^x=+\infty$
+\item $\limpar{x}{-\infty}e^x = \limpar{y}{+\infty}e^{-y}=\limpar{y}{+\infty}\frac{1}{e^y}=0$
+\item $e^x\uparrow$ est strictement croissante $\forall x\in \R$
+\item $\limpar{x}{a}\frac{e^{t(x)}-1}{t(x)}$ si $\limpar{x}{a}t(x)=0$ et $t(x)\neq 0$ au voisinage de $x=a$
+\end{enumerate}
+
+\subsection{Propriétés et définitions du logarithme}
+
+\begin{definition}
+Comme $\fpar{e^x}{\R}{\R_+^*}$ est bijective, on peut définir la fonction réciproque, $\fpar{\ln(x)}{\R_+^*}{\R}$.
+\end{definition}
+
+\subsubsection{Propriétés}
+\begin{enumerate}
+\item $e^{\ln(x)}=x, \forall x\in \R_+^*$
+\item $\ln(e^x)=x, \forall x\in \R$
+\item $\ln(x\cdot y)= \ln(x) + \ln(y), \forall x,y\in \R_+^*$
+\item $\ln(\frac{x}{y}) = \ln(x) - \ln(y)$
+\item $\ln(x^r) = r\cdot \ln(x), \forall r\in \R$
+\item $\ln(1) = 0,\; \ln(e)=1,\; e^0=1,\; e'=e$
 \end{enumerate}
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
