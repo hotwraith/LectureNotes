@@ -39,6 +39,7 @@
 \newcommand{\gGH}{g:G\rightarrow H}
 \newcommand{\fpar}[3]{#1:#2 \rightarrow #3}
 \newcommand{\limpar}[2]{\lim_{#1 \rightarrow #2}}
+\newcommand{\overdef}{\overset{\mathbf{d\acute{e}f}}{=}}
 \newcommand{\spa}{\vspace{0.2cm}}
 \newcommand{\ind}{\hspace*{\parindent}}
 \newcommand{\lecture}[3]{\subsection*{\hyperref[resume:#1]{Cours #1 - #2: #3}} \label{lecture:#1}
@@ -55,7 +56,9 @@
 \newtheorem{theorem}{Théorème}[section]
 \newtheorem{definition}{Définition}[section]
 \newtheorem{proposition}{Proposition}[section]
-\newtheorem{corollaire}{Corollaire}[theorem]
+\newtheorem{corollaire}{Corollaire}[definition]
+\newtheorem{corothem}{Corollaire}[theorem]
+
 
 \pagestyle{fancy}
 
@@ -1152,6 +1155,245 @@ Soit $a<b\in \R$ et $\fpar{f}{[a,b]}{\R}$ une fonction continue telle que $f(a)\
 Alors il existe au moins un point $c\in ]a,b[:\; f(c)=0$
 \end{corollaire}
 
+\begin{corollaire}
+Soit $I$ un intervalle ouvert; $\fpar{f}{I}{\R}$ une fonction \textbf{\underline{continue} \textit{strictement monotone}}. Alors $f(I)$ est un intervalle ouvert.
+\end{corollaire}
+
+\begin{corollaire}
+Toute fonction \textbf{injective} et \textbf{continue} sur un intervalle est \underline{strictement monotone}.
+\end{corollaire}
+
+\begin{corollaire}
+Toute fonction bijective continue sur un intervalle admet une fonction réciproque qui est continue et strictement monotone.
+\end{corollaire}
+
+
+\chapter{Calcul différentiel}
+
+\lecture{18}{17 novembre 2025}{Virtuel et différeeeent} % put it here so it's after the newpage imposed by new chapter
+
+\section{Fonctions dérivables}
+
+\begin{definition}
+Une fontion $\fEF$ est dite \textbf{dérivable} en $x_0\in E$ s'il existe la limite:
+\begin{equation*}
+\limpar{x}{x_0}\frac{f(x)-f(x_0)}{x-x_0} \overset{\mathbf{d\acute{e}f}}{=} f'(x_0)\in \R
+\end{equation*} 
+Cette limite est appelée \textbf{la dérivée} de $f$ en $x_0$, notée $f'(x_0)$.
+\end{definition}
+
+\begin{definition}
+Toute fonction dérivable en $x=x_0$ admet un présentation sous la forme suivante:
+\begin{equation*}
+f(x) = f(x_0) + a\cdot (x-x_0)+r(x)
+\end{equation*}
+où $a\in \R$ et $\limpar{x}{x_0}\frac{r(x)}{x-x_0}=0$. \par
+Dans ce cas on dit que $f$ est \textbf{différentiable} en $x_0$. \\
+Note: $f$ différentiable en $x=x_0$ $\Leftrightarrow$ $f$ est dérivable en $x=x_0$ et $f'(x_0)=a\in \R$ 
+\end{definition}
+
+\section{Fonction dérivée}
+
+\begin{definition}
+Si $\fEF$ est dérivable sur un ensemble $D(f')\subset E$, alors on définit la fonction dérivée: $\fpar{f'}{D(f')}{\R}$.
+\end{definition}
+
+Dérivées à connaître:\\ \\
+\begin{tabular}{| c | c |}
+\hline
+$f(x)$ & $f'(x)$ \\
+\hline
+$\cos(x)$ & $-\sin(x)$ \\
+\hline
+$\sin(x)$ & $\cos(x)$ \\
+\hline
+$x^n$ & $nx^{n-1} (n\in\N)$ \\
+\hline
+$\tan(x)$ & $\frac{1}{\cos^2(x)}$ ou $1+tan^2(x)$ \\
+\hline
+$e^x$ & $e^x,\; \forall x\in \R$ \\
+\hline
+\end{tabular} %TODO rajouter toutes les dérivées pratiques à connaître de tête
+
+\subsection{Interprétation géométrique}
+
+La dérivée de $f$ au point $x=x_0$ est la pente de la tangente à la courbe $y=f(x)$ au point $(x_0, f(x_0))$. L'équation de la tangente s'écrit:
+\begin{equation*}
+y = f(x_0) + f'(x_0)(x-x_0)
+\end{equation*}
+
+\subsection{Propriétés et autres trucs de la fonction dérivée}
+
+\begin{proposition}
+Une fonction dérivable en $x=x_0$ est continue en $x=x_0$. \\
+Note: la réciproque est fausse.
+\end{proposition}
+
+\begin{definition}
+La dérivée à droite et à gauche s'écrivent respectivement:
+\begin{equation*}
+f_d'(x_0) \overset{\mathbf{d\acute{e}f}}{=}\limpar{x}{x_0^+}\frac{f(x)-f(x_0)}{x-x_0}
+\end{equation*}
+\begin{equation*}
+f_g'(x_0) \overset{\mathbf{d\acute{e}f}}{=}\limpar{x}{x_0^-}\frac{f(x)-f(x_0)}{x-x_0}
+\end{equation*}
+$\exists f'(x_0) \Leftrightarrow \exists f_d'(x_0), f_g'(x_0)$ et $f_g'(x) = f_d'(x_0)$
+\end{definition}
+
+\subsubsection{Opération algébriques sur les dérivées}
+Soit $\fpar{f,g}{E}{F}$ deux fonctions dérivables en $x=x_0$, alors
+\begin{enumerate}
+\item $(\alpha f + \beta g)'(x_0) = \alpha f'(x_0) + \beta g'(x_0)$, $\forall \alpha , \beta \in \R$
+\item $(f\cdot g)'(x_0) = f'(x_0)\cdot g(x_0) + f(x_0)\cdot g'(x_0)$
+\item $(\frac{f}{g})'(x_0) = \frac{f'(x_0)g(x_0)-g'(x_0)f(x_0)}{g^2(x_0)}$
+\end{enumerate}
+
+\subsubsection{Dérivée de la fonction composée de deux fonctions dérivables}
+\begin{proposition}
+$\fEF$ dérivable en $x=x_0\in E$, $\gGH$ dérivable en $f(x_0), f(E)\subset G$. Alors 
+\begin{equation*}
+g\circ f)'(x_0) = g'(f(x_0))\cdot f'(x_0)
+\end{equation*}
+\end{proposition}
+
+\lecture{19}{19 novembre 2025}{Rolle-en-garos}
+
+\section{Dérivée de la fonction réciproque}
+
+\begin{proposition}
+Soit $\fpar{f}{I}{F}$ une fonction bijective continue sur $I$ et dérivable en $x_0\in I$, telle que $f'(x_0)\neq 0$. Alors la fonction réciproque $\fpar{f^{-1}}{F}{I}$ est dérivable en $y_0=f(x_0)$ et:
+\begin{equation*}
+(f^{-1})'(y_0) = \frac{1}{f'(x_0)}, \mathbf{o\grave{u}}\; y_0=f(x_0); x_0 = f^{-1}(y_0)
+\end{equation*}
+\end{proposition}
+
+\begin{corollaire}
+Si $\fpar{f}{I}{F}$ et $\fpar{f^{-1}}{F}{I}$ sont deux fonctions réciproques continues sur leurs domaines et dérivables à l'intérieur alors $\forall x\in F: f'(f^{-1}(x)) \neq 0$:
+\begin{equation*}
+(f^{-1})'(x) = \frac{1}{f'(f^{-1}(x))}
+\end{equation*}
+\end{corollaire}
+
+\section{Dérivée logarithmique}
+
+\begin{equation*}
+(f_1(x)^{f_2(x)})' = (f_1(x)^{f_2(x)})\cdot (f_2(x)\cdot \ln(f_1(x)))'
+\end{equation*}
+
+\section{Fonctions hyperboliques}
+
+\begin{definition} Expressions des fonctions trigonométriques hyperboliques
+\begin{itemize}
+\item $\sinh(x) \overdef	\frac{e^x-e^{-x}}{2}$, impaire $\forall x \in \R$
+\item $\cosh(x) \overdef \frac{e^x+e^{-x}}{2}$, paire $\forall x \in \R$
+\item $\cosh^2(x)-\sinh^2(x) = 1$
+\item $(\sinh(x))' = \cosh(x)$ et $(\cosh(x))'=\sinh(x)$
+\item $\tanh(x) \overdef	\frac{\sinh(x)}{\cosh(x)}=\frac{e^x-e^{-x}}{e^x+e^{-x}}$, $\forall x\in \R$
+\item $\coth(x) \overdef	\frac{\cosh(x)}{\sinh(x)}=\frac{e^x+e^{-x}}{e^x-e^{-x}}$
+\item On peut définir les fonctions réciproques $arcsinh(x),\; arccosh(x),\; arctanh(x)$, ainsi que leurs dérivées grâce à la définition de la dérivée de réciproque et à l'identité $\cosh^2(x)-\sinh^2(x) = 1$
+\end{itemize}
+\end{definition}
+
+\section{Dérivées d'ordre n}
+
+\begin{definition}
+La dérivée seconde d'une fonction s'écrit $f''(x)\overdef (f'(x))'$. On peut de manière plus générale définir:
+\begin{equation*} \tag{Dérivée d'ordre n}
+f^{(n)}(x)\overdef (f^{(n-1)}(x))'
+\end{equation*}
+\end{definition}
+
+\begin{definition}
+$\fEF$ est $n$ fois dérivable si elle admet une dérivée d'ordre $n$.
+\end{definition}
+
+\begin{definition}
+$\fEF$ est de classe $C^n(E)$ si elle admet une dérivée d'ordre $n$ qui est continue sur $E$.\footnote{On dit aussi "$n$ fois continûment dérivable"}
+\end{definition}
+
+\section{Propriétés des fonctions dérivables}
+
+\begin{proposition}
+Si $\fEF$ dérivable en $x_0\in E$, telle que $f$ admet un extremum local en $x_0$, alors $f'(x_0)=0$\\
+Remarque: La réciproque est fausse.
+\end{proposition}
+
+\begin{definition}
+Si $\fEF$ est dérivable en $x_0$ et $f'(x_0)=0$, on dit que $x_0$ est un point stationnaire de $f$.
+\end{definition}
+
+Les points d'extrema d'une fonction continuent $\fpar{f}{[a,b]}{\R}$ sont parmi les suivants:
+\begin{enumerate}
+\item les points stationnaires: $f'(x_0) = 0$
+\item les points où $f'(x)$ n'existe pas dans $]a,b[$
+\item les points limites $x=a$, $x=b$
+\end{enumerate}
+
+\section{Théorème de Rolle} \label{thm:Rolle}
+
+Soit $a<b\in \R$ et $\fpar{f}{[a,b]}{F}$, telle que:
+\begin{enumerate}
+\item $\fpar{f}{[a,b]}{F}$ est continue
+\item $f$ est dérivable sur $]a,b[$
+\item $f(a) = f(b)$
+\end{enumerate}
+Alors, il existe au moint un point $c\in ]a,b[$ tel que $f'(c)=0$.
+
+
+\lecture{20}{24 novembre 2025}{Tout ce TAF va m'envoyer à l'Hospital}
+
+\section{Théorème des accroissement finis (TAF)}
+
+\begin{definition}
+Soit $a<b$; $\fpar{f}{[a,b]}{\R}$ telle que:
+\begin{enumerate}
+\item $f$ est continue sur $[a,b]$
+\item $f$ est dérivable sur $]a,b[$
+\end{enumerate}
+$\Rightarrow$ Il existe au moins un point $c\in]a,b[$ tel que:
+\[f'(c) = \frac{f(b)-f(a)}{b-a}\]
+On remarque que si $f(a) = f(b)$ on retrouve le \nameref{thm:Rolle}
+\end{definition}
+
+\begin{corollaire}
+Soit $\fpar{f}{[a,b]}{\R}$ continue sur $[a,b]$ et dérivable sur $]a,b[$ et $f'(x)=0,\; \forall x\in ]a,b[$. Alors $f$ est constante sur $[a,b]$
+\end{corollaire}
+
+\begin{corollaire}
+Si $f(x)$ et $g(x)$ sont continues dérivables sur $]a,b[$ et telles que $f'(x)=g'(x)$, $\forall x\in ]a,b[ \Rightarrow f(x) = g(x) +\alpha$ avec $\alpha \in \R$ 
+\end{corollaire}
+
+\begin{corollaire}
+\begin{itemize}
+\item $f'(x) \geq 0 \; (f'(x) \leq 0)$, $\forall x \in ]a,b[ \Leftrightarrow f$ est croissante (décroissante) sur $]a,b[$
+\item $f'(x) > 0 \; (f'(x) < 0)$, $\forall x \in ]a,b[ \Leftrightarrow f$ est \textbf{strictement} croissante (décroissante) sur $]a,b[$
+\end{itemize}
+Remarque: Si $f(x)$ est strictement croissante cela n'implique \textbf{pas} $f'(x) >0$
+\end{corollaire}
+
+\section{Règle de Bernouilli-l'Hospital}
+
+\begin{theorem}
+Soient $\fpar{f,g}{]a,b[}{\R}$ deux fonctions dérivables sur $]a,b[$.\\
+Si
+\begin{enumerate}
+\item $g(x)\neq 0$, $g'(x)\neq 0$ sur $]a,b[$
+\item $\limpar{x}{a^+}f(x)=\limpar{x}{a^+}g(x)\in \left\lbrace -\infty, 0, +\infty \right\rbrace$
+\item $\limpar{x}{a^+}\frac{f'(x)}{g'(x)}=\mu \in \R\cup \lbrace \pm \infty \rbrace$
+\end{enumerate}
+$\Longrightarrow \limpar{x}{x_0} \frac{f(x)}{g(x)} = \mu$
+\end{theorem}
+
+Note personnelle:\\
+Il est parfaitement possible d'appliquer le théorème de Bernouilli-l'Hospital plusieurs fois à la suite tant que les conditions 1 et 2 sont respectées. Par exemple:
+\begin{align*}
+\limpar{x}{0}f(x) &= \frac{1-\cos(x)}{x^2} &= \frac{0}{0}\\
+\limpar{x}{0}f'(x) &= \frac{\sin(x)}{2x} &= \frac{0}{0} \\
+\limpar{x}{0}f''(x) &= \frac{\cos(x)}{2} &= \frac{1}{2}
+\end{align*}
+
+\lecture{21}{26 novembre 2025}{J'aime pas trop comment ça se développe...}
+	
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
 %— Analysis 1 lecturer
