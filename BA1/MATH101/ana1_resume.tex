@@ -189,6 +189,35 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Fonctions continues sur un intervalle
 \item Théorème de la valeur intermédiaire (TVI)
 \end{itemize}
+\item \lecturetitle{18}
+\begin{itemize}
+\item Fonctions dérivables
+\item Fonction dérivée
+\item Dérivées à connaître
+\end{itemize}
+\item \lecturetitle{19}
+\begin{itemize}
+\item Dérivée de la fonction réciproque
+\item Fonctions hyperboliques
+\item Dérivées d'ordre $n$
+\end{itemize}
+\item \lecturetitle{20}
+\begin{itemize}
+\item Théorème des accroissements finis (TAF)
+\item Règle de Bernouilli-l'Hospital
+\end{itemize}
+\item \lecturetitle{21}
+\begin{itemize}
+\item Développements limités
+\item Formule de Taylor
+\item Étude de fonctions
+\end{itemize}
+\item \lecturetitle{22}
+\begin{itemize}
+\item Opérations algébriques sur les DLs
+\item Séries entières
+\item Rayon et domaine de convergence
+\end{itemize}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -1313,7 +1342,7 @@ $\fEF$ est de classe $C^n(E)$ si elle admet une dérivée d'ordre $n$ qui est co
 
 \section{Propriétés des fonctions dérivables}
 
-\begin{proposition}
+\begin{proposition} \label{prop:extremum_local}
 Si $\fEF$ dérivable en $x_0\in E$, telle que $f$ admet un extremum local en $x_0$, alors $f'(x_0)=0$\\
 Remarque: La réciproque est fausse.
 \end{proposition}
@@ -1394,7 +1423,7 @@ Il est parfaitement possible d'appliquer le théorème de Bernouilli-l'Hospital 
 
 \lecture{21}{26 novembre 2025}{J'aime pas trop comment ça se développe...}
 
-\section{Developpements limités}
+\section{Développements limités}
 
 \subsection{Formule de Taylor}
 
@@ -1417,6 +1446,122 @@ où $\limpar{x}{a}\varepsilon(x)=0$, on dit que $f$ admet \textbf{un développem
 \begin{proposition}
 Si $\fEF$ admet un développement limité d'ordre n autour de $x=a$, alors celui-ci est unique.
 \end{proposition}
+
+\begin{corollaire}
+Soit $a\in I$; $\fpar{f}{I}{F}$ une fonction $(n+1)$ fois continûment dérivable sur $I$. Alors la formule de Taylor nous fournit le DL\footnote{\textbf{D}éveloppement \textbf{L}imité} d'ordre $n$ de la fonction $f$ autour de $x=a$
+Remarques:\\
+\begin{enumerate}
+\item En fait, il suffit d'avoir $f$ $n$ fois dérivable sur $I$ pour avoir $f(x)=P_n(x)$ de Taylor + $(x-a)^n\varepsilon(x)$, $\limpar{x}{a}\varepsilon(x)=0$.
+\item $\fEF$ peut avoir un DL sans que la formule de Taylor lui soit applicable.
+\end{enumerate}
+\end{corollaire}
+
+%TODO écrire la conclusion de cette section
+
+\subsection{Étude de fonctions}
+
+\paragraph{Rappel:} Si $\fpar{f}{I}{F}$ est dérivable sur I, et $f$ admet un extremum local en $x=c$, alors $f'(c)=0$.\footnote{Voir \ref{prop:extremum_local}}
+
+\begin{proposition} (Condition suffisante pour qu'une fonction ait un extremum local) \\
+Soit $\fpar{f}{I}{F}$ une fonction $n$ fois continûment dérivable sur $I$, où $n\in\N^*$ est pair et telle que $f'(c)=f''(c)=...=f^{(n-1)}(c)=0$, mais $f^{(n)}(c)\neq 0$.
+\begin{align*}
+Alors\; & si\; f^{(n)} > 0 \Rightarrow \text{$f$ admet un min local en $x=c$} \\
+& si\; f^{(n)} < 0 \Rightarrow \text{$f$ admet un max local en $x=c$}
+\end{align*}
+\end{proposition}
+
+\begin{definition}
+Si $\fEF$ une fonction dérivable en $a\in E$.\\
+Soit $l(x)=f(a)+f'(a)(x-a)$ la tangente à la courbe $y=f(x)$ en $(a,f(a))$.\\
+Considérons $\psi(x)\overdef f(x)-l(x)=f(x)-f(a)-f'(a)(x-a)$.\\
+Si $\psi(x)$ change de signe en $x=a$, alors $(a,f(a))$ est un \textbf{point d'inflexion} de $f$.
+\end{definition}
+
+\begin{proposition} (Condition suffisante pour qu'une courbe ait un point d'inflexion) \\
+Soit $\fpar{f}{I}{F}$ une fonction $n$ fois continûment dérivable sur $I$, où $n\in\N$ est impair, $n>1$, et on a:
+\[ f''(a) = f'''(a) = ... = f^{(n-1)}(a) = 0;\; f^{(n)}(a)\neq 0 \]
+Alors le point $(a, f(a))$ est un point d'inflexion de $f$.
+\end{proposition}
+
+\begin{definition} Concave et convexe
+\begin{itemize}
+\item $\fpar{f}{I}{F}$ est \textbf{convexe} sur $I$ si pour tout couple $a<b\in I$, le graphique de $f(x)$ se trouve \textbf{en dessous} de la droite passant par $(a,f(a))$ et par $(b,f(b))$.
+\item $\fpar{f}{I}{F}$ est \textbf{concave} sur $I$ si pour tout couple $a<b\in I$, le graphique de $f(x)$ se trouve \textbf{au dessus} de la droite passant par $(a,f(a))$ et par $(b,f(b))$.
+\end{itemize}
+
+\begin{proposition}
+Soit $\fpar{f}{I}{F}$ deux fois dérivable sur $I$.
+\begin{align*}
+\text{Alors } & f \text{ est convexe sur } I \Leftrightarrow f''(x)\leq 0 \text{ sur } I \Leftrightarrow f'(x) \text{ est croissante sur } I \\
+& f \text{ est concave sur } I \Leftrightarrow f''(x)\geq 0 \text{ sur } I \Leftrightarrow f'(x) \text{ est décroissante sur } I
+\end{align*}
+\end{proposition}
+\end{definition}
+
+\lecture{22}{1er décembre 2025}{The most wonderful time of the year!}
+
+\subsection{Opérations algébriques sur les développements limités}
+
+\begin{proposition}
+Soient $\fpar{f,g}{E}{\R}$ deux fonctions admettant le DL autour de $x=a$
+\begin{align*}
+f(x) = a_0 + a_1(x-a) + a_2(x-a)^2 + ... + a_n(x-a)^n + (x-a)^n\varepsilon_1(x) = P_f^n(x)+(x-a)^n\varepsilon_1(x)\; &\vert \; \limpar{x}{a}\varepsilon_1(x)=0 \\
+g(x) = b_0 + b_1(x-a) + b_2(x-a)^2 + ... + b_n(x-a)^n + (x-a)^n\varepsilon_2(x) = P_g^n(x)+(x-a)^n\varepsilon_1(x)\; &\vert \; \limpar{x}{a}\varepsilon_2(x)=0
+\end{align*}
+Alors
+\begin{enumerate}
+\item $\alpha f(x) + \beta g(x)$ admet un DL d'ordre $n$ autour de $x=a$\\
+$P^n_{\alpha f + \beta g}(x)= \alpha P^n_f(x) + \beta P^n_g(x)$
+\item $f(x)\cdot g(x)$ admet un DL d'ordre $n$ autour de $x=a$\\
+$P^n_{f\cdot g}(x)= P^n_f(x)\cdot P^n_g$ où l'on ne retient que les termes d'ordre $\leq n$
+\item Si $b_0\neq 0$, $g(x)\neq 0$ sur $E$, $\frac{f(x)}{g(x)}$ admet un développement limité d'ordre $n$ autour de $x=a$\\
+ $P^n_{\frac{f}{g}}(x)= \frac{P^n_f(x)}{P^n_g(x)}$ où l'on ne retient que les termes d'ordre $\leq n$
+\end{enumerate}
+\end{proposition}
+
+\begin{proposition} DL d'une fonction composée
+\begin{align*}
+\text{Soit } & f(x) = a_1(x-a) + ... + a_n(x-a)^n+(x-a)^n\varepsilon_1(x) \text{ DL autour de } x=a \\
+& g(y) = g(0) + b_1y + ... + b_ny^n+y^n\varepsilon_2(x) \text{ DL autour de } y=0
+\end{align*}
+Alors $g\circ f$ admet un DL d'ordre $n$ autour de $x=a$,
+\[ P^n_{g\circ f} = g(0) + b_1(P^n_f(x-a)) + b_2(P^n_f(x-a))^2 + ... + b_n(P^n_f(x-a))^n \]
+où l'on ne conserve que les termes d'ordre $\leq n$
+\end{proposition}
+
+
+\chapter{Séries entières}
+
+\section{Rayon de convergence}
+
+\begin{definition}
+L'expression
+\[ \sum^{\infty}_{k=0}a_k(x-x_0)^k \]
+est dite \textbf{une série entière}, $a_k,x_0 \in \R$, $\forall k\in \N$.\\
+Le domaine de convergence $D\overdef \left\lbrace x\in \R: \sum^{\infty}_{k=0}a_k(x-x_0)^k \text{ converge} \right\rbrace$, la fonction $f(x) = \sum^{\infty}_{k=0}a_k(x-x_0)^k$, $x\in D$ est défini par la série entière.
+\end{definition}
+
+\begin{theorem} (Rayon de convergence) \\
+Soit la série entière $\sum^{\infty}_{k=0}a_k(x-x_0)^k$, alors il existe $r: 0\leq r \leq +\infty$ tel que
+\begin{enumerate}
+\item la série converge absolument $\forall x: \abs{x-x_0} < r$
+\item la série diverge $\forall x: \abs{x-x_0} > r$
+\end{enumerate}
+Remarque:
+\begin{enumerate}
+\item $D$ est un intervalle qui contient $x_0$ et centré en $x_0$.
+\item La convergence de la série entière en $x=x_0\pm r$ doit être étudié séparément.
+\end{enumerate}
+\end{theorem}
+
+\begin{proposition}
+Soit $\sum^{\infty}_{k=0}a_k(x-x_0)^k$ une série entière de rayon de convergence $r$. Supposons que $a_k\neq 0,\forall k\in \N$
+\begin{enumerate}
+\item Si $\limpar{k}{\infty}\abs{\frac{a_{k+1}}{a_k}}=l$ avec $0\leq l\leq \pm \infty \Rightarrow r = \frac{1}{l}$. Donc on a: $r=\limpar{k}{\infty}\abs{\frac{a_k}{a_{k+1}}}$
+\item Si $\limpar{k}{\infty}\abs{a_k}^{\frac{1}{k}}=l$ avec $0\leq l\leq +\infty \Rightarrow r =\frac{1}{l}$
+\end{enumerate}
+\end{proposition}
+
 
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
