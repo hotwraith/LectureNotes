@@ -1393,7 +1393,31 @@ Il est parfaitement possible d'appliquer le théorème de Bernouilli-l'Hospital 
 \end{align*}
 
 \lecture{21}{26 novembre 2025}{J'aime pas trop comment ça se développe...}
-	
+
+\section{Developpements limités}
+
+\subsection{Formule de Taylor}
+
+\begin{theorem}
+Soit $\fpar{f}{I}{F}$ une fonction $(n+1)$ fois dérivable sur $I$ avec $a\in I$.
+\par Alors $\forall x \in I$ il existe $u$ entre $x$ et $a$ tel que:
+\begin{gather*}
+f(x) = \underbrace{ f(a) + f'(a)(x-a) + \frac{f''(a=}{2}(x-a)^2 + ... + \frac{f^{(n)}(a)}{n!}(x-a)^n } + \underbrace{ \frac{f^{(n+1)}(a)}{(n+1)!}(x-a)^{(n+1)} }\\
+\hspace*{9pc} P_n(f)\, \mathbf{Polyn\hat{o}me\, de\, Taylor} \hspace*{8pc} R_n(f)\, \mathbf{le\, reste }
+\end{gather*}
+Remarque: La formule de Taylor s'appelle formule de MacLaurin si $a=0$.
+\end{theorem}
+
+\begin{definition} Développement limité \\
+$\fEF$ une fonction définie au voisinage de $x=a$. S'il exsite des nombres $a_0,a_1,...,a_n$ tels que $\forall x\in E,\, x\neq a$, on a 
+\[ f(x) = a_0 + a_1(x-a) + a_2(x-a)^2 + ... + a_n(x-a)^n + (x-a)^n\varepsilon (x) \]
+où $\limpar{x}{a}\varepsilon(x)=0$, on dit que $f$ admet \textbf{un développement limité} d'ordre n autour de $x=a$.
+\end{definition}
+
+\begin{proposition}
+Si $\fEF$ admet un développement limité d'ordre n autour de $x=a$, alors celui-ci est unique.
+\end{proposition}
+
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
 %— Analysis 1 lecturer
