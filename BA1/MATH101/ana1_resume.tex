@@ -1,4 +1,4 @@
-\documentclass[10pt,a4paper]{book}
+\documentclass[11pt,a4paper]{book}
 \usepackage[utf8]{inputenc}
 \usepackage{amsmath}
 \usepackage{amsfonts}
@@ -217,6 +217,12 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Opérations algébriques sur les DLs
 \item Séries entières
 \item Rayon et domaine de convergence
+\end{itemize}
+\item \lecturetitle{23}
+\begin{itemize}
+\item Série de Taylor
+\item Exemple de série de Taylor ne convergeant pas vers $f(x)$
+\item Primitive et dérivée d'une fcontion définie par une série entière
 \end{itemize}
 \end{itemize}
 
@@ -1562,6 +1568,77 @@ Soit $\sum^{\infty}_{k=0}a_k(x-x_0)^k$ une série entière de rayon de convergen
 \end{enumerate}
 \end{proposition}
 
+\lecture{23}{3 décembre 2025}{My Taylor is rich}
+
+\section{Série de Taylor}
+Soit $\fpar{f}{\overset{ouvert}{I}}{\R}$ une fonction de classe $C^{\infty}(I)$ (indéfiniment dérivable), et $x_0\in I$, alors:
+\[\sum^{\infty}_{k=0}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k\]
+est la \textbf{série (entière) de Taylor} de $f$ au point $x_0$. \\
+Lorsque $x_0=0$ on retrouve la \textbf{série de MacLaurin}. \\
+Deux objectifs:
+\begin{enumerate}
+\item Trouver le rayon ($r$) et le domaine de convergence ($D$) de $\sum^{\infty}_{k=0}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$
+\item Trouver l'ensemble $E\subset D$ tel que: $f(x) = \sum^{\infty}_{k=0}\frac{f^{(k)}(x_0)}{k!}(x-x_0)^k$ ($E$ est l'ensemble où la série de Taylor converge vers $f(x)$)
+\end{enumerate}
+
+\subsection{Séries de Taylor communes}
+$\forall x \in \R$
+\begin{itemize}
+\item \[\sin(x) = \sum^{\infty}_{k=0}\frac{(-1)^k}{(2k+1)!}x^{2k+1}\]
+\item \[\cos(x) = \sum^{\infty}_{k=0}\frac{(-1)^k}{(2k)!}x^{2k}\]
+\item \[e^x = \sum^{\infty}_{k=0}\frac{x^k}{k!}\]
+\item \[\sinh(x) = \sum^{\infty}_{k=0}\frac{1}{(2k+1)!}x^{2k+1}\]
+\item \[\cosh(x) = \sum^{\infty}_{k=0}\frac{1}{(2k)!}x^{2k}\]
+\end{itemize}
+
+\subsection{Exemple de série de Taylor qui ne converge pas vers \texorpdfstring{$f(x)$}{f(x)}}
+%TODO could be good to redo this more clearly one day
+Soit $f(x) = \left\lbrace 
+\begin{array}{rcl}
+e^{-\frac{1}{x^2}} & x\neq 0 \\
+0 & x = 0
+\end{array} \right.$
+indéfiniment dérivable autour de $x=0$. \\
+On trouve $\forall k\geq 0$: $f^{(k)}(0)=0$ \\
+Il suit que $f$ est de classe $C^{\infty}(\R)$. \\
+Taylor $(f)_{x=0}=0\; \forall x\in \R$. \\
+Alors Taylor$(f)_{x=0}\neq f(x)$ sauf pour $x=0$. Ici on a $D=\R$, mais $E={0}$.
+
+\section{Primitive et dérivée d'une fonction définie par une série entière}
+
+\begin{definition}
+Soit $\fpar{f}{[a,b]}{\R}$ ($f$ continue). La fonction $\fpar{F}{[a,b]}{\R}$ (continue) est \textbf{une primite} de $f$ sur $[a,b]$ si $F'(x)=f(x)\; \forall x \in ]a,b[$. \par
+Si $F_1(x)$ et $F_2(x)$ sont deux primitives de $f(x)$ sur $[a,b]$, alors $F_1(x) = F_2(x) + \alpha$ avec $\alpha \in \R$
+\end{definition}
+
+\subsection{Quelques primitives}
+\begin{tabular}{| c | c |} %TODO add some more spacing between lines it looks awful
+\hline
+$f(x) = \sin(x)$ & $F(x) = -\cos(x) + C$ \\
+\hline
+$f(x) = \cos(x)$ & $F(x) = \sin(x) + C$ \\
+\hline
+$f(x) = \frac{1}{x}$ & $F(x) = \ln(x) + C\; (x>0)$ \\
+\hline
+$f(x) = x^k$ & $F(x) = \frac{1}{k+1}x^{k+1} + C\; (x>0\, k\neq -1)$ \\
+\hline
+$f(x) = e^x$ & $F(x) = e^x + C$ \\
+\hline
+\end{tabular}
+
+\begin{theorem}
+\begin{enumerate}
+\item Les deux séries entières $\sum^{\infty}_{k=0}b_k(x-x_0)^k$ et $\sum^{\infty}_{k=0}\frac{b_k}{k+1}(x-x_0)^{k+1}$ ont le même rayon de convergence $r$.
+\item Si $r>0$, alors $f(x)\overdef \sum^{\infty}_{k=0}b_k(x-x_0)^k$ est continue sur $]x_0-r, x_0+r[$
+\item Si $r>0$, alors $F(x)\overdef \sum^{\infty}_{k=0}\frac{b_k}{k+1}(x-x_0)^{k+1}$ est la primitive de $f(x)$ sur $]x_0-r, x_0+r[$ telle que $F(x_0)=0$
+\end{enumerate}
+\end{theorem}
+\begin{corothem}
+\begin{enumerate}
+\item Les deux séries entières $\sum^{\infty}_{k=0}a_k(x-x_0)^k$ et $\sum^{\infty}_{k=1}k\cdot a_k(x-x_0)^{k-1}$ ont le même rayon de convergence.
+\item Si $r>0$, alors $f(x)\overdef \sum^{\infty}_{k=0}b_k(x-x_0)^k$ est continuement dérivable sur $]x_0-r, x_0+r[$ et $f'(x) \overdef	\sum^{\infty}_{k=1}k\cdot a_k(x-x_0)^{k-1}$
+\end{enumerate}
+\end{corothem}
 
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
