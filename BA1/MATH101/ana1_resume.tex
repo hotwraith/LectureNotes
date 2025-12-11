@@ -39,6 +39,7 @@
 \newcommand{\gGH}{g:G\rightarrow H}
 \newcommand{\fpar}[3]{#1:#2 \rightarrow #3}
 \newcommand{\limpar}[2]{\lim_{#1 \rightarrow #2}}
+\newcommand{\intpar}[2]{\int_{#1}^{#2}}
 \newcommand{\overdef}{\overset{\mathbf{d\acute{e}f}}{=}}
 \newcommand{\spa}{\vspace{0.2cm}}
 \newcommand{\ind}{\hspace*{\parindent}}
@@ -223,6 +224,17 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Série de Taylor
 \item Exemple de série de Taylor ne convergeant pas vers $f(x)$
 \item Primitive et dérivée d'une fcontion définie par une série entière
+\end{itemize}
+\item \lecturetitle{24}
+\begin{itemize}
+\item Sommes de Darboux
+\item Relation entre intégrale et primitive
+\item Techniques d'intégration: changement de variables
+\end{itemize}
+\item \lecturetitle{25}
+\begin{itemize}
+\item Techniques d'intégration: intégrations par parties
+\item Techniques d'intégration: intégrations de fonctions rationnelles
 \end{itemize}
 \end{itemize}
 
@@ -1611,18 +1623,36 @@ Soit $\fpar{f}{[a,b]}{\R}$ ($f$ continue). La fonction $\fpar{F}{[a,b]}{\R}$ (co
 Si $F_1(x)$ et $F_2(x)$ sont deux primitives de $f(x)$ sur $[a,b]$, alors $F_1(x) = F_2(x) + \alpha$ avec $\alpha \in \R$
 \end{definition}
 
-\subsection{Quelques primitives}
+\subsection{Quelques primitives} \label{tab:primitives}
 \begin{tabular}{| c | c |} %TODO add some more spacing between lines it looks awful
 \hline
-$f(x) = \sin(x)$ & $F(x) = -\cos(x) + C$ \\
+$f(x)$ & $F(x)$ \\
 \hline
-$f(x) = \cos(x)$ & $F(x) = \sin(x) + C$ \\
+$\sin(x)$ & $-\cos(x) + C$ \\
 \hline
-$f(x) = \frac{1}{x}$ & $F(x) = \ln(x) + C\; (x>0)$ \\
+$\cos(x)$ & $\sin(x) + C$ \\
 \hline
-$f(x) = x^k$ & $F(x) = \frac{1}{k+1}x^{k+1} + C\; (x>0\, k\neq -1)$ \\
+$\frac{1}{x}$ & $\ln(x) + C\; (x>0)$ \\
 \hline
-$f(x) = e^x$ & $F(x) = e^x + C$ \\
+$x^k$ & $\frac{1}{k+1}x^{k+1} + C\; (x>0\, k\neq -1)$ \\
+\hline
+$e^x$ & $e^x + C$ \\
+\hline
+$\sinh(x)$ & $\cosh(x) + C$ \\
+\hline
+$\cosh(x)$ & $\sinh(x) + C$ \\
+\hline
+$a^x,\, a>0,\, a\neq 1$ & $\frac{1}{\ln(a)}a^x + C$ \\
+\hline
+$\frac{1}{x},\, x\neq 0$ & $\ln(\abs{x}) + C$ \\
+\hline
+$\frac{1}{\cos^2(x)}$ & $\tan(x) + C$ \\
+\hline
+$\frac{1}{\sin^2(x)}$ & $-\cot(x) + C$ \\
+\hline
+$\frac{1}{1+x^2}$ & $\arctan(x) + C$ \\
+\hline
+$\frac{1}{\sqrt{1-x^2}}$ & $\arcsin(x) + C$ \\
 \hline
 \end{tabular}
 
@@ -1639,6 +1669,139 @@ $f(x) = e^x$ & $F(x) = e^x + C$ \\
 \item Si $r>0$, alors $f(x)\overdef \sum^{\infty}_{k=0}b_k(x-x_0)^k$ est continuement dérivable sur $]x_0-r, x_0+r[$ et $f'(x) \overdef	\sum^{\infty}_{k=1}k\cdot a_k(x-x_0)^{k-1}$
 \end{enumerate}
 \end{corothem}
+
+
+\chapter{Calcul intégral}
+
+\lecture{24}{8 décembre 2025}{Intégralement relou}
+
+\section{Intégrale d'une fonction continue}
+
+\subsection{Définition et sommes de Darboux}
+\begin{definition} Sommes de Darboux \\
+Soit $\fpar{f}{[a,b]}{\R}$ (continue). Soit $\sigma = {x_0=a < x_1 < x_2 < ... < x_n =b}$, telle qu'il n'y ait pas de subdivision possible ($P(\sigma)=max{x_i - x_{i-1}}$). \\
+Alors: 
+\[\bar{S}_{\sigma}\overdef \sum^n_{k=1}M_k(x_k-x_{k-1})\]
+où $M_k=max(f(x)),\; x\in [x_{k-1};x_k]$, est la somme de Darboux supérieure de $f$ relativement a $\sigma$.
+\[\underline{S}_{\sigma}\overdef \sum^n_{k=1}m_k(x_k-x_{k-1})\]
+où $m_k=min(f(x)),\; x\in [x_{k-1};x_k]$, est la somme de Darboux inférieure de $f$ relativement a $\sigma$. \\
+On a également $m(b-a) \leq \underline{S}_{\sigma}(f)\leq \bar{S}_{\sigma}(f) \leq M(b-a)$, avec $M = max(f(x))$ et $m = min(f(x))$ sur $[a,b]$.
+\textbf{Remarque:} Si $\sigma_1\subset \sigma_2$ (en gros si on ajoute des points "intermédiaires"). \\
+$\Rightarrow  \underline{S}_{\sigma_1}\leq \underline{S}_{\sigma_2}(f)\leq \bar{S}_{\sigma_2}(f)\leq \bar{S}_{\sigma_1}(f)$
+\end{definition}
+\begin{proposition}
+Soit $\bar{S}(f) \overdef Inf\{\bar{S}_{\sigma}(f), \sigma$ subdivisions de $[a,b]\}$ \\
+$\underline{S}(f) \overdef Sup\{\underline{S}_{\sigma}(f), \sigma$ subdivisions de $[a,b]\}$
+\end{proposition}
+\begin{theorem}
+Alors si $f$ est continue sur $[a,b]$, $\bar{S}(f)=\underline{S}(f)$
+\end{theorem}
+\begin{definition}
+Soit $a<b$, et $\fpar{f}{[a,b]}{\R}$ bornée, telle que $\bar{S}(f)=\underline{S}(f)$. Alors
+\[\int_a^b f(x)dx \overdef \bar{S}(f)=\underline{S}(f)\]
+est l'intégrale de Riemann de la fonction sur $[a,b]$, où $a$ est la borne inf, $b$ la borne sup et $x$ la variable d'intégration (comme dénoté par $dx$).
+\end{definition}
+\begin{definition}
+Si $b<a$, $\int_a^b f(x)dx \overdef -\int_b^a f(x)dx$; $\int_a^a f(x)dx = 0$.
+\end{definition}
+\begin{equation} \tag{Calcul d'intégrale}
+\int_a^b f(x)dx = \limpar{n}{\infty}\bar{S}_{\sigma_n}(f)= \limpar{n}{\infty}\underline{S}_{\sigma_n}(f)
+\end{equation}
+Où $\{\sigma_n\}$ est une suite de subdivisions de $[a,b]$ telle que $P(\sigma_n) \overset{n\rightarrow \infty}{\longrightarrow} 0$
+
+\subsection{Propriétés}
+
+\begin{enumerate}
+\item $a<b$, $f(x)$ continue sur $[a,b]$. \\
+Soit $c\in [a,b] \Rightarrow \int_a^b f(x)dx = \intpar{a}{c}f(x)dx + \intpar{c}{b}f(x)dx$
+\item $m(b-a) \leq \underline{S}(f) \leq \bar{S}(f) \leq M(b-a)$ \\
+où $m=min(f(x))$ et $M=max(f(x))$ sur $[a,b]$.\\
+On peut aussi l'écrire $m(b-a)\leq \intpar{a}{b}f(x)dx \leq M(b-a)$
+\item Théorème de la moyenne: $a<b$, $f(x)$ continue sur $[a,b]$. Alors il existe un point $c\in [a,b]$ tel que:\\
+$\intpar{a}{b}f(x)dx = f(c)\cdot (b-a)$
+\end{enumerate}
+
+\section{Relation entre intégrale et primitive}
+
+\begin{proposition}
+Soit $a<b$, $f$ une fonction continue sur $[a,b]$. \par
+Alors la fonction $F(x)=\intpar{a}{x}f(t)dt$ est la primitive de $f(x)$ sur $[a,b]$ telle que $F(a)=0$.
+\end{proposition}
+\begin{corollaire} Théorème fondamental du calcul intégral \\
+Soit $a<b$, $f(x)$ continue sur $[a,b]$. Si $G(x)$ est une primitive de $f(x)$ sur $[a,b]$ alors
+\begin{equation*}
+\intpar{a}{b}f(x)dx = G(b)-G(a)
+\end{equation*}
+\end{corollaire}
+Pour les primitives usuelles voir la section "\nameref{tab:primitives} (\ref{tab:primitives})".
+
+\subsection{Propriétés}
+
+\begin{enumerate}
+\item Linéarité: $\intpar{a}{b}(\alpha f(x) + \beta g(x))dx = \alpha \intpar{a}{b}f(x) + \beta \intpar{a}{b}g(x)$
+\item Si $f(x)\geq 0\; \forall x \in [a,b],\; c\in ]a,b[$\\
+$\Rightarrow 0 \leq \intpar{a}{c}f(x)dx \leq \intpar{a}{b}f(x)dx$ car $F'(x)=f(x)\geq 0 \Rightarrow F(x) = \intpar{a}{x}f(t)dt$ est croissante sur $[a,b]$
+\item Corollaire: Si $f(x)\leq g(x)\; \forall x\in [a,b] \Rightarrow \intpar{a}{b}f(x)dx \leq \intpar{a}{b}g(x)dx$
+\item Intégrale fonction de ces bornes:\\
+$\fpar{f}{[a,b]}{\R}$ continue, $\fpar{g,h}{I}{[a,b]}$ dérivables sur $I$. \\
+Alors:
+\[\frac{d}{dx}\left( \intpar{h(x)}{g(x)}f(t)dt \right)= f(g(x))\cdot g'(x)-f(h(x))\cdot h'(x)\]
+\end{enumerate}
+
+\section{Techniques d'intégration}
+
+\subsection{Changement de variables}
+\begin{proposition} 
+$\fpar{f}{[a,b]}{\R}$ continue, $\fpar{\varphi}{[\alpha, \beta]}{[a,b]}$ continûement dérivable sur $[\alpha, \beta]\subset I$, alors:
+\begin{equation*}
+\intpar{\varphi(\alpha)}{\varphi(\beta)}f(x)dx = \intpar{\alpha}{\beta}f(\varphi(t))\cdot \varphi'(t)dt
+\end{equation*}
+où $x=\varphi(t)$ et donc $\frac{d}{dt}x=\varphi'(t) \Rightarrow dx =\varphi'(t)dt$
+\end{proposition}
+
+\lecture{25}{10 décembre 2025}{Les intégrales c'est un art}
+
+\subsection{Intégration par parties}
+
+$\fpar{g,f}{I}{\R}$ continûment dérivable; $[a,b]\subset I$. Alors
+\begin{equation*}
+\intpar{a}{b}f(x)\cdot g'(x)dx = f(x)g(x)\left. \right\rvert^b_a - \intpar{a}{b}g(x)f'(x)dx
+\end{equation*}
+Notations utiles
+\begin{itemize}
+\item $df(x) = f'(x)dx$
+\item $f(x)g(x)\left. \right|^b_a = f(b)g(b) - f(a)g(a)$
+\end{itemize}
+
+\subsection{Intégration de fonctions rationnelles}
+
+$\int \frac{P(x)}{Q(x)}dx$ s'exprime toujours en termes fonctions des fonctions élémentaires. \par 
+J'avais déjà traité cette méthode d'intégration dans mon \href{}{résumé d'analyse B pour MàN (PREPA-031b)}. Ce qui suit n'est donc qu'un copié collé de cette section dans le résumé.\footnote{Je recommande également d'aller voir dedans si vous avez des doutes sur certaines choses que l'on a considéré comme "acquises" dans ce cours d'Analyse 1.}
+
+\paragraph{Méthode générale} On décrit maintenant la procédure à suivre dans le cas général. Soit
+\[f(x) = \frac{P(x)}{Q(x)}\]
+une fonction rationelle avec $P(x)$ et $Q(x)$ des polynômes.
+
+\begin{enumerate}
+\item Si $deg(P) \geq deg(Q)$, on fait la division polynomiale pour trouver
+\[f(x) = S(x) + \frac{R(x)}{Q(x)}\]
+où $S(x)$ et $R(x)$ sont des polynômes tel que $deg(R) < deg(Q)$.
+\item Factoriser le plus possible le dénominateur $Q(x)$ (en facteurs irréductibles).
+
+\item Restent les possibilités suivantes,
+\begin{itemize}
+\item Cas 1: Si $Q(x)$ peut être factorisé en $k$ facteurs de degré 1,
+\[Q(x)= (a_1x + b_1)(a_2x + b_2)...(a_kx + b_k)\]
+\[\frac{R(x)}{Q(x)} = \frac{A_1}{(a_1x + b_1)}+ \frac{A_2}{(a_2x + b_2)} + ... + \frac{A_k}{(a_kx + b_k)}\]
+\item Cas 2: Si l'un des facteurs de degré 1 de $Q(x)$ apparaît "plusieurs fois", à savoir on a $(ax+b)^r$ on ajoute à la décomposition les termes $(ax + b)^1$ à $(ax+b)^r$.
+\[\frac{A_1}{(ax+b)} + \frac{A_2}{(ax+b)^2} + ... + \frac{A_r}{(ax+b)^r}\]
+\item Cas 3: Si l'un des facteurs de $Q(x)$ est un polynôme de degré 2 irréductible ($\Delta < 0$) alors on ajoute à la décomposition le terme
+\[\frac{Ax+B}{ax^2+bx+c}\]
+\item Cas 4: Si un des facteurs de $Q(x)$ est un facteur irréductible de degré 2 de multiplicité $r$, $(ax^2+bx+c)^r$ de $\Delta < 0$ alors on ajoute à la décomposition les éléments suivants
+\[\frac{A_1x+B_1}{ax^2+bx+c}+ \frac{A_2x+B_2}{(ax^2+bx+c)^2} + ... + \frac{A_rx+B_r}{(ax^2+bx+c)^r}\]
+\end{itemize}
+\end{enumerate}
+Après on résoud pour trouver les coeffs :) %TODO add exemple pour ce truc un jour
 
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
