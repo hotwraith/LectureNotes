@@ -236,6 +236,12 @@ Rendons à César ce qui appartient à César, merci à \href{https://github.com
 \item Techniques d'intégration: intégrations par parties
 \item Techniques d'intégration: intégrations de fonctions rationnelles
 \end{itemize}
+\item \lecturetitle{26}
+\begin{itemize}
+\item Intégrales généralisées sur intervalle borné
+\item Intégrales généralisées sur intervalle non-borné
+\item Convergence et divergence de ces intégrales
+\end{itemize}
 \end{itemize}
 
 \chapter{Prérequis} 
@@ -1802,6 +1808,70 @@ où $S(x)$ et $R(x)$ sont des polynômes tel que $deg(R) < deg(Q)$.
 \end{itemize}
 \end{enumerate}
 Après on résoud pour trouver les coeffs :) %TODO add exemple pour ce truc un jour
+
+
+\chapter{Intégrales généralisées}
+
+\lecture{26}{15 décembre 2025}{"Et pas n'importe laquelle,\\ l'intégrale du Général"}
+
+\section{Intégrales généralisées sur un intervalle borné}
+
+\begin{definition}
+Soit $a<b$ et $\fpar{f}{[a,b[}{\R}$ une fonction continue. Alors on définit l'intégrale généralisée par la limite \[\intpar{a}{b^-}f(t)dt \overdef \limpar{x}{b^-}\intpar{a}{x}f(t)dt\] si la limite existe dans $\R$. \par
+Sinon l'intégrale généralisée $\intpar{a}{b^-}f(t)dt$ est dite \textbf{divergente}.
+\\ \\
+Soit $a<b$ et $\fpar{f}{]a,b]}{\R}$ une fonction continue. Alors on définit l'intégrale généralisée par la limite \[\intpar{a^+}{b}f(t)dt \overdef \limpar{x}{a^+}\intpar{x}{b}f(t)dt\] si la limite existe dans $\R$. \par
+Sinon l'intégrale généralisée $\intpar{a^+}{b}f(t)dt$ est dite \textbf{divergente}.
+\end{definition}
+
+\begin{proposition}
+Soit $f,g:[a,b[$ fonctions continues telles qu'il existe $c\in ]a,b[: 0\leq f(x) \leq g(x)\; \forall x\in [c,b[$. \\
+\begin{align*}
+\text{Alors } & \text{si } \intpar{a}{b^-}g(x)dx \text{ converge} \Rightarrow \intpar{a}{b^-}f(x)dx \text{ converge} \\
+& \text{si } \intpar{a}{b^-}f(x)dx \text{ diverge} \Rightarrow \intpar{a}{b^-}g(x)dx \text{ diverge} 
+\end{align*}
+Ce critère existe également pour $\fpar{f,g}{]a,b]}{\R}$ continues.
+\end{proposition}
+\begin{corollaire}
+Soit $\fpar{f}{[a,b[}{\R}$ continue. Supposons qu'il existe $\alpha \in \R$ tel que $\limpar{x}{b^-}f(x)\cdot (b-x)^{\alpha}\neq 0 = l\in \R$. Alors l'intégrale généralisée $\intpar{a}{b^-}f(t)dt$ converge $\Leftrightarrow \alpha <1$ et diverge $\Leftrightarrow \alpha \geq 1$.
+\end{corollaire}
+
+\begin{definition}
+Soit $a<b$, $\fpar{f}{]a,b[}{\R}$ continue, $c\in ]a,b[$ arbitraire. \\
+Alors l'ingégrale généralisée
+\[\intpar{a^+}{b^-}f(t)dt \overdef \intpar{a^+}{c}f(t)dt + \intpar{c}{b^-}f(t)dt\]
+converge si et seulement si les deux intégrales généralisées convergent. La définition ne dépend pas du choix de $c\in ]a,b[$.
+\end{definition}
+
+
+\section{Intégrales généralisées sur un intervalle non borné}
+
+\begin{definition}
+Soit $\fpar{f}{[a,+\infty[}{\R}$ une fonctione continue. Alors l'intégrale généralisée 
+\[\intpar{a}{\infty}f(t)dt \overdef \limpar{x}{+\infty}\intpar{a}{x}f(t)dt\] si la limite existe. \par
+Sinon, l'intégrale généralisée $\intpar{a}{\infty}f(t)dt$ est dite divergente.
+Même chose avec la fonction $\fpar{f}{]-\infty, b]}{\R}$ et l'intégrale $\intpar{\infty}{b}f(t)dt$.
+\end{definition}
+\begin{corollaire}
+Soit $\fpar{f}{[a,+\infty[}{\R}$ continue et $\beta \in \R$ tel que $\limpar{x}{\infty}f(x)\cdot x^{\beta}\neq 0 = l\in \R$. 
+\begin{align*}
+Alors \intpar{a}{\infty}f(t)dt & \text{ converge}\Leftrightarrow \beta > 1 \\
+& \text{ diverge} \Leftrightarrow \beta \leq 1
+\end{align*}
+\end{corollaire}
+
+\begin{definition}
+Soit $a<b$, $\fpar{f}{]a,+\infty[}{\R}$ continue, $c\in ]a,+\infty[$ arbitraire. \\
+Alors l'ingégrale généralisée
+\[\intpar{a^+}{+\infty}f(t)dt \overdef \intpar{a^+}{c}f(t)dt + \intpar{c}{+\infty}f(t)dt\]
+converge si et seulement si les deux intégrales généralisées convergent. La définition ne dépend pas du choix de $c\in ]a,b[$.
+\end{definition}
+
+\begin{definition}
+Si $\fpar{f}{\R}{\R}$ continue alors on peut aussi considérer
+\[\intpar{-\infty}{\infty}f(t)dt \overdef \intpar{-\infty}{c}f(t)dt + \intpar{c}{\infty}f(t)dt,\; c\in \R \]
+converge si et seulement si les deux intégrales généralisées convergent. La définition ne dépend pas non plus du choix de $c\in ]a,b[$.
+\end{definition}
 
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
