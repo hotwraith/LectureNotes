@@ -39,6 +39,7 @@
 \newcommand{\gGH}{g:G\rightarrow H}
 \newcommand{\fpar}[3]{#1:#2 \rightarrow #3}
 \newcommand{\limpar}[2]{\lim_{#1 \rightarrow #2}}
+\newcommand{\sumpar}[2]{\sum_{#1}^{#2}}
 \newcommand{\intpar}[2]{\int_{#1}^{#2}}
 \newcommand{\overdef}{\overset{\mathbf{d\acute{e}f}}{=}}
 \newcommand{\spa}{\vspace{0.2cm}}
@@ -1872,6 +1873,121 @@ Si $\fpar{f}{\R}{\R}$ continue alors on peut aussi considérer
 \[\intpar{-\infty}{\infty}f(t)dt \overdef \intpar{-\infty}{c}f(t)dt + \intpar{c}{\infty}f(t)dt,\; c\in \R \]
 converge si et seulement si les deux intégrales généralisées convergent. La définition ne dépend pas non plus du choix de $c\in ]a,b[$.
 \end{definition}
+
+\chapter{Conclusion \& résumé}
+
+\lecture{27}{17 décembre 2025}{The nightmares, the mission, it's... finally over}
+
+\section{Les sujets sont liés les aux autres}
+
+\subsection{Limites de suites et fonctions}
+
+\begin{enumerate}
+\item Si $\limpar{x}{0^+}f(x)=l \Rightarrow \limpar{n}{\infty}f\left( \frac{1}{n}\right)=l$ (par contre $\exists$ des fonctions telles que $\lim f\left(\frac{1}{n}\right)=l$, mais $\limpar{x}{0^+}f(x)$ n'existe pas).
+\item Si $\limpar{x}{\infty}f(x)=l \Rightarrow \limpar{n}{\infty}f(n)=l$ (Par contre $\exists$ des fonctions telles que $\limpar{n}{\infty}f(n)=l$ mais $\limpar{x}{\infty}f(x)$ n'existe pas).
+\end{enumerate}
+
+\subsection{Séries numériques et intégrales}
+
+\begin{proposition}
+Soit $f\geq 0$ une fonction continue et strictement décroissante $\forall x\geq a$ pour un certain $a\geq 1$. \par
+Alors la série $\sumpar{n=1}{\infty}f(n)$ et l'intégrale généralisée $\intpar{1}{\infty}f(x)dx$ convergent ou divergent en même temps.
+\[ \sumpar{n=2}{\infty}f(n)\leq \intpar{1}{\infty}f(x)dx \leq \sumpar{n=1}{\infty}f(n)  \]
+\end{proposition}
+
+\subsection{Continuité-dérivabilité}
+
+$f(x) = \left\lbrace \begin{matrix} h(x), & x\geq 0 \\
+g(x), & x<0 
+\end{matrix} \right.$
+ 
+\begin{enumerate}
+\item Continuité: $\limpar{x}{0^+}h(x), \limpar{x}{0^-}g(x)$ existent-elles ? 	Est-ce que $\limpar{x}{0^+}h(x) = \limpar{x}{0^-}g(x)$ ?
+\item Dérivabilité: $f_d'(0)=\limpar{x}{0^+}\frac{h(x)-h(0)}{x-0}$ existe ?  $f_g'(0)=\limpar{x}{0^+}\frac{g(x)-g(0)}{x-0}$ existe ? Est-ce que $f_d'(0) = f_g'(0)$ ?
+\end{enumerate}
+
+\subsubsection{Suites}
+\begin{enumerate}
+\item Utiliser les limites remarquables: 
+\begin{itemize}
+\item $\limpar{x}{0}(1+x)^{\frac{1}{x}}=e$
+\item $\limpar{n}{\infty}(1+\frac{1}{n})^{n}=e$
+\item $\limpar{x}{0}\frac{\ln(1+x)}{x}=1$
+\item $\limpar{x}{0}\frac{\sin(x)}{x}=1$
+\end{itemize}
+\item Lim inf/sup: $\limpar{n}{\infty}a_n=5$; $\limpar{n}{\infty}\inf(-1)^n a_n=-5$ et $\limpar{n}{\infty}\sup(-1)^n a_n=5$ 
+\item Suites définies par récurrence: Pour la limite ne pas oublier $l=g(l)$ pour $a_{n+1} = g(a_n)$, si $a_n$ est croissante/décroissante il faut montrer sa majoration/minoration.
+\end{enumerate}
+
+\subsubsection{Séries}
+\begin{enumerate}
+\item $\limpar{n}{\infty}\abs{\frac{a_{n+1}}{a_n}}=\rho \left\lbrace \begin{matrix}
+< 1 & \text{convergente} \\
+> 1 & \text{divergente}
+\end{matrix}
+\right.$
+\item $\limpar{n}{\infty}\sqrt[n]{a_n}=\rho \left\lbrace \begin{matrix}
+< 1 & \text{convergente} \\
+> 1 & \text{divergente}
+\end{matrix}
+\right.$
+\item Comparaison
+\item Leibnitz:
+\begin{itemize}
+\item alternée
+\item $\abs{a_{n+1}}\leq \abs{a_n}$
+\item $\limpar{n}{\infty}a_n = 0$
+\end{itemize}
+\item Intégrale: $\intpar{1}{\infty}f(x)dx \leftrightarrow \sumpar{n=1}{\infty}f(n)$, $f(x)\geq 0$ et $\downarrow$ strictement.
+\end{enumerate}
+
+\section{TVI et TAF}
+
+\paragraph{TVI} Une fonction continue sur un intervalle fermé borné atteint son min, max et toute valeur entre les deux.
+
+\paragraph{TAF}Pour une fonction $f$ continue sur $[a;b]$ et dérivable sur $]a;b[$ il existe $c\in ]a;b[$ tel que $f'(c)=\frac{f(b)-f(a)}{b-a}$.
+
+\section{Croissance relative des fonctions}\footnote{Is this AICC reference ???}
+
+$a>1$, $p>0$, $q>0$, lorsque $n\rightarrow +\infty$ et $x \rightarrow +\infty$
+
+\begin{equation*}
+\begin{matrix}
+n^n \succ & n! \succ & a^n \succ & n^p \succ & (\ln(n))^q \\
+&&\overset{\simeq}{\downarrow}&\overset{\simeq}{\downarrow}&\overset{\simeq}{\downarrow} \\
+&&a^x \succ & x^p \succ & (\ln(x))^q
+\end{matrix}
+\end{equation*}
+
+\section{Classe de régularité des fonctions}
+
+\begin{equation*}
+\begin{matrix}
+\text{Analytique } &  \Longleftrightarrow & f(x)= \text{ sa série de Taylor sur I (ouvert).} \\
+\Downarrow & & \\
+\text{Infiniment dérivable } & \Longleftrightarrow & f(x)\in C^{\infty}(I) \text{ lisse} \\
+\Downarrow & & \\
+\text{n fois continûment dérivable }(n\geq 2) & \Longleftrightarrow & f(x)\in C^n(I) \\
+\Downarrow & & \\
+\text{n fois dérivable } (n\geq 2) & \Longleftrightarrow & f^{(n)}(x) \text{ existe sur } I \\
+\Downarrow & & \\
+\text{Dérivable } & \Longleftrightarrow & f'(x) \text{ existe sur } I \\
+\Downarrow & & \\
+\text{Continue } & \Longleftrightarrow & \limpar{x}{a}f(x)=f(a),\; \forall\in I \\
+\Downarrow & & \\
+\text{Intégrable sur } [a,b]\subset I & \Longleftrightarrow & \intpar{a}{b}f(x)dx \text{ existe}
+\end{matrix}
+\end{equation*}
+
+\section{Vocabulaire d'examen}
+
+\begin{itemize}
+\item différentiable == dérivable
+\item Sup = $\sup$
+\item Inf = $\inf$
+\item $\exists$ = il existe
+\item $\forall$ = pour tout
+\end{itemize}
 
 
 %“Your faces look just like mine did when I first took Analysis and was introduced to the epsilon. They said “do you understand?”, of course I said yes…. I was LYING.”
